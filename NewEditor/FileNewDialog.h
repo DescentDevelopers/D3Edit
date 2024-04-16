@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_FILENEWDIALOG_H__9029B981_FC81_11D2_A6A1_006097E07445__INCLUDED_)
+#if !defined(AFX_FILENEWDIALOG_H__9029B981_FC81_11D2_A6A1_006097E07445__INCLUDED_)
 #define AFX_FILENEWDIALOG_H__9029B981_FC81_11D2_A6A1_006097E07445__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -22,36 +22,33 @@
 /////////////////////////////////////////////////////////////////////////////
 // CFileNewDialog dialog
 
-class CFileNewDialog : public CDialog
-{
-// Construction
+class CFileNewDialog : public CDialog {
+  // Construction
 public:
-	CFileNewDialog(CWnd* pParent = NULL);   // standard constructor
-	int m_Sel; // index of current selection
+  CFileNewDialog(CWnd *pParent = NULL); // standard constructor
+  int m_Sel;                            // index of current selection
 
-// Dialog Data
-	//{{AFX_DATA(CFileNewDialog)
-	enum { IDD = IDD_NEWFILE };
-	CListBox	m_List;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CFileNewDialog)
+  enum { IDD = IDD_NEWFILE };
+  CListBox m_List;
+  //}}AFX_DATA
 
-
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CFileNewDialog)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CFileNewDialog)
 protected:
+  virtual void DoDataExchange(CDataExchange *pDX); // DDX/DDV support
+                                                   //}}AFX_VIRTUAL
 
-	// Generated message map functions
-	//{{AFX_MSG(CFileNewDialog)
-	virtual BOOL OnInitDialog();
-	afx_msg void OnSelChange();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+protected:
+  // Generated message map functions
+  //{{AFX_MSG(CFileNewDialog)
+  virtual BOOL OnInitDialog();
+  afx_msg void OnSelChange();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

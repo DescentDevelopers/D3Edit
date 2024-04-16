@@ -10,36 +10,35 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
-			
-		#define FIXUP32 012345678h
-		#define ANDER32	32766
-			
-		dest=destptr+x1;
-		fix fx_u,fx_v;
-		ushort FPUCW,OldFPUCW;
-		
-		TexSrc16=bm_data(Tex_bitmap,Current_mip);
-									
-		float float_scaler=65536.0;
-		float float_scaler8=4096.0;
-		float one=1.0;
-		float floattemp;
+#ifdef ACTIVATE_INNER_LOOP
 
-		float u_affine=fldudx*PIX_PER_SPAN;
-		float v_affine=fldvdx*PIX_PER_SPAN;
-		float z_affine=fldzdx*PIX_PER_SPAN;
+#define FIXUP32 012345678h
+#define ANDER32 32766
 
-		BigSteps=width/PIX_PER_SPAN;
-		Leftovers=width%PIX_PER_SPAN;
-				
-		if (dldx>=0)
-		{
-			
-			ushort light8=(LeftMonoLight>>8);	
-			ushort dldx8=dldx/256;
+dest = destptr + x1;
+fix fx_u, fx_v;
+ushort FPUCW, OldFPUCW;
 
-			__asm 
+TexSrc16 = bm_data(Tex_bitmap, Current_mip);
+
+float float_scaler = 65536.0;
+float float_scaler8 = 4096.0;
+float one = 1.0;
+float floattemp;
+
+float u_affine = fldudx * PIX_PER_SPAN;
+float v_affine = fldvdx * PIX_PER_SPAN;
+float z_affine = fldzdx * PIX_PER_SPAN;
+
+BigSteps = width / PIX_PER_SPAN;
+Leftovers = width % PIX_PER_SPAN;
+
+if (dldx >= 0) {
+
+  ushort light8 = (LeftMonoLight >> 8);
+  ushort dldx8 = dldx / 256;
+
+                        __asm 
 			{
 				; put the FPU in 32 bit mode
 				fstcw   [OldFPUCW]                  ; store copy of CW
@@ -425,14 +424,11 @@
 				fldcw   [OldFPUCW]							; restore the FPU
 
 			}
-		}
-		else
-		{
-			ushort light8=(IntToFix(MAX_TEXTURE_SHADES-1)-LeftMonoLight)>>8;
-			ushort dldx8=(-dldx)/256;
+} else {
+  ushort light8 = (IntToFix(MAX_TEXTURE_SHADES - 1) - LeftMonoLight) >> 8;
+  ushort dldx8 = (-dldx) / 256;
 
-
-			__asm 
+                        __asm 
 			{
 				; put the FPU in 32 bit mode
 				fstcw   [OldFPUCW]                  ; store copy of CW
@@ -818,7 +814,6 @@
 				fldcw   [OldFPUCW]							; restore the FPU
 
 			}
-		}
+}
 
-	
 #endif

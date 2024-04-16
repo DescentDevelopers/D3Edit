@@ -10,27 +10,25 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
+#ifdef ACTIVATE_INNER_LOOP
 
-			#define FIXUP32 012345678h
+#define FIXUP32 012345678h
 
-			// 32677 REPRESENTS OUR 128x128x16 ANDING VALUE
-				
-			dest = destptr + x1;
-			
-			BigSteps=width>>3;
-			Leftovers=width & 7;
-			
-			TexSrc16=bm_data(Tex_bitmap,Current_mip);
-				
-			if (dldx>=0)
-			{
-				
-				ushort light8=(LeftMonoLight>>8);	
-				ushort dldx8=dldx/256;
+// 32677 REPRESENTS OUR 128x128x16 ANDING VALUE
 
-				__asm 
-				{
+dest = destptr + x1;
+
+BigSteps = width >> 3;
+Leftovers = width & 7;
+
+TexSrc16 = bm_data(Tex_bitmap, Current_mip);
+
+if (dldx >= 0) {
+
+  ushort light8 = (LeftMonoLight >> 8);
+  ushort dldx8 = dldx / 256;
+
+  __asm {
 					; edx = U and V in 8:8 format
 					; ebp = DU and DV in 8:8 format
 
@@ -43,8 +41,8 @@
 					mov ebx, 0
 					mov bx, dldx8
 					mov DeltaLight, ebx
-			
-					//StartCoords:
+
+                                         // StartCoords:
 				
 					mov edx, LeftV
 					shl edx, 8
@@ -229,16 +227,13 @@
 
 					done:
 					pop ebp
-				}
-			}
-			else
-			{
-			
-				ushort light8=(IntToFix(MAX_TEXTURE_SHADES-1)-LeftMonoLight)>>8;
-				ushort dldx8=(-dldx)/256;
+  }
+} else {
 
-				__asm 
-				{
+  ushort light8 = (IntToFix(MAX_TEXTURE_SHADES - 1) - LeftMonoLight) >> 8;
+  ushort dldx8 = (-dldx) / 256;
+
+  __asm {
 					; edx = U and V in 8:8 format
 					; ecx = DU and DV in 8:8 format
 
@@ -252,8 +247,8 @@
 					mov bx, dldx8
 
 					mov DeltaLight, ebx
-					
-					//StartCoords:
+
+                                         // StartCoords:
 				
 					mov edx, LeftV
 					shl edx, 8
@@ -438,11 +433,7 @@
 
 					done2:
 					pop ebp
-				}
-			}
+  }
+}
 
-
-			
 #endif
-
-		

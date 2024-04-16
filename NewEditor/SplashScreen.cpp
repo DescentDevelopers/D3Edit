@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- // SplashScreen.cpp : implementation file
+// SplashScreen.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -30,110 +30,98 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CSplashScreen dialog
 
-#define SPLASH_SCREEN_LIFETIME	3000
+#define SPLASH_SCREEN_LIFETIME 3000
 
-CSplashScreen::CSplashScreen(CWnd* pParent )
-	: CDialog(CSplashScreen::IDD, pParent)
-{
-	//{{AFX_DATA_INIT(CSplashScreen)
-		// NOTE: the ClassWizard will add member initialization here
-	//}}AFX_DATA_INIT
-	m_Positioned = false;
-	m_SplashBmp.LoadBitmap(IDB_SPLASH);
-	Create(IDD_SPLASH);
-	if(IsWindow(m_hWnd))
-	{
-		ShowWindow(SW_SHOW);
-		BringWindowToTop();
-	}
+CSplashScreen::CSplashScreen(CWnd *pParent) : CDialog(CSplashScreen::IDD, pParent) {
+  //{{AFX_DATA_INIT(CSplashScreen)
+  // NOTE: the ClassWizard will add member initialization here
+  //}}AFX_DATA_INIT
+  m_Positioned = false;
+  m_SplashBmp.LoadBitmap(IDB_SPLASH);
+  Create(IDD_SPLASH);
+  if (IsWindow(m_hWnd)) {
+    ShowWindow(SW_SHOW);
+    BringWindowToTop();
+  }
 }
 
-
-void CSplashScreen::DoDataExchange(CDataExchange* pDX)
-{
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CSplashScreen)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
-	//}}AFX_DATA_MAP
+void CSplashScreen::DoDataExchange(CDataExchange *pDX) {
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(CSplashScreen)
+  // NOTE: the ClassWizard will add DDX and DDV calls here
+  //}}AFX_DATA_MAP
 }
-
 
 BEGIN_MESSAGE_MAP(CSplashScreen, CDialog)
-	//{{AFX_MSG_MAP(CSplashScreen)
-	ON_WM_CREATE()
-	ON_WM_PAINT()
-	ON_WM_TIMER()
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CSplashScreen)
+ON_WM_CREATE()
+ON_WM_PAINT()
+ON_WM_TIMER()
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // CSplashScreen message handlers
 
-int CSplashScreen::OnCreate(LPCREATESTRUCT lpCreateStruct) 
-{
-	
-	if (CDialog::OnCreate(lpCreateStruct) == -1)
-		return -1;
-	
-	m_Timer = SetTimer(0x142,SPLASH_SCREEN_LIFETIME,NULL);
-	
-	return 0;
+int CSplashScreen::OnCreate(LPCREATESTRUCT lpCreateStruct) {
+
+  if (CDialog::OnCreate(lpCreateStruct) == -1)
+    return -1;
+
+  m_Timer = SetTimer(0x142, SPLASH_SCREEN_LIFETIME, NULL);
+
+  return 0;
 }
 
-void CSplashScreen::OnPaint() 
-{
-	
-	CPaintDC dc(this); // device context for painting
-	
-	CDC sdc;			// source dc
-	CBitmap *bmp;
-	CSize textdim;
-	BITMAP bm;
-	RECT uprect;
+void CSplashScreen::OnPaint() {
 
-	if(!m_Positioned)
-	{
-		//Set the default position here 
-		m_Positioned = true;
+  CPaintDC dc(this); // device context for painting
 
-	}
+  CDC sdc; // source dc
+  CBitmap *bmp;
+  CSize textdim;
+  BITMAP bm;
+  RECT uprect;
 
-	GetClientRect(&uprect);
+  if (!m_Positioned) {
+    // Set the default position here
+    m_Positioned = true;
+  }
 
-	m_SplashBmp.GetObject(sizeof(bm), &bm);
-	
-	sdc.CreateCompatibleDC(NULL);
-	bmp = sdc.SelectObject(&m_SplashBmp);
-	dc.StretchBlt(uprect.left+1,uprect.top+1,uprect.right-uprect.left-2,uprect.bottom-uprect.top-2, &sdc, 0,0,bm.bmWidth,bm.bmHeight,SRCCOPY); 
-	sdc.SelectObject(bmp);
+  GetClientRect(&uprect);
 
-	//fnt = dc.SelectObject(GetFont());
-	//dc.SetBkMode(TRANSPARENT);
-	//dc.SetTextColor(RGB(255,255,255));
+  m_SplashBmp.GetObject(sizeof(bm), &bm);
 
-	//dc.SelectObject(fnt);
-	
-	// Do not call CDialog::OnPaint() for painting messages
+  sdc.CreateCompatibleDC(NULL);
+  bmp = sdc.SelectObject(&m_SplashBmp);
+  dc.StretchBlt(uprect.left + 1, uprect.top + 1, uprect.right - uprect.left - 2, uprect.bottom - uprect.top - 2, &sdc,
+                0, 0, bm.bmWidth, bm.bmHeight, SRCCOPY);
+  sdc.SelectObject(bmp);
+
+  // fnt = dc.SelectObject(GetFont());
+  // dc.SetBkMode(TRANSPARENT);
+  // dc.SetTextColor(RGB(255,255,255));
+
+  // dc.SelectObject(fnt);
+
+  // Do not call CDialog::OnPaint() for painting messages
 }
 
-void CSplashScreen::OnTimer(UINT nIDEvent) 
-{
-	if(m_Timer)
-	{
-		KillTimer(m_Timer);
-		
-		if(g_OuroeApp)
-			DestroyWindow();
-		else
-			m_Timer = SetTimer(0x142,SPLASH_SCREEN_LIFETIME,NULL);
-	}
-	
-	CDialog::OnTimer(nIDEvent);
+void CSplashScreen::OnTimer(UINT nIDEvent) {
+  if (m_Timer) {
+    KillTimer(m_Timer);
+
+    if (g_OuroeApp)
+      DestroyWindow();
+    else
+      m_Timer = SetTimer(0x142, SPLASH_SCREEN_LIFETIME, NULL);
+  }
+
+  CDialog::OnTimer(nIDEvent);
 }
 
-BOOL CSplashScreen::PreCreateWindow(CREATESTRUCT& cs) 
-{
-	cs.style |= WS_EX_TOPMOST;
-	
-	return CDialog::PreCreateWindow(cs);
+BOOL CSplashScreen::PreCreateWindow(CREATESTRUCT &cs) {
+  cs.style |= WS_EX_TOPMOST;
+
+  return CDialog::PreCreateWindow(cs);
 }

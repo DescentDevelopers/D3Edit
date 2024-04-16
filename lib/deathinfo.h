@@ -10,18 +10,17 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef _DEATHINFO_H
 #define _DEATHINFO_H
 
-//Get the death delay type 
+// Get the death delay type
 #define DEATH_DELAY(f) (f & DF_DELAY_MASK)
 
-//Get the explosion size
+// Get the explosion size
 #define DEATH_EXPL_SIZE(f) (f & DF_EXPL_SIZE_MASK)
 
-//Include the actual flags
+// Include the actual flags
 #include "deathinfo_external.h"
 
 #endif

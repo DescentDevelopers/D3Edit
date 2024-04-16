@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 // ChildView.h : interface of the CChildView class
 //
@@ -28,52 +27,49 @@
 /////////////////////////////////////////////////////////////////////////////
 // CChildView window
 
-class CChildView : public CWnd
-{
-// Construction
+class CChildView : public CWnd {
+  // Construction
 public:
-	CChildView();
+  CChildView();
 
-// Attributes
+  // Attributes
 public:
-
-// Operations
+  // Operations
 public:
-
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CChildView)
-	protected:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	//}}AFX_VIRTUAL
-
-// Implementation
-public:
-	virtual ~CChildView();
-
-	// Generated message map functions
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CChildView)
 protected:
-	//{{AFX_MSG(CChildView)
-	afx_msg void OnPaint();
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
-	afx_msg void OnSetFocus(CWnd* pOldWnd);
-	afx_msg void OnKillFocus(CWnd* pNewWnd);
-	afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnSysKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnMButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnMButtonUp(UINT nFlags, CPoint point);
-	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
-	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  virtual BOOL PreCreateWindow(CREATESTRUCT &cs);
+  //}}AFX_VIRTUAL
+
+  // Implementation
+public:
+  virtual ~CChildView();
+
+  // Generated message map functions
+protected:
+  //{{AFX_MSG(CChildView)
+  afx_msg void OnPaint();
+  afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+  afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+  afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
+  afx_msg void OnSize(UINT nType, int cx, int cy);
+  afx_msg void OnActivate(UINT nState, CWnd *pWndOther, BOOL bMinimized);
+  afx_msg void OnSetFocus(CWnd *pOldWnd);
+  afx_msg void OnKillFocus(CWnd *pNewWnd);
+  afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+  afx_msg void OnSysKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
+  afx_msg void OnMButtonDown(UINT nFlags, CPoint point);
+  afx_msg void OnMButtonUp(UINT nFlags, CPoint point);
+  afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+  afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
+  afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 
 private:
-	Cned_LevelWnd m_LevelWnd;
+  Cned_LevelWnd m_LevelWnd;
 };
 
 /////////////////////////////////////////////////////////////////////////////

@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef RAD_CAST_H
 #define RAD_CAST_H
@@ -18,9 +17,9 @@
 #include "radiosity.h"
 
 // Returns 1 if a src vector can hit dest vector unobstructed, else 0
-int ShootRayFromPoint (vector *src,vector *dest,rad_surface *src_surf,rad_surface *dest_surf);
+int ShootRayFromPoint(vector *src, vector *dest, rad_surface *src_surf, rad_surface *dest_surf);
 
 // Calculates the form factors using a raycasting method
-void CalculateFormFactorsRaycast ();
+void CalculateFormFactorsRaycast();
 
 #endif

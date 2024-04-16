@@ -10,39 +10,37 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifndef _NED_SOUND_H
+#ifndef _NED_SOUND_H
 #define _NED_SOUND_H
 
+typedef struct {
+  char name[PAGENAME_LEN];
+  char used;
 
-typedef struct
-{
-	char name[PAGENAME_LEN];	
-	char				used;
-	
-	int				sample_index;
+  int sample_index;
 
-	int				loop_start;			// Start byte of repeated loop for looping samples
-	int				loop_end;			// End byte of repeating loop for looping samples
-	unsigned int	flags;				// 2d/3d, variable frequency
-	float				max_distance;		// Maximum distance in which a sound is heard
-	float				min_distance;		// Sound gets no louder at min_distance
-	int				inner_cone_angle;	// Angle in which sound is played at full base volume
-	int	         outer_cone_angle;	// Angle in which sound is at its lowest base volume
-	float				outer_cone_volume;// A sounds lowest base volume level
-	float				import_volume;		// Volume multiplier
+  int loop_start;          // Start byte of repeated loop for looping samples
+  int loop_end;            // End byte of repeating loop for looping samples
+  unsigned int flags;      // 2d/3d, variable frequency
+  float max_distance;      // Maximum distance in which a sound is heard
+  float min_distance;      // Sound gets no louder at min_distance
+  int inner_cone_angle;    // Angle in which sound is played at full base volume
+  int outer_cone_angle;    // Angle in which sound is at its lowest base volume
+  float outer_cone_volume; // A sounds lowest base volume level
+  float import_volume;     // Volume multiplier
 
-	char raw_filename[PAGENAME_LEN];
+  char raw_filename[PAGENAME_LEN];
 
-	int table_file_id;
-	int table_stack[MAX_LOADED_TABLE_FILES];
-}ned_sound_info;
+  int table_file_id;
+  int table_stack[MAX_LOADED_TABLE_FILES];
+} ned_sound_info;
 
-#define MAX_SOUNDS			750
-extern ned_sound_info	Sounds[MAX_SOUNDS];
+#define MAX_SOUNDS 750
+extern ned_sound_info Sounds[MAX_SOUNDS];
 extern int Num_sounds;
 
 // Initializes the Sound system
-int ned_InitSounds ();
+int ned_InitSounds();
 
 // ===========================
 // ned_InitializeSoundData
@@ -57,20 +55,20 @@ void ned_InitializeSoundData(int slot);
 // ned_FreeSoundData
 // =======================
 //
-// Given a Sounds slot this function frees any memory that may 
+// Given a Sounds slot this function frees any memory that may
 // need to be freed before a sound is destroyed
 // DO NOT TOUCH TABLE STACK DATA
 void ned_FreeSoundData(int slot);
 
 // Sets all sounds to unused
-void InitSounds ();
+void InitSounds();
 // Allocs a sound for use, returns -1 if error, else index on success
-int AllocSound ();
+int AllocSound();
 // Frees sound index n
-void FreeSound (int n);
+void FreeSound(int n);
 int ned_FindSound(char *name);
 // Frees all sounds from memory
-void ned_FreeAllSounds ();
+void ned_FreeAllSounds();
 
 // =====================
 // ned_AllocSound
@@ -78,9 +76,9 @@ void ned_FreeAllSounds ();
 //
 //	Searches for an available sound slot, and returns it, -1 if none
 //  if name is not NULL, then it is being allocated from a table file, and thus, the tablefile
-//	parameter must also be specified.  If there is already a texture by that name (loaded from 
+//	parameter must also be specified.  If there is already a texture by that name (loaded from
 //  a table file), than it will be pushed onto the stack.
-int ned_AllocSound(char *name=NULL,int tablefile=-1);
+int ned_AllocSound(char *name = NULL, int tablefile = -1);
 
 // ==================
 // ned_FreeSound
@@ -90,6 +88,6 @@ int ned_AllocSound(char *name=NULL,int tablefile=-1);
 // if force_unload is true, and this slot was loaded from a table file, then
 // it will unload all instances (based on it's table stack) from memory, else
 // it will just pop off the current instance and load back in the popped version
-void ned_FreeSound(int slot,bool force_unload=false);
+void ned_FreeSound(int slot, bool force_unload = false);
 
-#endif 
+#endif

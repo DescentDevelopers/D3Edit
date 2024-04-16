@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef BNODE_H_
 #define BNODE_H_
@@ -21,28 +20,25 @@
 // Not bigger than 127 - char bnode - in portal struct
 #define MAX_BNODES_PER_ROOM 127
 
-typedef struct bn_edge
-{
-	short end_room;
-	char end_index;
-		
-	short flags;
-	short cost;
-	
-	float max_rad;
+typedef struct bn_edge {
+  short end_room;
+  char end_index;
+
+  short flags;
+  short cost;
+
+  float max_rad;
 } bn_edge;
 
-typedef struct bn_node
-{
-	vector pos;
-	int num_edges;
-	bn_edge *edges;
+typedef struct bn_node {
+  vector pos;
+  int num_edges;
+  bn_edge *edges;
 } bn_node;
 
-typedef struct bn_list
-{
-	int num_nodes;
-	bn_node *nodes;
+typedef struct bn_list {
+  int num_nodes;
+  bn_node *nodes;
 } bn_list;
 
 struct room;

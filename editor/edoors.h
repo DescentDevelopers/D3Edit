@@ -10,11 +10,11 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifndef EDOOR_H
+#ifndef EDOOR_H
 #define EDOOR_H
 
 #include "room.h"
 
-void PlaceDoor(room *baseroomp,int baseface,int placed_door);
+void PlaceDoor(room *baseroomp, int baseface, int placed_door);
 
 #endif

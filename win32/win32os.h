@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef WIN32OS_H
 #define WIN32OS_H
@@ -21,9 +20,8 @@
 #include "gameos.h"
 
 typedef struct win32oss_info {
-	HWND hwnd;
-	HINSTANCE hinst;
+  HWND hwnd;
+  HINSTANCE hinst;
 } win32oss_info;
 
-
-#endif	
+#endif

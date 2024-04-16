@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_SOUNDLISTCOMBO_H__AE8C8860_B1DD_11D2_A13A_0060089A83BE__INCLUDED_)
+#if !defined(AFX_SOUNDLISTCOMBO_H__AE8C8860_B1DD_11D2_A13A_0060089A83BE__INCLUDED_)
 #define AFX_SOUNDLISTCOMBO_H__AE8C8860_B1DD_11D2_A13A_0060089A83BE__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -22,37 +22,34 @@
 /////////////////////////////////////////////////////////////////////////////
 // CSoundListCombo window
 
-class CSoundListCombo : public CComboBox
-{
-// Construction
+class CSoundListCombo : public CComboBox {
+  // Construction
 public:
-	CSoundListCombo();
-	void Init(int selected);
-	void SetSelected(int selected);
-	int GetSelected();
+  CSoundListCombo();
+  void Init(int selected);
+  void SetSelected(int selected);
+  int GetSelected();
 
-// Attributes
+  // Attributes
 public:
-
-// Operations
+  // Operations
 public:
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CSoundListCombo)
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CSoundListCombo)
-	//}}AFX_VIRTUAL
-
-// Implementation
+  // Implementation
 public:
-	virtual ~CSoundListCombo();
+  virtual ~CSoundListCombo();
 
-	// Generated message map functions
+  // Generated message map functions
 protected:
-	//{{AFX_MSG(CSoundListCombo)
-	afx_msg void OnSetfocus();
-	//}}AFX_MSG
+  //{{AFX_MSG(CSoundListCombo)
+  afx_msg void OnSetfocus();
+  //}}AFX_MSG
 
-	DECLARE_MESSAGE_MAP()
+  DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

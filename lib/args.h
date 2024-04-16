@@ -10,17 +10,17 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifndef ARGS_H
+#ifndef ARGS_H
 #define ARGS_H
-#ifdef MACINTOSH	//memory saving
-	#define MAX_ARGS			5
+#ifdef MACINTOSH // memory saving
+#define MAX_ARGS 5
 #else
-	#define MAX_ARGS			30
+#define MAX_ARGS 30
 #endif
-#define MAX_CHARS_PER_ARG	100
+#define MAX_CHARS_PER_ARG 100
 extern char GameArgs[MAX_ARGS][MAX_CHARS_PER_ARG];
 // Gathers all arguments
-void GatherArgs (char *str);
+void GatherArgs(char *str);
 // Returns index of argument sought, or 0 if not found
-int FindArg (char *which);
+int FindArg(char *which);
 #endif

@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- // MineFrame.cpp : implementation file
+// MineFrame.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -28,85 +28,69 @@ static char THIS_FILE[] = __FILE__;
 
 IMPLEMENT_DYNCREATE(CMineFrame, CMDIChildWnd)
 
-CMineFrame::CMineFrame()
-{
-}
+CMineFrame::CMineFrame() {}
 
-CMineFrame::~CMineFrame()
-{
-}
+CMineFrame::~CMineFrame() {}
 
-BOOL CMineFrame::PreCreateWindow(CREATESTRUCT& cs) 
-{
-	if( !CMDIChildWnd::PreCreateWindow(cs) )
-		return FALSE;
+BOOL CMineFrame::PreCreateWindow(CREATESTRUCT &cs) {
+  if (!CMDIChildWnd::PreCreateWindow(cs))
+    return FALSE;
 
-	cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
-	cs.lpszClass = AfxRegisterWndClass(0);
+  cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
+  cs.lpszClass = AfxRegisterWndClass(0);
 
-	return TRUE;
+  return TRUE;
 }
 
 BEGIN_MESSAGE_MAP(CMineFrame, CMDIChildWnd)
-	//{{AFX_MSG_MAP(CMineFrame)
-	ON_WM_SETFOCUS()
-	ON_WM_CREATE()
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CMineFrame)
+ON_WM_SETFOCUS()
+ON_WM_CREATE()
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // CChildFrame diagnostics
 
 #ifdef _DEBUG
-void CChildFrame::AssertValid() const
-{
-	CMDIChildWnd::AssertValid();
-}
+void CChildFrame::AssertValid() const { CMDIChildWnd::AssertValid(); }
 
-void CChildFrame::Dump(CDumpContext& dc) const
-{
-	CMDIChildWnd::Dump(dc);
-}
+void CChildFrame::Dump(CDumpContext &dc) const { CMDIChildWnd::Dump(dc); }
 
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
 // CMineFrame message handlers
 
-void CMineFrame::OnSetFocus(CWnd* pOldWnd) 
-{
-	CMDIChildWnd::OnSetFocus(pOldWnd);
-	
-	// TODO: Add your message handler code here
-	m_MineWnd.SetFocus();
+void CMineFrame::OnSetFocus(CWnd *pOldWnd) {
+  CMDIChildWnd::OnSetFocus(pOldWnd);
+
+  // TODO: Add your message handler code here
+  m_MineWnd.SetFocus();
 }
 
-BOOL CMineFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo) 
-{
-	// TODO: Add your specialized code here and/or call the base class
-	// let the view have first crack at the command
-	if (m_MineWnd.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo))
-		return TRUE;
-	
-	// otherwise, do default handling
-	return CMDIChildWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
+BOOL CMineFrame::OnCmdMsg(UINT nID, int nCode, void *pExtra, AFX_CMDHANDLERINFO *pHandlerInfo) {
+  // TODO: Add your specialized code here and/or call the base class
+  // let the view have first crack at the command
+  if (m_MineWnd.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo))
+    return TRUE;
+
+  // otherwise, do default handling
+  return CMDIChildWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
-int CMineFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) 
-{
-	if (CMDIChildWnd::OnCreate(lpCreateStruct) == -1)
-		return -1;
-	
-	// TODO: Add your specialized creation code here
-	RECT rect;
-	GetClientRect(&rect);
-	// create a view to occupy the client area of the frame
-	if (!m_MineWnd.Create(NULL, NULL, AFX_WS_DEFAULT_VIEW, 
-		CRect(rect.left, rect.top, rect.right, rect.bottom), this, AFX_IDW_PANE_FIRST, NULL))
-	{
-		TRACE0("Failed to create mine window\n");
-		return -1;
-	}
-	return 0;
-}
+int CMineFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
+  if (CMDIChildWnd::OnCreate(lpCreateStruct) == -1)
+    return -1;
 
+  // TODO: Add your specialized creation code here
+  RECT rect;
+  GetClientRect(&rect);
+  // create a view to occupy the client area of the frame
+  if (!m_MineWnd.Create(NULL, NULL, AFX_WS_DEFAULT_VIEW, CRect(rect.left, rect.top, rect.right, rect.bottom), this,
+                        AFX_IDW_PANE_FIRST, NULL)) {
+    TRACE0("Failed to create mine window\n");
+    return -1;
+  }
+  return 0;
+}

@@ -10,8 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #include <string.h>
 
@@ -19,32 +17,23 @@
 #include "pserror.h"
 #include "renderer.h"
 
-
 //	---------------------------------------------------------------------------
 //	grSurface constructor and destructor
 //	---------------------------------------------------------------------------
 
 grScreen::grScreen(int w, int h, int bpp, const char *name)
-	:grSurface(w,h,bpp,SURFTYPE_VIDEOSCREEN, SURFFLAG_BACKBUFFER, name)
-{
+    : grSurface(w, h, bpp, SURFTYPE_VIDEOSCREEN, SURFFLAG_BACKBUFFER, name) {}
 
-}		
-
-
-grScreen::~grScreen()
-{
-
-}
-
+grScreen::~grScreen() {}
 
 //	---------------------------------------------------------------------------
 //	screen refresh routines
 //	---------------------------------------------------------------------------
 
-
-void grScreen::flip()
-{
-	ASSERT(surf_init());
-	if (ddsfObj.flags & SURFFLAG_BACKBUFFER) ddgr_surf_FlipVideo(&ddsfObj);
-	else if (ddsfObj.flags & SURFFLAG_RENDERER) rend_Flip();
+void grScreen::flip() {
+  ASSERT(surf_init());
+  if (ddsfObj.flags & SURFFLAG_BACKBUFFER)
+    ddgr_surf_FlipVideo(&ddsfObj);
+  else if (ddsfObj.flags & SURFFLAG_RENDERER)
+    rend_Flip();
 }

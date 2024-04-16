@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef DDVID_H
 #define DDVID_H
@@ -43,7 +42,6 @@ void ddvid_UnlockFrameBuffer();
 //	flips screen if there's a back buffer
 void ddvid_VideoFlip();
 
-
 // only available to DD_ACCESS libraries.
 #if defined(DD_ACCESS_RING)
 #if defined(WIN32)
@@ -52,9 +50,8 @@ void ddvid_VideoFlip();
 //	dds_obj is the DIRECTDRAWSURFACE OBJECT for the screen
 void ddvid_GetVideoDDrawProps(uint *dd_obj, uint *dds_obj);
 
-#endif	// WIN32
+#endif // WIN32
 
-#endif	// DD_ACCESS
-
+#endif // DD_ACCESS
 
 #endif

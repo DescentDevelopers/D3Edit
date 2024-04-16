@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_ROOMLISTCOMBO_H__EBF11B60_C8D2_11D2_A13A_0060089A83BE__INCLUDED_)
+#if !defined(AFX_ROOMLISTCOMBO_H__EBF11B60_C8D2_11D2_A13A_0060089A83BE__INCLUDED_)
 #define AFX_ROOMLISTCOMBO_H__EBF11B60_C8D2_11D2_A13A_0060089A83BE__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -22,37 +22,34 @@
 /////////////////////////////////////////////////////////////////////////////
 // CRoomListCombo window
 
-class CRoomListCombo : public CComboBox
-{
-// Construction
+class CRoomListCombo : public CComboBox {
+  // Construction
 public:
-	CRoomListCombo();
-	void Init(int selected);
-	void SetSelected(int selected);
-	int GetSelected();
+  CRoomListCombo();
+  void Init(int selected);
+  void SetSelected(int selected);
+  int GetSelected();
 
-// Attributes
+  // Attributes
 public:
-
-// Operations
+  // Operations
 public:
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CRoomListCombo)
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CRoomListCombo)
-	//}}AFX_VIRTUAL
-
-// Implementation
+  // Implementation
 public:
-	virtual ~CRoomListCombo();
+  virtual ~CRoomListCombo();
 
-	// Generated message map functions
+  // Generated message map functions
 protected:
-	//{{AFX_MSG(CRoomListCombo)
-	afx_msg void OnSetfocus();
-	//}}AFX_MSG
+  //{{AFX_MSG(CRoomListCombo)
+  afx_msg void OnSetfocus();
+  //}}AFX_MSG
 
-	DECLARE_MESSAGE_MAP()
+  DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

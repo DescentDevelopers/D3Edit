@@ -10,24 +10,22 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
-		
-			#define FIXUP32 012345678h
-				
-			dest = destptr + x1;
-			
-			BigSteps=width>>3;
-			Leftovers=width & 7;
-			
-			TexSrc=bm_data8(Tex_bitmap,Current_mip);
-			Current_tex_palette=bm_palette (Tex_bitmap);
-			static int old_ander=-1;
-		
-			if (1)
-			{
-				
-				__asm 
-				{
+#ifdef ACTIVATE_INNER_LOOP
+
+#define FIXUP32 012345678h
+
+dest = destptr + x1;
+
+BigSteps = width >> 3;
+Leftovers = width & 7;
+
+TexSrc = bm_data8(Tex_bitmap, Current_mip);
+Current_tex_palette = bm_palette(Tex_bitmap);
+static int old_ander = -1;
+
+if (1) {
+
+  __asm {
 					; edx = U and V in 8:8 format
 					; ecx = DU and DV in 8:8 format
 
@@ -202,7 +200,7 @@
 
 					done:
 					pop ebp
-				}
-			}
-			
+  }
+}
+
 #endif

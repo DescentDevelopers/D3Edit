@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_LIGHTINGPROGRESS_H__E3212F80_24C0_11D3_8A0A_00A0C9E097FC__INCLUDED_)
+#if !defined(AFX_LIGHTINGPROGRESS_H__E3212F80_24C0_11D3_8A0A_00A0C9E097FC__INCLUDED_)
 #define AFX_LIGHTINGPROGRESS_H__E3212F80_24C0_11D3_8A0A_00A0C9E097FC__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -22,38 +22,36 @@
 /////////////////////////////////////////////////////////////////////////////
 // CLightingProgress dialog
 
-class CLightingProgress : public CDialog
-{
-// Construction
+class CLightingProgress : public CDialog {
+  // Construction
 public:
-	CLightingProgress(CWnd* pParent = NULL);   // standard constructor
+  CLightingProgress(CWnd *pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CLightingProgress)
-	enum { IDD = IDD_LIGHTINGPROGRESS };
-		// NOTE: the ClassWizard will add data members here
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CLightingProgress)
+  enum { IDD = IDD_LIGHTINGPROGRESS };
+  // NOTE: the ClassWizard will add data members here
+  //}}AFX_DATA
 
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CLightingProgress)
+public:
+  virtual BOOL DestroyWindow();
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CLightingProgress)
-	public:
-	virtual BOOL DestroyWindow();
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
 protected:
+  virtual void DoDataExchange(CDataExchange *pDX); // DDX/DDV support
+                                                   //}}AFX_VIRTUAL
 
-	// Generated message map functions
-	//{{AFX_MSG(CLightingProgress)
-	virtual BOOL OnInitDialog();
-	afx_msg void OnTimer(UINT nIDEvent);
-	afx_msg void OnStoplighting();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+protected:
+  // Generated message map functions
+  //{{AFX_MSG(CLightingProgress)
+  virtual BOOL OnInitDialog();
+  afx_msg void OnTimer(UINT nIDEvent);
+  afx_msg void OnStoplighting();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

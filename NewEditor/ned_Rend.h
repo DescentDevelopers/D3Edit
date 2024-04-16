@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifndef __NED_RENDER_H_
+#ifndef __NED_RENDER_H_
 #define __NED_RENDER_H_
 
 #include <windows.h>
@@ -21,39 +21,38 @@
 // Renderer types
 extern renderer_type Renderer_type;
 
-extern bool  StateLimited;
-extern bool  NoLightmaps;
-extern bool  UseMultitexture;
-extern bool  UseHardware;
+extern bool StateLimited;
+extern bool NoLightmaps;
+extern bool UseMultitexture;
+extern bool UseHardware;
 
-int rend_Init (renderer_type state, oeApplication *app,renderer_preferred_state *pref_state);
+int rend_Init(renderer_type state, oeApplication *app, renderer_preferred_state *pref_state);
 
 // color model
-void rend_SetColorModel (color_model);
+void rend_SetColorModel(color_model);
 
 // Sets a bitmap as an overlay to rendered on top of the next texture map
-void rend_SetOverlayMap (int handle);
+void rend_SetOverlayMap(int handle);
 
 // Sets the type of overlay operation
-void rend_SetOverlayType (ubyte type);
+void rend_SetOverlayType(ubyte type);
 
 // Sets the constant alpha value
-void rend_SetAlphaValue (ubyte val);
+void rend_SetAlphaValue(ubyte val);
 
 // Sets the wrap parameter
-void rend_SetWrapType (wrap_type val);
+void rend_SetWrapType(wrap_type val);
 
 // Enables/disables writes the depth buffer
-void rend_SetZBufferWriteMask (int state);
+void rend_SetZBufferWriteMask(int state);
 
 // Tells the software renderer whether or not to use mipping
-void rend_SetMipState (sbyte mipstate);
+void rend_SetMipState(sbyte mipstate);
 
 // Gets OpenGL ready to work in a window
-int rend_InitOpenGLWindow (oeApplication *app,renderer_preferred_state *pref_state);
+int rend_InitOpenGLWindow(oeApplication *app, renderer_preferred_state *pref_state);
 
 // Sets the state of the OpenGLWindow to on or off
-void rend_SetOpenGLWindowState (int state,oeApplication *app,renderer_preferred_state *pref_state);
-
+void rend_SetOpenGLWindowState(int state, oeApplication *app, renderer_preferred_state *pref_state);
 
 #endif

@@ -10,126 +10,116 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
-		
-			fix fx_l  = LeftMonoLight;
+#ifdef ACTIVATE_INNER_LOOP
 
-			ushort pix;
-			dest=(destptr+x1);
-			int i,t;
-			fix fx_u,fx_v;
-			float right_u,right_v,right_z;
-			int texture_width=bm_w(Tex_bitmap,Current_mip);
-			ushort *src16=bm_data (Tex_bitmap,Current_mip);
-			
-			fix cu,cv,cl;
-			int srcptr;
+fix fx_l = LeftMonoLight;
 
-			BigSteps=width/16;
-			Leftovers=width%16;
+ushort pix;
+dest = (destptr + x1);
+int i, t;
+fix fx_u, fx_v;
+float right_u, right_v, right_z;
+int texture_width = bm_w(Tex_bitmap, Current_mip);
+ushort *src16 = bm_data(Tex_bitmap, Current_mip);
 
-			float u_affine=fldudx*16;
-			float v_affine=fldvdx*16;
-			float z_affine=fldzdx*16;
+fix cu, cv, cl;
+int srcptr;
 
-			float left_u_over_z=FLeftU;
-			float left_v_over_z=FLeftV;
-			float left_z_over_1=FLeftZ;
+BigSteps = width / 16;
+Leftovers = width % 16;
 
-			float right_u_over_z=FLeftU+u_affine;
-			float right_v_over_z=FLeftV+v_affine;
-			float right_z_over_1=FLeftZ+z_affine;
+float u_affine = fldudx * 16;
+float v_affine = fldvdx * 16;
+float z_affine = fldzdx * 16;
 
-			float left_z=1/left_z_over_1;
-			float left_u=left_u_over_z * left_z;
-			float left_v=left_v_over_z * left_z;
-			
-			for (i=0;i<BigSteps;i++)
-			{
-				right_z=1/right_z_over_1;
-				right_u=right_u_over_z * right_z;
-				right_v=right_v_over_z * right_z;
+float left_u_over_z = FLeftU;
+float left_v_over_z = FLeftV;
+float left_z_over_1 = FLeftZ;
 
-				fx_u=FloatToFix(left_u);
-				fx_v=FloatToFix(left_v);
+float right_u_over_z = FLeftU + u_affine;
+float right_v_over_z = FLeftV + v_affine;
+float right_z_over_1 = FLeftZ + z_affine;
 
-				dudx=FloatToFix((right_u-left_u)/16);
-				dvdx=FloatToFix((right_v-left_v)/16);
+float left_z = 1 / left_z_over_1;
+float left_u = left_u_over_z * left_z;
+float left_v = left_v_over_z * left_z;
 
-				for (t=0;t<16;t++)
-				{
-					cu=FixToInt (fx_u);
-					cv=FixToInt (fx_v);
-					cl=FixToInt(fx_l);
+for (i = 0; i < BigSteps; i++) {
+  right_z = 1 / right_z_over_1;
+  right_u = right_u_over_z * right_z;
+  right_v = right_v_over_z * right_z;
 
-					cu&=(texture_width-1);
-					cv&=(texture_width-1);
-					srcptr=(cv*texture_width)+cu;
-					
-					pix=src16[srcptr];
+  fx_u = FloatToFix(left_u);
+  fx_v = FloatToFix(left_v);
 
-					if (! (pix & OPAQUE_FLAG))				
-						dest++;
-					else
-						*dest++ = (TexShadeTable16[cl][pix>>8])+TexShadeTable8[cl][pix & 0xFF];
-										
-										
-					
-					fx_u+=dudx;
-					fx_v+=dvdx;
-					fx_l+=dldx;
-				}
+  dudx = FloatToFix((right_u - left_u) / 16);
+  dvdx = FloatToFix((right_v - left_v) / 16);
 
-				left_z=right_z;
-				left_u=right_u;
-				left_v=right_v;
+  for (t = 0; t < 16; t++) {
+    cu = FixToInt(fx_u);
+    cv = FixToInt(fx_v);
+    cl = FixToInt(fx_l);
 
-				right_z_over_1+=z_affine;
-				right_u_over_z+=u_affine;
-				right_v_over_z+=v_affine;
-			}
-			if (Leftovers)
-			{
-				
-				right_z_over_1=FRightZ;
-				right_u_over_z=FRightU;
-				right_v_over_z=FRightV;
+    cu &= (texture_width - 1);
+    cv &= (texture_width - 1);
+    srcptr = (cv * texture_width) + cu;
 
-				right_z=1/right_z_over_1;
-				right_u=right_u_over_z * right_z;
-				right_v=right_v_over_z * right_z;
+    pix = src16[srcptr];
 
-				fx_u=FloatToFix(left_u);
-				fx_v=FloatToFix(left_v);
+    if (!(pix & OPAQUE_FLAG))
+      dest++;
+    else
+      *dest++ = (TexShadeTable16[cl][pix >> 8]) + TexShadeTable8[cl][pix & 0xFF];
 
-				dudx=FloatToFix((right_u-left_u)/Leftovers);
-				dvdx=FloatToFix((right_v-left_v)/Leftovers);
-				
-				for (t=0;t<Leftovers;t++)
-				{
-					cu=FixToInt (fx_u);
-					cv=FixToInt (fx_v);
-					cl=FixToInt(fx_l);
+    fx_u += dudx;
+    fx_v += dvdx;
+    fx_l += dldx;
+  }
 
-					cu&=(texture_width-1);
-					cv&=(texture_width-1);
-					srcptr=(cv*texture_width)+cu;
+  left_z = right_z;
+  left_u = right_u;
+  left_v = right_v;
 
-					pix=src16[srcptr];
+  right_z_over_1 += z_affine;
+  right_u_over_z += u_affine;
+  right_v_over_z += v_affine;
+}
+if (Leftovers) {
 
-					if (!(pix & OPAQUE_FLAG))				
-						dest++;
-					else				
-						*dest++ = (TexShadeTable16[cl][pix>>8])+TexShadeTable8[cl][pix & 0xFF];
-									
-					fx_u+=dudx;
-					fx_v+=dvdx;
-					fx_l+=dldx;
-				}
+  right_z_over_1 = FRightZ;
+  right_u_over_z = FRightU;
+  right_v_over_z = FRightV;
 
-				
-			}
+  right_z = 1 / right_z_over_1;
+  right_u = right_u_over_z * right_z;
+  right_v = right_v_over_z * right_z;
 
+  fx_u = FloatToFix(left_u);
+  fx_v = FloatToFix(left_v);
+
+  dudx = FloatToFix((right_u - left_u) / Leftovers);
+  dvdx = FloatToFix((right_v - left_v) / Leftovers);
+
+  for (t = 0; t < Leftovers; t++) {
+    cu = FixToInt(fx_u);
+    cv = FixToInt(fx_v);
+    cl = FixToInt(fx_l);
+
+    cu &= (texture_width - 1);
+    cv &= (texture_width - 1);
+    srcptr = (cv * texture_width) + cu;
+
+    pix = src16[srcptr];
+
+    if (!(pix & OPAQUE_FLAG))
+      dest++;
+    else
+      *dest++ = (TexShadeTable16[cl][pix >> 8]) + TexShadeTable8[cl][pix & 0xFF];
+
+    fx_u += dudx;
+    fx_v += dvdx;
+    fx_l += dldx;
+  }
+}
 
 #endif
-

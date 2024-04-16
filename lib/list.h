@@ -10,19 +10,17 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifndef LIST_H
+#ifndef LIST_H
 #define LIST_H
 
 #include "pstypes.h"
 #include "pserror.h"
 
-typedef struct listnode 
-{
-	void            *data;
-	struct listnode *next;
-	struct listnode *prev;
+typedef struct listnode {
+  void *data;
+  struct listnode *next;
+  struct listnode *prev;
 } listnode, list;
-
 
 // Allocates space for a new list node
 listnode *NewListNode(void);

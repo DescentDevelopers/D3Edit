@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- // FileNewDialog.cpp : implementation file
+// FileNewDialog.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -26,49 +26,41 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CFileNewDialog dialog
 
-
-CFileNewDialog::CFileNewDialog(CWnd* pParent )
-	: CDialog(CFileNewDialog::IDD, pParent)
-{
-	//{{AFX_DATA_INIT(CFileNewDialog)
-	//}}AFX_DATA_INIT
+CFileNewDialog::CFileNewDialog(CWnd *pParent) : CDialog(CFileNewDialog::IDD, pParent) {
+  //{{AFX_DATA_INIT(CFileNewDialog)
+  //}}AFX_DATA_INIT
 }
 
-
-void CFileNewDialog::DoDataExchange(CDataExchange* pDX)
-{
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CFileNewDialog)
-	DDX_Control(pDX, IDC_LIST1, m_List);
-	//}}AFX_DATA_MAP
+void CFileNewDialog::DoDataExchange(CDataExchange *pDX) {
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(CFileNewDialog)
+  DDX_Control(pDX, IDC_LIST1, m_List);
+  //}}AFX_DATA_MAP
 }
-
 
 BEGIN_MESSAGE_MAP(CFileNewDialog, CDialog)
-	//{{AFX_MSG_MAP(CFileNewDialog)
-	ON_LBN_SELCHANGE(IDC_LIST1, OnSelChange)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CFileNewDialog)
+ON_LBN_SELCHANGE(IDC_LIST1, OnSelChange)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // CFileNewDialog message handlers
 
-BOOL CFileNewDialog::OnInitDialog() 
-{
-	CDialog::OnInitDialog();
-	
-	// TODO: Add extra initialization here
-	m_List.AddString("New Level - Default Room");
-	m_List.AddString("New Level - Import Room");
-	m_List.AddString("New Room");
-	m_List.SetCurSel(0);
-	m_Sel = 0;
-	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+BOOL CFileNewDialog::OnInitDialog() {
+  CDialog::OnInitDialog();
+
+  // TODO: Add extra initialization here
+  m_List.AddString("New Level - Default Room");
+  m_List.AddString("New Level - Import Room");
+  m_List.AddString("New Room");
+  m_List.SetCurSel(0);
+  m_Sel = 0;
+  return TRUE; // return TRUE unless you set the focus to a control
+               // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void CFileNewDialog::OnSelChange() 
-{
-	// TODO: Add your control notification handler code here
-	m_Sel = m_List.GetCurSel();
+void CFileNewDialog::OnSelChange() {
+  // TODO: Add your control notification handler code here
+  m_Sel = m_List.GetCurSel();
 }

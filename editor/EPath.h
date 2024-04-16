@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #include "vecmat.h"
 #include "gamepath.h"
@@ -18,21 +17,21 @@
 extern ubyte Show_paths;
 
 // Allocs a gamepath that a robot will follow.  Returns an index into the GamePaths
-// array 
-int AllocGamePath (void);
+// array
+int AllocGamePath(void);
 
-// Given a path number, and a node number in that path, adds another node after the 
+// Given a path number, and a node number in that path, adds another node after the
 // specified node
 // Returns the index number of the new node
 // If nodenum is -1, this node couldn't be added
 // Flags are passed via the flags field
-int InsertNodeIntoPath (int pathnum,int nodenum,int flags);
+int InsertNodeIntoPath(int pathnum, int nodenum, int flags);
 
 void FreeGamePath(int n);
 
 // Given a pathnum and a node index, deletes that node and moves all the following nodes down
 // by one
-void DeleteNodeFromPath (int pathnum,int nodenum);
+void DeleteNodeFromPath(int pathnum, int nodenum);
 
 // Given a path number and a node, it moves the node by the change in position (if the new position is valid)
 int MovePathNode(int pathnum, int nodenum, vector *delta_pos);
@@ -41,19 +40,17 @@ int MovePathNode(int pathnum, int nodenum, vector *delta_pos);
 int MovePathNodeToPos(int pathnum, int nodenum, vector *pos);
 
 // Gets next path from n that has actually been alloced
-int GetNextPath (int n);
+int GetNextPath(int n);
 // Gets previous path from n that has actually been alloced
-int GetPrevPath (int n);
+int GetPrevPath(int n);
 
 // returns the index of the first path (from 0) alloced
 // returns -1 if there are no paths
-int GetFirstPath ();
+int GetFirstPath();
 
 // draws a vector number
-void DrawNumber (int num,vector pos,float size);
+void DrawNumber(int num, vector pos, float size);
 
 class grViewport;
 // draws all the paths
-void DrawAllPaths (grViewport *vp,vector *viewer_eye,matrix *viewer_orient,float zoom);
-
-
+void DrawAllPaths(grViewport *vp, vector *viewer_eye, matrix *viewer_orient, float zoom);

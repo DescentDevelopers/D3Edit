@@ -10,8 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #if !defined(AFX_STDAFX_H__A96779E5_E43B_11D2_8F49_00104B27BFF0__INCLUDED_)
 #define AFX_STDAFX_H__A96779E5_E43B_11D2_8F49_00104B27BFF0__INCLUDED_
@@ -20,19 +18,19 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
+#define VC_EXTRALEAN // Exclude rarely-used stuff from Windows headers
 
-#include <afxwin.h>         // MFC core and standard components
-#include <afxext.h>         // MFC extensions
-#include <afxdisp.h>        // MFC Automation classes
-#include <afxdtctl.h>		// MFC support for Internet Explorer 4 Common Controls
+#include <afxwin.h>   // MFC core and standard components
+#include <afxext.h>   // MFC extensions
+#include <afxdisp.h>  // MFC Automation classes
+#include <afxdtctl.h> // MFC support for Internet Explorer 4 Common Controls
 #ifndef _AFX_NO_AFXCMN_SUPPORT
-#include <afxcmn.h>			// MFC support for Windows Common Controls
-#endif // _AFX_NO_AFXCMN_SUPPORT
+#include <afxcmn.h> // MFC support for Windows Common Controls
+#endif              // _AFX_NO_AFXCMN_SUPPORT
 
-#include <afxole.h>         // MFC OLE classes
-#include <afxodlgs.h>       // MFC OLE dialog classes
-#include <afxdisp.h >       // MFC OLE automation classes
+#include <afxole.h>   // MFC OLE classes
+#include <afxodlgs.h> // MFC OLE dialog classes
+#include <afxdisp.h > // MFC OLE automation classes
 #include <afxpriv.h>
 
 #include "pstypes.h"
@@ -41,11 +39,7 @@
 #include "ddio.h"
 #include "mem.h"
 
-
-
-
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
-
 
 #endif // !defined(AFX_STDAFX_H__A96779E5_E43B_11D2_8F49_00104B27BFF0__INCLUDED_)

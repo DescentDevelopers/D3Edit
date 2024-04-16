@@ -10,23 +10,19 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
-
 
 #ifndef _CLIPPER_H
 #define _CLIPPER_H
 
 extern void FreeTempPoint(g3Point *p);
 extern void InitFreePoints(void);
-extern void ClipLine(g3Point **p0,g3Point **p1,ubyte codes_or);
+extern void ClipLine(g3Point **p0, g3Point **p1, ubyte codes_or);
 
-//Verify that all the temp points are free, and free them it they are not.
+// Verify that all the temp points are free, and free them it they are not.
 #ifdef _DEBUG
 void CheckTempPoints();
 #else
 #define CheckTempPoints()
 #endif
-
 
 #endif

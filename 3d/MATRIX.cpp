@@ -10,62 +10,53 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #include "3d.h"
 #include "globvars.h"
 
 void scale_matrix(void);
 
-//set view from x,y,z & p,b,h, zoom.  Must call one of g3_SetView*() 
-void g3_SetViewAngles(vector *view_pos,angvec *view_orient,float zoom)
-{
-	View_zoom = zoom;
-	View_position = *view_pos;
+// set view from x,y,z & p,b,h, zoom.  Must call one of g3_SetView*()
+void g3_SetViewAngles(vector *view_pos, angvec *view_orient, float zoom) {
+  View_zoom = zoom;
+  View_position = *view_pos;
 
-	vm_angles_2_matrix(&View_matrix,view_orient);
+  vm_angles_2_matrix(&View_matrix, view_orient);
 
-	scale_matrix();
-
+  scale_matrix();
 }
 
-//set view from x,y,z, viewer matrix, and zoom.  Must call one of g3_SetView*() 
-void g3_SetViewMatrix(vector *view_pos,matrix *view_matrix,float zoom)
-{
-	View_zoom = zoom;
-	View_position = *view_pos;
+// set view from x,y,z, viewer matrix, and zoom.  Must call one of g3_SetView*()
+void g3_SetViewMatrix(vector *view_pos, matrix *view_matrix, float zoom) {
+  View_zoom = zoom;
+  View_position = *view_pos;
 
-	View_matrix = *view_matrix;
+  View_matrix = *view_matrix;
 
-	scale_matrix();
-
+  scale_matrix();
 }
 
-//performs aspect scaling on global view matrix
-void scale_matrix(void)
-{
-	Unscaled_matrix = View_matrix;		//so we can use unscaled if we want
+// performs aspect scaling on global view matrix
+void scale_matrix(void) {
+  Unscaled_matrix = View_matrix; // so we can use unscaled if we want
 
-	Matrix_scale = Window_scale;
+  Matrix_scale = Window_scale;
 
-	if (View_zoom <= f1_0) 		//zoom in by scaling z
+  if (View_zoom <= f1_0) // zoom in by scaling z
 
-		Matrix_scale.z = Matrix_scale.z * View_zoom;
+    Matrix_scale.z = Matrix_scale.z * View_zoom;
 
-	else {			//zoom out by scaling x&y
+  else { // zoom out by scaling x&y
 
-		float s = 1.0 / View_zoom;
+    float s = 1.0 / View_zoom;
 
-		Matrix_scale.x = Matrix_scale.x * s;
-		Matrix_scale.y = Matrix_scale.y * s;
-	}
+    Matrix_scale.x = Matrix_scale.x * s;
+    Matrix_scale.y = Matrix_scale.y * s;
+  }
 
-	//now scale matrix elements
+  // now scale matrix elements
 
-	View_matrix.rvec *= Matrix_scale.x;
-	View_matrix.uvec *= Matrix_scale.y;
-	View_matrix.fvec *= Matrix_scale.z;
-
+  View_matrix.rvec *= Matrix_scale.x;
+  View_matrix.uvec *= Matrix_scale.y;
+  View_matrix.fvec *= Matrix_scale.z;
 }
-

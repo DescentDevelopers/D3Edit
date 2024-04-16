@@ -10,27 +10,24 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP			
-			dest = destptr;
-		
-			int xs=x1;
-			int xe=x1+width-1;
+#ifdef ACTIVATE_INNER_LOOP
+dest = destptr;
 
-			if (xs & 1)
-			{
-				dest[xs++]=Flat_polygon_color;
-			}
-			if (!(xe & 1))
-				dest[xe--]=Flat_polygon_color;
+int xs = x1;
+int xe = x1 + width - 1;
 
-			int count=(xe-xs+1)/2;
+if (xs & 1) {
+  dest[xs++] = Flat_polygon_color;
+}
+if (!(xe & 1))
+  dest[xe--] = Flat_polygon_color;
 
-			dest+=xs;
+int count = (xe - xs + 1) / 2;
 
-			if (count)
-			{
-				__asm 
-				{
+dest += xs;
+
+if (count) {
+  __asm {
 					mov ax,Flat_polygon_color
 					shl eax,16
 					mov ax,Flat_polygon_color
@@ -44,11 +41,8 @@
 					add edi, 4
 					dec ecx
 					jnz loopit
-				
-				}
-			}
 
-					
-			#endif
+  }
+}
 
-
+#endif

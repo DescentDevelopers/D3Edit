@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_NED_GRWND_H__FBB555C2_E754_11D2_A6A1_006097E07445__INCLUDED_)
+#if !defined(AFX_NED_GRWND_H__FBB555C2_E754_11D2_A6A1_006097E07445__INCLUDED_)
 #define AFX_NED_GRWND_H__FBB555C2_E754_11D2_A6A1_006097E07445__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -21,56 +21,53 @@
 
 #include "gr.h"
 
-const DWORD GRWND_STYLE = WS_VISIBLE | WS_CHILD | WS_CAPTION | WS_CLIPSIBLINGS |
-							WS_THICKFRAME | WS_SYSMENU;
+const DWORD GRWND_STYLE = WS_VISIBLE | WS_CHILD | WS_CAPTION | WS_CLIPSIBLINGS | WS_THICKFRAME | WS_SYSMENU;
 const DWORD GRWND_STATIC_STYLE = WS_VISIBLE | WS_CHILD | WS_BORDER;
 
 /////////////////////////////////////////////////////////////////////////////
 // Cned_GrWnd window
 
-class Cned_GrWnd : public CWnd
-{
-	DECLARE_DYNCREATE(Cned_GrWnd)
+class Cned_GrWnd : public CWnd {
+  DECLARE_DYNCREATE(Cned_GrWnd)
 protected:
-	Cned_GrWnd();           // protected constructor used by dynamic creation
+  Cned_GrWnd(); // protected constructor used by dynamic creation
 
-// Attributes
+  // Attributes
 public:
-
-// Operations
+  // Operations
 public:
-	void SetDCPixelFormat(HDC hDC);
+  void SetDCPixelFormat(HDC hDC);
 
-	// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(Cned_GrWnd)
-	protected:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	//}}AFX_VIRTUAL
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(Cned_GrWnd)
+protected:
+  virtual BOOL PreCreateWindow(CREATESTRUCT &cs);
+  //}}AFX_VIRTUAL
 
-// Implementation
+  // Implementation
 public:
-	ddgr_color m_BackColor;
-	bool m_bInitted;					// ready for rendering
+  ddgr_color m_BackColor;
+  bool m_bInitted; // ready for rendering
 
 protected:
-	virtual ~Cned_GrWnd();
+  virtual ~Cned_GrWnd();
 
-	// Generated message map functions
-	//{{AFX_MSG(Cned_GrWnd)
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnDestroy();
-	afx_msg void OnPaint();
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Generated message map functions
+  //{{AFX_MSG(Cned_GrWnd)
+  afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+  afx_msg void OnDestroy();
+  afx_msg void OnPaint();
+  afx_msg void OnSize(UINT nType, int cx, int cy);
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 
-// Variables
+  // Variables
 protected:
-	HDC renderer_hDC;
-	HGLRC hRC;
-	grScreen *m_grScreen;				// screen belonging to window
-	grViewport *m_grViewport;			// Viewport belonging to window
+  HDC renderer_hDC;
+  HGLRC hRC;
+  grScreen *m_grScreen;     // screen belonging to window
+  grViewport *m_grViewport; // Viewport belonging to window
 };
 
 /////////////////////////////////////////////////////////////////////////////

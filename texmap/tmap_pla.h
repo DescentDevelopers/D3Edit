@@ -10,31 +10,31 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
-			
-			#define FIXUP32 012345678h
-			
-			dest=destptr+x1;
-			fix fx_u,fx_v;
-			ushort FPUCW,OldFPUCW;
-					
-			TexSrc=bm_data8(Tex_bitmap,Current_mip);
-			Current_tex_palette=bm_palette (Tex_bitmap);
-											
-			float float_scaler=65536.0;
-			float float_scaler8=4096.0;
-			float one=1.0;
-			float floattemp;
+#ifdef ACTIVATE_INNER_LOOP
 
-			float u_affine=fldudx*16;
-			float v_affine=fldvdx*16;
-			float z_affine=fldzdx*16;
+#define FIXUP32 012345678h
 
-			BigSteps=width/16;
-			Leftovers=width%16;
-			static int old_ander=-1;
+dest = destptr + x1;
+fix fx_u, fx_v;
+ushort FPUCW, OldFPUCW;
 
-			__asm 
+TexSrc = bm_data8(Tex_bitmap, Current_mip);
+Current_tex_palette = bm_palette(Tex_bitmap);
+
+float float_scaler = 65536.0;
+float float_scaler8 = 4096.0;
+float one = 1.0;
+float floattemp;
+
+float u_affine = fldudx * 16;
+float v_affine = fldvdx * 16;
+float z_affine = fldzdx * 16;
+
+BigSteps = width / 16;
+Leftovers = width % 16;
+static int old_ander = -1;
+
+                        __asm 
 			{
 				; put the FPU in 32 bit mode
 				fstcw   [OldFPUCW]                  ; store copy of CW
@@ -402,6 +402,5 @@
 				fldcw   [OldFPUCW]							; restore the FPU
 
 			}
-			
-	
+
 #endif

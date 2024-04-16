@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 // ----------------------------------------------------------------------------
 // Device Dependent IO System Main Library Interface - functions here are located
@@ -57,18 +56,17 @@ float ddio_InternalKeyDownTime(ubyte key);
 // flush a key internally
 void ddio_InternalResetKey(ubyte key);
 
-
 // ----------------------------------------------------------------------------
 //	Device Dependent Timer Interface
 // ----------------------------------------------------------------------------
 
-bool timer_Init(int preemptive,bool force_lores);
+bool timer_Init(int preemptive, bool force_lores);
 void timer_Close();
 
 //	returns time in seconds
 float timer_GetTime();
 
-//returns time in milliseconds
+// returns time in milliseconds
 longlong timer_GetMSTime();
 
 //	hook in timer function at certain period.  returns a handle to this function
@@ -77,21 +75,20 @@ longlong timer_GetMSTime();
 //	clears function from hook list specified by a handle returned from HookFunction
 //@@void timer_ReleaseFunction(int func);
 
-
 // ----------------------------------------------------------------------------
 //	Device Dependent Mouse Interface
 // ----------------------------------------------------------------------------
 
-#define MOUSE_LB		1							// mouse button masks
-#define MOUSE_RB		2
-#define MOUSE_CB		4
-#define MOUSE_B4		8
-#define MOUSE_B5		16
-#define MOUSE_B6		32
-#define MOUSE_B7		64
-#define MOUSE_B8		128
+#define MOUSE_LB 1 // mouse button masks
+#define MOUSE_RB 2
+#define MOUSE_CB 4
+#define MOUSE_B4 8
+#define MOUSE_B5 16
+#define MOUSE_B6 32
+#define MOUSE_B7 64
+#define MOUSE_B8 128
 
-#define N_MSEBTNS		8
+#define N_MSEBTNS 8
 
 //	initializes mouse.
 bool ddio_MouseInit();
@@ -101,8 +98,8 @@ void ddio_MouseClose();
 int ddio_MouseGetCaps(int *btn, int *axis);
 
 // use these extensions to set exclusive or standard mouse modes
-#define MOUSE_STANDARD_MODE		1			// uses absolute coordinates and simple buttons
-#define MOUSE_EXCLUSIVE_MODE		2			// uses relative coordinates and advanced button information
+#define MOUSE_STANDARD_MODE 1  // uses absolute coordinates and simple buttons
+#define MOUSE_EXCLUSIVE_MODE 2 // uses relative coordinates and advanced button information
 void ddio_MouseMode(int mode);
 
 //	resets position of mouse to center, resets virtual coord system to equal screen coordinate system
@@ -120,10 +117,10 @@ void ddio_InternalMouseResume();
 
 //	returns absolute position of mouse, button state and mouse deltas.
 /*	x, y = absolute mouse position
-	dx, dy = mouse deltas since last call
-	return value is mouse button mask.   values not needed should pass NULL pointers.
+        dx, dy = mouse deltas since last call
+        return value is mouse button mask.   values not needed should pass NULL pointers.
 */
-int ddio_MouseGetState(int *x, int *y, int *dx, int *dy, int *z=NULL, int *dz=NULL);
+int ddio_MouseGetState(int *x, int *y, int *dx, int *dy, int *z = NULL, int *dz = NULL);
 
 // gets a mouse button event, returns false if none.
 bool ddio_MouseGetEvent(int *btn, bool *state);
@@ -146,16 +143,15 @@ int ddio_MouseBtnDownCount(int btn);
 int ddio_MouseBtnUpCount(int btn);
 
 //	displays the mouse pointer.  Each Hide call = Show call.
-//void ddio_MouseShow();
-//void ddio_MouseHide();
+// void ddio_MouseShow();
+// void ddio_MouseHide();
 
 //	set bounds for system polling of coordinates
-void ddio_MouseSetLimits(int left, int top, int right, int bottom, int zmin=0, int zmax=0);
-void ddio_MouseGetLimits(int *left, int *top, int *right, int *bottom, int *zmin=0, int *zmax=0);
+void ddio_MouseSetLimits(int left, int top, int right, int bottom, int zmin = 0, int zmax = 0);
+void ddio_MouseGetLimits(int *left, int *top, int *right, int *bottom, int *zmin = 0, int *zmax = 0);
 
 // virtual coordinate system for mouse (match to video resolution set for optimal mouse usage.
 void ddio_MouseSetVCoords(int width, int height);
-
 
 //	---------------------------------------------------------------------------
 //	File Operations
@@ -168,7 +164,7 @@ bool ddio_RemoveDir(const char *path);
 
 // deletes a file.  Returns 1 if successful, 0 on failure
 //	This pathname is *RELATIVE* not fully qualified
-int ddio_DeleteFile (char *name);
+int ddio_DeleteFile(char *name);
 
 // Save/Restore the current working directory
 void ddio_SaveWorkingDir(void);
@@ -182,21 +178,21 @@ bool ddio_SetWorkingDir(const char *path);
 
 // 	Checks if a directory exists (returns 1 if it does, 0 if not)
 //	This pathname is *RELATIVE* not fully qualified
-bool ddio_DirExists(const char* path);
+bool ddio_DirExists(const char *path);
 
 //  get a file length of a FILE
-int	ddio_GetFileLength(FILE* filePtr);
+int ddio_GetFileLength(FILE *filePtr);
 
 //	check if two files are different
 //	This pathname is *RELATIVE* not fully qualified
-bool ddio_FileDiff(const char* fileNameA, const char* fileNameB);
+bool ddio_FileDiff(const char *fileNameA, const char *fileNameB);
 
 //	copies one files timestamp to another
-void ddio_CopyFileTime(char* dest, const char* src);
+void ddio_CopyFileTime(char *dest, const char *src);
 
 // Split a pathname into its component parts
 //	The path in splitpath is in the *LOCAL* file system's syntax
-void ddio_SplitPath(const char* srcPath, char* path, char* filename, char* ext);
+void ddio_SplitPath(const char *srcPath, char *path, char *filename, char *ext);
 
 //	 pass in a pathname (could be from ddio_SplitPath), root_path will have the drive name.
 void ddio_GetRootFromPath(const char *srcPath, char *root_path);
@@ -211,7 +207,7 @@ int ddio_GetFileSysRoots(char **roots, int max_roots);
 //	subdir:	the first subdirectory
 //  takes a variable number of additional subdirectories which will be concatenated on to the path
 //		the last argument in the list of sub dirs *MUST* be NULL to terminate the list
-void ddio_MakePath(char* newPath, const char* absolutePathHeader, const char* subDir, ...);
+void ddio_MakePath(char *newPath, const char *absolutePathHeader, const char *subDir, ...);
 
 //	These functions allow one to find a file
 //		You use FindFileStart by giving it a wildcard (like *.*, *.txt, u??.*, whatever).  It returns
@@ -226,43 +222,41 @@ void ddio_FindDirClose();
 bool ddio_FindDirStart(const char *wildcard, char *namebuf);
 bool ddio_FindNextDir(char *namebuf);
 
-
 //	given a path (with no filename), it will return the parent path
 //	srcPath is the source given path
 //	dest is where the parent path will be placed
 //	returns true on success
 //		dest should be at least _MAX_PATH in length
-bool ddio_GetParentPath(char *dest,const char* srcPath);
+bool ddio_GetParentPath(char *dest, const char *srcPath);
 
 //	given a path, it cleans it up (if the path is c:\windows\..\dos it would make it c:\dos)
 //	srcPath is the original path
 //	dest is the finished cleaned path.
 //		dest should be at least _MAX_PATH in size
-void ddio_CleanPath(char *dest,const char* srcPath);
+void ddio_CleanPath(char *dest, const char *srcPath);
 
-//Finds a full path from a relative path
-//Parameters:	full_path - filled in with the fully-specified path.  Buffer must be at least _MAX_PATH bytes long
+// Finds a full path from a relative path
+// Parameters:	full_path - filled in with the fully-specified path.  Buffer must be at least _MAX_PATH bytes long
 //					rel_path - a path specification, either relative or absolute
-//Returns TRUE if successful, FALSE if an error
-bool ddio_GetFullPath(char *full_path,const char *rel_path);
+// Returns TRUE if successful, FALSE if an error
+bool ddio_GetFullPath(char *full_path, const char *rel_path);
 
-//Generates a temporary filename based on the prefix, and basedir
-//Parameters: 
+// Generates a temporary filename based on the prefix, and basedir
+// Parameters:
 //		basedir - directory to put the files
 //		prefix - prefix for the temp filename
 //		filename - buffer to hold generated filename (must be at least _MAX_PATH in length)
-//					
-//Returns TRUE if successful, FALSE if an error
-bool ddio_GetTempFileName(char *basedir,char *prefix,char *filename);
+//
+// Returns TRUE if successful, FALSE if an error
+bool ddio_GetTempFileName(char *basedir, char *prefix, char *filename);
 
-//Renames file
-//Returns true on success or false on an error
-bool ddio_RenameFile(char *oldfile,char *newfile);
+// Renames file
+// Returns true on success or false on an error
+bool ddio_RenameFile(char *oldfile, char *newfile);
 
-
-//Give a volume label to look for, and if it's found returns a path 
-//If it isn't found, return ""
-char * ddio_GetCDDrive(char *vol);
+// Give a volume label to look for, and if it's found returns a path
+// If it isn't found, return ""
+char *ddio_GetCDDrive(char *vol);
 
 // Checks to see if a lock file is located in the specified directory.
 //	Parameters:
@@ -302,8 +296,5 @@ int ddio_CreateLockFile(const char *dir);
 //		-2		A lock file exists in the directory, but wasn't deleted...illegal format
 //		-3		Unable to delete file
 int ddio_DeleteLockFile(const char *dir);
-
-
-
 
 #endif

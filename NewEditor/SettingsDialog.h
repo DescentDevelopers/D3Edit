@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_SETTINGSDIALOG_H__D2291DE0_EC04_11D2_8F49_00104B27BFF0__INCLUDED_)
+#if !defined(AFX_SETTINGSDIALOG_H__D2291DE0_EC04_11D2_8F49_00104B27BFF0__INCLUDED_)
 #define AFX_SETTINGSDIALOG_H__D2291DE0_EC04_11D2_8F49_00104B27BFF0__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -22,45 +22,41 @@
 /////////////////////////////////////////////////////////////////////////////
 // CSettingsDialog dialog
 
-class CSettingsDialog : public CDialog
-{
-// Construction
+class CSettingsDialog : public CDialog {
+  // Construction
 public:
-	CSettingsDialog(CWnd* pParent = NULL);   // standard constructor
+  CSettingsDialog(CWnd *pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CSettingsDialog)
-	enum { IDD = IDD_SETTINGS };
-	CString	m_DataDir;
-	CString	m_ScriptDir;
-	CString	m_VCDir;
-	int		m_VCWarningLevel;
-	int		m_VCDebugLevel;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CSettingsDialog)
+  enum { IDD = IDD_SETTINGS };
+  CString m_DataDir;
+  CString m_ScriptDir;
+  CString m_VCDir;
+  int m_VCWarningLevel;
+  int m_VCDebugLevel;
+  //}}AFX_DATA
 
-
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CSettingsDialog)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CSettingsDialog)
 protected:
+  virtual void DoDataExchange(CDataExchange *pDX); // DDX/DDV support
+                                                   //}}AFX_VIRTUAL
 
-	// Generated message map functions
-	//{{AFX_MSG(CSettingsDialog)
-	afx_msg void OnSelectdir();
-	virtual void OnOK();
-	virtual void OnCancel();
-	virtual BOOL OnInitDialog();
-	afx_msg void OnVcBrowse();
-	afx_msg void OnScriptBrowse();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+protected:
+  // Generated message map functions
+  //{{AFX_MSG(CSettingsDialog)
+  afx_msg void OnSelectdir();
+  virtual void OnOK();
+  virtual void OnCancel();
+  virtual BOOL OnInitDialog();
+  afx_msg void OnVcBrowse();
+  afx_msg void OnScriptBrowse();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 private:
-
 };
 
 //{{AFX_INSERT_LOCATION}}

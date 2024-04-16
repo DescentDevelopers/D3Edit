@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef HTEXTURE_H
 #define HTEXTURE_H
@@ -30,27 +29,27 @@ struct room;
 //	function to apply a texture to a segment side.
 void HTextureStretchLess(room *rp, int face, int edge);
 void HTextureStretchMore(room *rp, int face, int edge);
-void HTextureSetDefault(room *rp, int face=Curface);
+void HTextureSetDefault(room *rp, int face = Curface);
 void HTextureFlipX();
 void HTextureFlipY();
 void HTextureSlide(room *rp, int facenum, float right, float up);
 void HTextureRotate(room *rp, int facenum, angle ang);
 void HTextureNextEdge();
 
-//Apply the specified texture to the specified room:face
-void HTextureApplyToRoomFace(room *rp,int facenum,int tnum);
+// Apply the specified texture to the specified room:face
+void HTextureApplyToRoomFace(room *rp, int facenum, int tnum);
 
-//Copy texture from current face to adjacent face, tiling the UV coordinates
-//Parameters:	destrp,destface - room:face that the propagate is based on
+// Copy texture from current face to adjacent face, tiling the UV coordinates
+// Parameters:	destrp,destface - room:face that the propagate is based on
 //					srcrp,srcface - room:face that is changed
-//Return:	1 if success, 0 if faces not adjacent
-int HTexturePropagateToFace(room *destrp,int destface,room *srcrp,int srcface,bool tex=true);
+// Return:	1 if success, 0 if faces not adjacent
+int HTexturePropagateToFace(room *destrp, int destface, room *srcrp, int srcface, bool tex = true);
 
-//Copy texture UVs from one face to another
-//Parameters:	destrp,destface - room:face that is changed
+// Copy texture UVs from one face to another
+// Parameters:	destrp,destface - room:face that is changed
 //					srcrp,srcface - room:face to copy from
 //					offset - vert 0 on source is assigned to vert offset on dest
-//Return:	1 if success, 0 if faces don't have the same number of verts
-int HTextureCopyUVsToFace(room *destrp,int destface,room *srcrp,int srcface,int offset);
+// Return:	1 if success, 0 if faces don't have the same number of verts
+int HTextureCopyUVsToFace(room *destrp, int destface, room *srcrp, int srcface, int offset);
 
 #endif

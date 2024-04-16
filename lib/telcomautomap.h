@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef __TCAUTOMAP_H_
 #define __TCAUTOMAP_H_
@@ -24,7 +23,7 @@
 //  lmonitor = local monitor class (the monitor at the top of the screen)
 bool TelComAutoMap(tTelComInfo *tcs);
 
-void AutomapClearVisMap ();
+void AutomapClearVisMap();
 
 extern ubyte AutomapVisMap[];
 

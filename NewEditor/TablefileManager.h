@@ -10,9 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
-
 
 #if !defined(AFX_TABLEFILEMANAGER_H__D6210D80_ED2C_11D2_AB2B_006008BF0B09__INCLUDED_)
 #define AFX_TABLEFILEMANAGER_H__D6210D80_ED2C_11D2_AB2B_006008BF0B09__INCLUDED_
@@ -26,59 +23,56 @@
 /////////////////////////////////////////////////////////////////////////////
 // CTablefileManager dialog
 
-
-class CTablefileManager : public CDialog
-{
-// Construction
+class CTablefileManager : public CDialog {
+  // Construction
 public:
-	CTablefileManager(CWnd* pParent = NULL);   // standard constructor
+  CTablefileManager(CWnd *pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CTablefileManager)
-	enum { IDD = IDD_TABLEFILE_MANAGER };
-		// NOTE: the ClassWizard will add data members here
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CTablefileManager)
+  enum { IDD = IDD_TABLEFILE_MANAGER };
+  // NOTE: the ClassWizard will add data members here
+  //}}AFX_DATA
 
-
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CTablefileManager)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CTablefileManager)
 protected:
-	char *m_Base_tablefile;
-	char *m_Mission_tablefile;
-	char *m_Module_tablefile;
-	void UpdateDialog(void);
-	void DisableAll(void);
-	void ChangeTablefile(char *filename,int type);
+  virtual void DoDataExchange(CDataExchange *pDX); // DDX/DDV support
+                                                   //}}AFX_VIRTUAL
 
-	// Generated message map functions
-	//{{AFX_MSG(CTablefileManager)
-	virtual void OnOK();
-	virtual void OnCancel();
-	virtual BOOL OnInitDialog();
-	afx_msg void OnClose();
-	afx_msg void OnBrowseA();
-	afx_msg void OnBrowseB();
-	afx_msg void OnBrowseC();
-	afx_msg void OnRemoveA();
-	afx_msg void OnRemoveB();
-	afx_msg void OnRemoveC();
-	afx_msg void OnDisplayAll();
-	afx_msg void OnDisplayA();
-	afx_msg void OnDisplayB();
-	afx_msg void OnDisplayC();
-	afx_msg void OnDestroy();
-	afx_msg void OnHelp();
-	afx_msg void OnBrowseHogA();
-	afx_msg void OnBrowseHogB();
-	afx_msg void OnBrowseHogC();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+protected:
+  char *m_Base_tablefile;
+  char *m_Mission_tablefile;
+  char *m_Module_tablefile;
+  void UpdateDialog(void);
+  void DisableAll(void);
+  void ChangeTablefile(char *filename, int type);
+
+  // Generated message map functions
+  //{{AFX_MSG(CTablefileManager)
+  virtual void OnOK();
+  virtual void OnCancel();
+  virtual BOOL OnInitDialog();
+  afx_msg void OnClose();
+  afx_msg void OnBrowseA();
+  afx_msg void OnBrowseB();
+  afx_msg void OnBrowseC();
+  afx_msg void OnRemoveA();
+  afx_msg void OnRemoveB();
+  afx_msg void OnRemoveC();
+  afx_msg void OnDisplayAll();
+  afx_msg void OnDisplayA();
+  afx_msg void OnDisplayB();
+  afx_msg void OnDisplayC();
+  afx_msg void OnDestroy();
+  afx_msg void OnHelp();
+  afx_msg void OnBrowseHogA();
+  afx_msg void OnBrowseHogB();
+  afx_msg void OnBrowseHogC();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

@@ -10,21 +10,19 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #ifndef __MANAGE_EXTERNAL_H_
 #define __MANAGE_EXTERNAL_H_
 
-#define PAGENAME_LEN	35
+#define PAGENAME_LEN 35
 
-//Use this macro around your parameter in a table-file lookup, etc. to have the
-//table file parser ignore this instance of the function (because you might be
-//using one of the $$TABLE_ defines in a comment to force add items
-#define IGNORE_TABLE(s)	s
+// Use this macro around your parameter in a table-file lookup, etc. to have the
+// table file parser ignore this instance of the function (because you might be
+// using one of the $$TABLE_ defines in a comment to force add items
+#define IGNORE_TABLE(s) s
 
-//Use these macros around literal strings that are in arrays.
-//NOTE that these strings must be inside curly braces
+// Use these macros around literal strings that are in arrays.
+// NOTE that these strings must be inside curly braces
 #define TBL_SOUND(s) s
 #define TBL_GENERIC(s) s
 #define TBL_GAMEFILE(s) s

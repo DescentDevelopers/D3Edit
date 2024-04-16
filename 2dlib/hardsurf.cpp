@@ -10,42 +10,25 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #include "gr.h"
-
 
 //	----------------------------------------------------------------------------
 //	constructor and destructor
 //	----------------------------------------------------------------------------
 
-grHardwareSurface::grHardwareSurface()
-	:grSurface()
-{
-
-}
-
+grHardwareSurface::grHardwareSurface() : grSurface() {}
 
 grHardwareSurface::grHardwareSurface(int w, int h, int bpp, unsigned flags, const char *name)
-	:grSurface(w, h, bpp, SURFTYPE_GENERIC, flags, name)
-{
+    : grSurface(w, h, bpp, SURFTYPE_GENERIC, flags, name) {}
 
-}
-
-
-grHardwareSurface::~grHardwareSurface()
-{
-
-}
-
+grHardwareSurface::~grHardwareSurface() {}
 
 //	----------------------------------------------------------------------------
 //	initialize a hardware surface with these values
 //	----------------------------------------------------------------------------
 
-bool grHardwareSurface::create(int w, int h, int bpp, unsigned flags, const char *name)
-{
-	grSurface::create(w,h,bpp, SURFTYPE_GENERIC, flags, name);
-	return 1;
+bool grHardwareSurface::create(int w, int h, int bpp, unsigned flags, const char *name) {
+  grSurface::create(w, h, bpp, SURFTYPE_GENERIC, flags, name);
+  return 1;
 }
-

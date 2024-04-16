@@ -10,32 +10,26 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #include "texfix.h"
+#include "texfix.h"
 
-
-inline fix tex_FixDiv824 (fix a,fix b)
-{
-	__asm 
-	{
+inline fix tex_FixDiv824(fix a, fix b) {
+  __asm
+  {
 		mov eax,a
 		mov ebx,b
 		cdq
 		shld edx, eax, 24
 		sal eax,8
 		idiv ebx
-	}
+  }
 }
 
-
-inline fix tex_FixMul824 (fix a,fix b)
-{
-	__asm
-	{
+inline fix tex_FixMul824(fix a, fix b) {
+  __asm
+  {
 		mov eax,a
 		mov ebx,b	
 	    imul ebx
         shrd eax,edx,24
-	}
+  }
 }
-
-

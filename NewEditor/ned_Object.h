@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef _NED_OBJECT_H
 #define _NED_OBJECT_H
@@ -18,32 +17,31 @@
 #include "ned_Tablefile.h"
 #include "object_external_struct.h"
 
-typedef struct
-{
-	bool used;
-	char name[PAGENAME_LEN];
-	
-	int type;
-	float size;
-	int flags;
-	char image_filename[PAGENAME_LEN];
-	int	render_handle;			//handle for bitmap/polygon model(hi-res)
+typedef struct {
+  bool used;
+  char name[PAGENAME_LEN];
 
-	// Valid for polygon models with weapons
-	otype_wb_info static_wb[MAX_WBS_PER_OBJ];
+  int type;
+  float size;
+  int flags;
+  char image_filename[PAGENAME_LEN];
+  int render_handle; // handle for bitmap/polygon model(hi-res)
 
-	// Valid for lighting of objects
-	light_info lighting_info;
+  // Valid for polygon models with weapons
+  otype_wb_info static_wb[MAX_WBS_PER_OBJ];
 
-	int	hit_points;				//if destroyable, the hit points
+  // Valid for lighting of objects
+  light_info lighting_info;
 
-	int ref_count;
-	int table_file_id;
-	int table_stack[MAX_LOADED_TABLE_FILES];
-}ned_object_info;
+  int hit_points; // if destroyable, the hit points
 
-#define MAX_OBJECT_IDS	810
-extern ned_object_info	Object_info[MAX_OBJECT_IDS];
+  int ref_count;
+  int table_file_id;
+  int table_stack[MAX_LOADED_TABLE_FILES];
+} ned_object_info;
+
+#define MAX_OBJECT_IDS 810
+extern ned_object_info Object_info[MAX_OBJECT_IDS];
 extern int Num_objects;
 
 // ned_FindObjectID
@@ -59,9 +57,9 @@ int ned_FindObjectID(char *name);
 //
 //	Searches for an available object ID, and returns it, -1 if none
 //  if name is not NULL, then it is being allocated from a table file, and thus, the tablefile
-//	parameter must also be specified.  If there is already an object by that name (loaded from 
+//	parameter must also be specified.  If there is already an object by that name (loaded from
 //  a table file), than it will be pushed onto the stack.
-int ned_AllocObjectInfo(char *name,int tablefile=-1);
+int ned_AllocObjectInfo(char *name, int tablefile = -1);
 
 // ==================
 // ned_FreeObjectInfo
@@ -71,21 +69,21 @@ int ned_AllocObjectInfo(char *name,int tablefile=-1);
 // if force_unload is true, and this slot was loaded from a table file, then
 // it will unload all instances (based on it's table stack) from memory, else
 // it will just pop off the current instance and load back in the popped version
-void ned_FreeObjectInfo(int slot,bool force_unload=false);
+void ned_FreeObjectInfo(int slot, bool force_unload = false);
 
 // =========================
 // ned_FreeAllObjects
 // =========================
 //
 // Frees all objects from memory
-void ned_FreeAllObjects ();
+void ned_FreeAllObjects();
 
 // ======================
 // ned_InitObjects
 // ======================
-// 
+//
 // Initializes the Object system
-int ned_InitObjects ();
+int ned_InitObjects();
 
 // ===========================
 // ned_InitializeObjectData
@@ -100,7 +98,7 @@ void ned_InitializeObjectData(int slot);
 // ned_FreeObjectData
 // =======================
 //
-// Given a Object_info slot this function frees any memory that may 
+// Given a Object_info slot this function frees any memory that may
 // need to be freed before a object is destroyed
 // DO NOT TOUCH TABLE STACK DATA
 void ned_FreeObjectData(int slot);
@@ -110,14 +108,14 @@ void ned_FreeObjectData(int slot);
 // ======================
 //
 // Given current index, gets index of prev object in use
-int ned_GetPreviousObject (int n);
+int ned_GetPreviousObject(int n);
 
 // ==========================
 // ned_GetNextObject
 // ==========================
 //
 // Given current index, gets index of next object in use
-int ned_GetNextObject (int n);
+int ned_GetNextObject(int n);
 
 // ========================
 // ned_MarkObjectInUse
@@ -125,34 +123,34 @@ int ned_GetNextObject (int n);
 //
 // Handles memory management for a object.  Call this, passing true when you need to use a object
 // when the object is no longer needed, call this again, passing false.
-void ned_MarkObjectInUse(int slot,bool inuse);
+void ned_MarkObjectInUse(int slot, bool inuse);
 
 void ObjSetAABB(object *obj);
 
-//sets the orientation of an object.  This should be called to orient an object
-void ObjSetOrient(object *obj,const matrix *orient);
+// sets the orientation of an object.  This should be called to orient an object
+void ObjSetOrient(object *obj, const matrix *orient);
 
-//Resets the object list: sets all objects to unused, intializes handles, & sets roomnums to -1
-//Called by the editor to init a new level.
+// Resets the object list: sets all objects to unused, intializes handles, & sets roomnums to -1
+// Called by the editor to init a new level.
 void ResetObjectList();
 
-//sets up the free list & init player & whatever else
+// sets up the free list & init player & whatever else
 void InitObjects();
 
-//link the object into the list for its room
-void ObjLink(int objnum,int roomnum);
+// link the object into the list for its room
+void ObjLink(int objnum, int roomnum);
 
 void ObjUnlink(int objnum);
 
-//when an object has moved into a new room, this function unlinks it
-//from its old room and links it into the new room
-void ObjRelink(int objnum,int newroomnum);
+// when an object has moved into a new room, this function unlinks it
+// from its old room and links it into the new room
+void ObjRelink(int objnum, int newroomnum);
 
 // from main\objinfo.cpp
 // Sets all objects to unused
 void InitObjectInfo();
 
-//Creates the player object in the center of the given room
+// Creates the player object in the center of the given room
 void CreatePlayerObject(int roomnum);
 
 void InitBigObjects();
@@ -161,9 +159,9 @@ void BigObjAdd(int objnum);
 
 void BigObjRemove(int objnum);
 
-//frees up an object.  Generally, ObjDelete() should be called to get
-//rid of an object.  This function deallocates the object entry after
-//the object has been unlinked
+// frees up an object.  Generally, ObjDelete() should be called to get
+// rid of an object.  This function deallocates the object entry after
+// the object has been unlinked
 void ObjFree(int objnum);
 
 //-----------------------------------------------------------------------------
@@ -171,10 +169,10 @@ void ObjFree(int objnum);
 //	Returns number of slots freed.
 int FreeObjectSlots(int num_used);
 
-//returns the number of a free object, updating Highest_object_index.
-//Generally, ObjCreate() should be called to get an object, since it
-//fills in important fields and does the linking.
-//returns -1 if no free objects
+// returns the number of a free object, updating Highest_object_index.
+// Generally, ObjCreate() should be called to get an object, since it
+// fills in important fields and does the linking.
+// returns -1 if no free objects
 int ObjAllocate(void);
 
 void FreeAllObjects();
@@ -182,7 +180,7 @@ void FreeAllObjects();
 // HObjectPlace copied from HObject.cpp, and slightly modified
 // This function assumes a generic object unless is_player = true
 // This is different from HObjectPlace in that it returns the object number (-1 on error)
-int InsertObject(room *rp,int facenum,int obj_id,vector pos,matrix orient,bool is_player = false);
+int InsertObject(room *rp, int facenum, int obj_id, vector pos, matrix orient, bool is_player = false);
 
 bool MoveObject(object *obj, float x, float y, float z);
 

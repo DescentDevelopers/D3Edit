@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_MINEFRAME_H__469D69E4_EB53_11D2_A6A1_006097E07445__INCLUDED_)
+#if !defined(AFX_MINEFRAME_H__469D69E4_EB53_11D2_A6A1_006097E07445__INCLUDED_)
 #define AFX_MINEFRAME_H__469D69E4_EB53_11D2_A6A1_006097E07445__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -22,43 +22,41 @@
 /////////////////////////////////////////////////////////////////////////////
 // CMineFrame frame
 
-class CMineFrame : public CMDIChildWnd
-{
-	DECLARE_DYNCREATE(CMineFrame)
+class CMineFrame : public CMDIChildWnd {
+  DECLARE_DYNCREATE(CMineFrame)
 protected:
-	CMineFrame();           // protected constructor used by dynamic creation
+  CMineFrame(); // protected constructor used by dynamic creation
 
-// Attributes
+  // Attributes
 protected:
-	Cned_LevelWnd	m_MineWnd;		// this is the 3D pane that displays the mine
+  Cned_LevelWnd m_MineWnd; // this is the 3D pane that displays the mine
 public:
-
-// Operations
+  // Operations
 public:
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CMineFrame)
+public:
+  virtual BOOL OnCmdMsg(UINT nID, int nCode, void *pExtra, AFX_CMDHANDLERINFO *pHandlerInfo);
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CMineFrame)
-	public:
-	virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
-	protected:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	//}}AFX_VIRTUAL
-
-// Implementation
 protected:
-	virtual ~CMineFrame();
+  virtual BOOL PreCreateWindow(CREATESTRUCT &cs);
+  //}}AFX_VIRTUAL
+
+  // Implementation
+protected:
+  virtual ~CMineFrame();
 #ifdef _DEBUG
-	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
+  virtual void AssertValid() const;
+  virtual void Dump(CDumpContext &dc) const;
 #endif
 
-	// Generated message map functions
-	//{{AFX_MSG(CMineFrame)
-	afx_msg void OnSetFocus(CWnd* pOldWnd);
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Generated message map functions
+  //{{AFX_MSG(CMineFrame)
+  afx_msg void OnSetFocus(CWnd *pOldWnd);
+  afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

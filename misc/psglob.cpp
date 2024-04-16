@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #include "psglob.h"
 #include <stdlib.h>
@@ -20,31 +19,30 @@
 #endif
 
 // Returns 1 if string contains globbing characters in it
-int PSGlobHasPattern(char *string)
-{  
-	register char *p = string;  
-	register char c;
-	int	open = 0;  
+int PSGlobHasPattern(char *string) {
+  register char *p = string;
+  register char c;
+  int open = 0;
 
-	while ((c = *p++)!='\0')
-	{
-		switch (c){
-		case '?':
-		case '*':	return 1;
-		case '[':		// Open brackets must have a matching close bracket in order to be a glob
-			open++;
-			continue;
-		case ']':	
-			if (open)
-				return 1;	
-			continue;
-		case '\\':	
-			if (*p++ == '\0')	  
-				return 0;
-		}
-	}
-	
-	return 0;
+  while ((c = *p++) != '\0') {
+    switch (c) {
+    case '?':
+    case '*':
+      return 1;
+    case '[': // Open brackets must have a matching close bracket in order to be a glob
+      open++;
+      continue;
+    case ']':
+      if (open)
+        return 1;
+      continue;
+    case '\\':
+      if (*p++ == '\0')
+        return 0;
+    }
+  }
+
+  return 0;
 }
 
 //	PSGlobMatch
@@ -64,127 +62,124 @@ int PSGlobHasPattern(char *string)
 //		these characters exactly, preced it with a '\'.
 //	8) If dot_special is not zero, '*' and '?' do not match '.' at the beginning of text
 //	9) If case_sensitive is 0, than case does not matter for the non-pattern characters
-int PSGlobMatch(char *pattern, char *text, int case_sensitive, int dot_special)
-{
-	register char *p = pattern, *t = text;  
-	register char c;
+int PSGlobMatch(char *pattern, char *text, int case_sensitive, int dot_special) {
+  register char *p = pattern, *t = text;
+  register char c;
 
-	while ((c = *p++) != '\0'){
-		switch (c){
-		case '?':
-			if (*t == '\0' || (dot_special && t == text && *t == '.'))
-				return 0;	
-			else
-				++t;	
-			break;      
-		case '\\':	
-			if (*p++ != *t++)	  
-				return 0;	
-			break;
-		case '*':	
-			if (dot_special && t == text && *t == '.')	  
-				return 0;
-			return PSGlobMatchAfterStar(p, case_sensitive, t);
-		case '[':	
-			{
-				register char c1 = *t++;	  
-				int invert;	  
-				
-				if (!c1)
-					return (0);
+  while ((c = *p++) != '\0') {
+    switch (c) {
+    case '?':
+      if (*t == '\0' || (dot_special && t == text && *t == '.'))
+        return 0;
+      else
+        ++t;
+      break;
+    case '\\':
+      if (*p++ != *t++)
+        return 0;
+      break;
+    case '*':
+      if (dot_special && t == text && *t == '.')
+        return 0;
+      return PSGlobMatchAfterStar(p, case_sensitive, t);
+    case '[': {
+      register char c1 = *t++;
+      int invert;
 
-				invert = ((*p == '!') || (*p == '^'));
-				if (invert)
-					p++;
-				c = *p++;
+      if (!c1)
+        return (0);
 
-				while (1){
-					register char cstart = c, cend = c;
-					if (c == '\\'){
-						cstart = *p++;
-						cend = cstart;
-					}
+      invert = ((*p == '!') || (*p == '^'));
+      if (invert)
+        p++;
+      c = *p++;
 
-					if (c == '\0')
-						return 0;
-					c = *p++;
+      while (1) {
+        register char cstart = c, cend = c;
+        if (c == '\\') {
+          cstart = *p++;
+          cend = cstart;
+        }
 
-					if (c == '-' && *p != ']'){
-						cend = *p++;
-						if (cend == '\\')
-							cend = *p++;		  
-						if (cend == '\0')
-							return 0;
-						c = *p++;
-					}
+        if (c == '\0')
+          return 0;
+        c = *p++;
 
-					if (c1 >= cstart && c1 <= cend)
-						goto match;
-					if (c == ']')
-						break;
-				}
-				
-				if (!invert)
-					return 0;
-				break;	
-match:
-				/* Skip the rest of the [...] construct that already matched.  */
-				while (c != ']'){
-					if (c == '\0')
-						return 0;
-					c = *p++;
-					if (c == '\0')
-						return 0;
-					else if (c == '\\')
-						++p;
-				}
+        if (c == '-' && *p != ']') {
+          cend = *p++;
+          if (cend == '\\')
+            cend = *p++;
+          if (cend == '\0')
+            return 0;
+          c = *p++;
+        }
 
-				if (invert)
-					return 0;
-				break;	
-			}
-		default:
-			if(case_sensitive){
-				if (c != *t++)
-					return 0;
-			}else{
-				if (tolower(c) != tolower(*t++))
-					return 0;
-			}
-		}
-	}
+        if (c1 >= cstart && c1 <= cend)
+          goto match;
+        if (c == ']')
+          break;
+      }
 
-	return *t == '\0';
+      if (!invert)
+        return 0;
+      break;
+    match:
+      /* Skip the rest of the [...] construct that already matched.  */
+      while (c != ']') {
+        if (c == '\0')
+          return 0;
+        c = *p++;
+        if (c == '\0')
+          return 0;
+        else if (c == '\\')
+          ++p;
+      }
+
+      if (invert)
+        return 0;
+      break;
+    }
+    default:
+      if (case_sensitive) {
+        if (c != *t++)
+          return 0;
+      } else {
+        if (tolower(c) != tolower(*t++))
+          return 0;
+      }
+    }
+  }
+
+  return *t == '\0';
 }
 
-//Like PSGlobMatch, but match pattern against any final segment of text
-int PSGlobMatchAfterStar(char *pattern, int case_sensitive, char *text)
-{
-	register char *p = pattern, *t = text;
-	register char c, c1;
+// Like PSGlobMatch, but match pattern against any final segment of text
+int PSGlobMatchAfterStar(char *pattern, int case_sensitive, char *text) {
+  register char *p = pattern, *t = text;
+  register char c, c1;
 
-	while ((c = *p++) == '?' || c == '*'){
-		if (c == '?' && *t++ == '\0')
-			return 0;
-	}
+  while ((c = *p++) == '?' || c == '*') {
+    if (c == '?' && *t++ == '\0')
+      return 0;
+  }
 
-	if (c == '\0')
-		return 1;  
-	if (c == '\\')
-		c1 = *p;  
-	else
-		c1 = c;
+  if (c == '\0')
+    return 1;
+  if (c == '\\')
+    c1 = *p;
+  else
+    c1 = c;
 
-	while (1){
-		if(case_sensitive){
-			if ((c == '[' || *t == c1) && PSGlobMatch(p - 1, t, case_sensitive, 0))	
-				return 1;
-		}else{
-			if ((c == '[' || tolower(*t) == tolower(c1)) && PSGlobMatch(p - 1, t, case_sensitive, 0))	
-				return 1;
-		}
+  while (1) {
+    if (case_sensitive) {
+      if ((c == '[' || *t == c1) && PSGlobMatch(p - 1, t, case_sensitive, 0))
+        return 1;
+    } else {
+      if ((c == '[' || tolower(*t) == tolower(c1)) && PSGlobMatch(p - 1, t, case_sensitive, 0))
+        return 1;
+    }
 
-		if (*t++ == '\0')	
-			return 0;
-	}
+    if (*t++ == '\0')
+      return 0;
+  }
 }

@@ -10,21 +10,18 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #include "vecmat.h"
 
-//Called when a new level is started to reset the data
+// Called when a new level is started to reset the data
 void ResetScorches();
 
-//Add a scorch mark
-//Parameters:	roomnum,facenum - the face that the scorch is on
+// Add a scorch mark
+// Parameters:	roomnum,facenum - the face that the scorch is on
 //					pos - where the scorch goes
 //					texture_handle - the texture for the scorch mark
 //					size - how big the scorch is
-void AddScorch(int roomnum,int facenum,vector *pos,int texture_handle,float size);
+void AddScorch(int roomnum, int facenum, vector *pos, int texture_handle, float size);
 
-//Draw the scorch(es) for a given face
-void DrawScorches(int roomnum,int facenum);
-
-
+// Draw the scorch(es) for a given face
+void DrawScorches(int roomnum, int facenum);

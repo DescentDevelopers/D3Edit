@@ -1,10 +1,10 @@
 /************************************************************************
-*                                                                       *
-*   dmusicf.h -- This module defines the DirectMusic file formats       *
-*                                                                       *
-*   Copyright (c) 1998, Microsoft Corp. All rights reserved.            *
-*                                                                       *
-************************************************************************/
+ *                                                                       *
+ *   dmusicf.h -- This module defines the DirectMusic file formats       *
+ *                                                                       *
+ *   Copyright (c) 1998, Microsoft Corp. All rights reserved.            *
+ *                                                                       *
+ ************************************************************************/
 
 #ifndef _DMUSICF_
 #define _DMUSICF_
@@ -23,133 +23,117 @@ extern "C" {
 #endif
 
 interface IDirectMusicCollection;
-#ifndef __cplusplus 
+#ifndef __cplusplus
 typedef interface IDirectMusicCollection IDirectMusicCollection;
 #endif
 
 /* Common chunks */
 
-#define DMUS_FOURCC_GUID_CHUNK        mmioFOURCC('g','u','i','d')
-#define DMUS_FOURCC_INFO_LIST         mmioFOURCC('I','N','F','O')
-#define DMUS_FOURCC_UNFO_LIST         mmioFOURCC('U','N','F','O')
-#define DMUS_FOURCC_UNAM_CHUNK         mmioFOURCC('U','N','A','M')
-#define DMUS_FOURCC_UART_CHUNK         mmioFOURCC('U','A','R','T')
-#define DMUS_FOURCC_UCOP_CHUNK         mmioFOURCC('U','C','O','P')
-#define DMUS_FOURCC_USBJ_CHUNK         mmioFOURCC('U','S','B','J')
-#define DMUS_FOURCC_UCMT_CHUNK         mmioFOURCC('U','C','M','T')
-#define DMUS_FOURCC_CATEGORY_CHUNK    mmioFOURCC('c','a','t','g')
-#define DMUS_FOURCC_VERSION_CHUNK     mmioFOURCC('v','e','r','s')
+#define DMUS_FOURCC_GUID_CHUNK mmioFOURCC('g', 'u', 'i', 'd')
+#define DMUS_FOURCC_INFO_LIST mmioFOURCC('I', 'N', 'F', 'O')
+#define DMUS_FOURCC_UNFO_LIST mmioFOURCC('U', 'N', 'F', 'O')
+#define DMUS_FOURCC_UNAM_CHUNK mmioFOURCC('U', 'N', 'A', 'M')
+#define DMUS_FOURCC_UART_CHUNK mmioFOURCC('U', 'A', 'R', 'T')
+#define DMUS_FOURCC_UCOP_CHUNK mmioFOURCC('U', 'C', 'O', 'P')
+#define DMUS_FOURCC_USBJ_CHUNK mmioFOURCC('U', 'S', 'B', 'J')
+#define DMUS_FOURCC_UCMT_CHUNK mmioFOURCC('U', 'C', 'M', 'T')
+#define DMUS_FOURCC_CATEGORY_CHUNK mmioFOURCC('c', 'a', 't', 'g')
+#define DMUS_FOURCC_VERSION_CHUNK mmioFOURCC('v', 'e', 'r', 's')
 
 /* The following structures are used by the Tracks, and are the packed structures */
 /* that are passed to the Tracks inside the IStream. */
 
-
-typedef struct _DMUS_IO_SEQ_ITEM
-{
-    MUSIC_TIME    mtTime;
-    MUSIC_TIME    mtDuration;
-    DWORD         dwPChannel;
-    short         nOffset; 
-    BYTE          bStatus;
-    BYTE          bByte1;
-    BYTE          bByte2;
+typedef struct _DMUS_IO_SEQ_ITEM {
+  MUSIC_TIME mtTime;
+  MUSIC_TIME mtDuration;
+  DWORD dwPChannel;
+  short nOffset;
+  BYTE bStatus;
+  BYTE bByte1;
+  BYTE bByte2;
 } DMUS_IO_SEQ_ITEM;
 
-
-typedef struct _DMUS_IO_CURVE_ITEM
-{
-    MUSIC_TIME  mtStart;
-    MUSIC_TIME  mtDuration;
-    MUSIC_TIME  mtResetDuration;
-    DWORD       dwPChannel;
-    short       nOffset;
-    short       nStartValue;
-    short       nEndValue;
-    short       nResetValue;
-    BYTE        bType;
-    BYTE        bCurveShape;
-    BYTE        bCCData;
-    BYTE        bFlags;
+typedef struct _DMUS_IO_CURVE_ITEM {
+  MUSIC_TIME mtStart;
+  MUSIC_TIME mtDuration;
+  MUSIC_TIME mtResetDuration;
+  DWORD dwPChannel;
+  short nOffset;
+  short nStartValue;
+  short nEndValue;
+  short nResetValue;
+  BYTE bType;
+  BYTE bCurveShape;
+  BYTE bCCData;
+  BYTE bFlags;
 } DMUS_IO_CURVE_ITEM;
 
-
-typedef struct _DMUS_IO_TEMPO_ITEM
-{
-    MUSIC_TIME    lTime;
-    double        dblTempo;
+typedef struct _DMUS_IO_TEMPO_ITEM {
+  MUSIC_TIME lTime;
+  double dblTempo;
 } DMUS_IO_TEMPO_ITEM;
 
-
-typedef struct _DMUS_IO_SYSEX_ITEM
-{
-    MUSIC_TIME    mtTime;
-    DWORD         dwPChannel;
-    DWORD         dwSysExLength;
+typedef struct _DMUS_IO_SYSEX_ITEM {
+  MUSIC_TIME mtTime;
+  DWORD dwPChannel;
+  DWORD dwSysExLength;
 } DMUS_IO_SYSEX_ITEM;
 
-
-typedef struct _DMUS_IO_TIMESIGNATURE_ITEM
-{
-    MUSIC_TIME    lTime;
-    BYTE          bBeatsPerMeasure;   /* beats per measure (top of time sig) */
-    BYTE          bBeat;              /* what note receives the beat (bottom of time sig.) */
-                                      /* we can assume that 0 means 256th note */
-    WORD          wGridsPerBeat;      /* grids per beat */
+typedef struct _DMUS_IO_TIMESIGNATURE_ITEM {
+  MUSIC_TIME lTime;
+  BYTE bBeatsPerMeasure; /* beats per measure (top of time sig) */
+  BYTE bBeat;            /* what note receives the beat (bottom of time sig.) */
+                         /* we can assume that 0 means 256th note */
+  WORD wGridsPerBeat;    /* grids per beat */
 } DMUS_IO_TIMESIGNATURE_ITEM;
 
 /* PARAM structures, used by GetParam() and SetParam() */
-typedef struct _DMUS_COMMAND_PARAM
-{
-    BYTE bCommand;
-    BYTE bGrooveLevel;
-    BYTE bGrooveRange;
+typedef struct _DMUS_COMMAND_PARAM {
+  BYTE bCommand;
+  BYTE bGrooveLevel;
+  BYTE bGrooveRange;
 } DMUS_COMMAND_PARAM;
 
-typedef struct _DMUS_COMMAND_PARAM_2
-{
-	MUSIC_TIME mtTime;
-    BYTE bCommand;
-    BYTE bGrooveLevel;
-    BYTE bGrooveRange;
+typedef struct _DMUS_COMMAND_PARAM_2 {
+  MUSIC_TIME mtTime;
+  BYTE bCommand;
+  BYTE bGrooveLevel;
+  BYTE bGrooveRange;
 } DMUS_COMMAND_PARAM_2;
 
 typedef DMUS_CHORD_KEY DMUS_CHORD_PARAM; /* DMUS_CHORD_KEY defined in dmusici.h */
 
-typedef struct _DMUS_RHYTHM_PARAM
-{
-    DMUS_TIMESIGNATURE  TimeSig;
-    DWORD               dwRhythmPattern;
+typedef struct _DMUS_RHYTHM_PARAM {
+  DMUS_TIMESIGNATURE TimeSig;
+  DWORD dwRhythmPattern;
 } DMUS_RHYTHM_PARAM;
 
-typedef struct _DMUS_TEMPO_PARAM
-{
-    MUSIC_TIME  mtTime;
-    double      dblTempo;
+typedef struct _DMUS_TEMPO_PARAM {
+  MUSIC_TIME mtTime;
+  double dblTempo;
 } DMUS_TEMPO_PARAM;
 
-
-typedef struct _DMUS_MUTE_PARAM
-{
-    DWORD   dwPChannel;
-    DWORD   dwPChannelMap;
-    BOOL    fMute;
+typedef struct _DMUS_MUTE_PARAM {
+  DWORD dwPChannel;
+  DWORD dwPChannelMap;
+  BOOL fMute;
 } DMUS_MUTE_PARAM;
 
 /* Style chunks */
 
-#define DMUS_FOURCC_STYLE_FORM        mmioFOURCC('D','M','S','T')
-#define DMUS_FOURCC_STYLE_CHUNK       mmioFOURCC('s','t','y','h')
-#define DMUS_FOURCC_PART_LIST         mmioFOURCC('p','a','r','t')
-#define DMUS_FOURCC_PART_CHUNK        mmioFOURCC('p','r','t','h')
-#define DMUS_FOURCC_NOTE_CHUNK        mmioFOURCC('n','o','t','e')
-#define DMUS_FOURCC_CURVE_CHUNK       mmioFOURCC('c','r','v','e')
-#define DMUS_FOURCC_PATTERN_LIST      mmioFOURCC('p','t','t','n')
-#define DMUS_FOURCC_PATTERN_CHUNK     mmioFOURCC('p','t','n','h')
-#define DMUS_FOURCC_RHYTHM_CHUNK      mmioFOURCC('r','h','t','m')
-#define DMUS_FOURCC_PARTREF_LIST      mmioFOURCC('p','r','e','f')
-#define DMUS_FOURCC_PARTREF_CHUNK     mmioFOURCC('p','r','f','c')
-#define DMUS_FOURCC_STYLE_PERS_REF_LIST   mmioFOURCC('p', 'r', 'r', 'f')
-#define DMUS_FOURCC_MOTIFSETTINGS_CHUNK   mmioFOURCC('m', 't', 'f', 's')
+#define DMUS_FOURCC_STYLE_FORM mmioFOURCC('D', 'M', 'S', 'T')
+#define DMUS_FOURCC_STYLE_CHUNK mmioFOURCC('s', 't', 'y', 'h')
+#define DMUS_FOURCC_PART_LIST mmioFOURCC('p', 'a', 'r', 't')
+#define DMUS_FOURCC_PART_CHUNK mmioFOURCC('p', 'r', 't', 'h')
+#define DMUS_FOURCC_NOTE_CHUNK mmioFOURCC('n', 'o', 't', 'e')
+#define DMUS_FOURCC_CURVE_CHUNK mmioFOURCC('c', 'r', 'v', 'e')
+#define DMUS_FOURCC_PATTERN_LIST mmioFOURCC('p', 't', 't', 'n')
+#define DMUS_FOURCC_PATTERN_CHUNK mmioFOURCC('p', 't', 'n', 'h')
+#define DMUS_FOURCC_RHYTHM_CHUNK mmioFOURCC('r', 'h', 't', 'm')
+#define DMUS_FOURCC_PARTREF_LIST mmioFOURCC('p', 'r', 'e', 'f')
+#define DMUS_FOURCC_PARTREF_CHUNK mmioFOURCC('p', 'r', 'f', 'c')
+#define DMUS_FOURCC_STYLE_PERS_REF_LIST mmioFOURCC('p', 'r', 'r', 'f')
+#define DMUS_FOURCC_MOTIFSETTINGS_CHUNK mmioFOURCC('m', 't', 'f', 's')
 
 /* Flags used by variations: these make up the DWORDs in dwVariationChoices.               */
 
@@ -166,125 +150,115 @@ typedef struct _DMUS_MUTE_PARAM
 /* chords that are triads, 6th or 7th chords, and chords with extensions, respectively.    */
 /* bits 28 and 29 handle chords that are followed by tonic and dominant chords,            */
 /* respectively.                                                                           */
-#define DMUS_VARIATIONF_MAJOR        0x0000007F /* Seven positions in the scale - major chords. */    
-#define DMUS_VARIATIONF_MINOR        0x00003F80 /* Seven positions in the scale - minor chords. */    
-#define DMUS_VARIATIONF_OTHER        0x001FC000 /* Seven positions in the scale - other chords. */    
-#define DMUS_VARIATIONF_ROOT_SCALE   0x00200000 /* Handles chord roots in the scale. */         
-#define DMUS_VARIATIONF_ROOT_FLAT    0x00400000 /* Handles flat chord roots (based on scale notes). */         
-#define DMUS_VARIATIONF_ROOT_SHARP   0x00800000 /* Handles sharp chord roots (based on scale notes). */         
-#define DMUS_VARIATIONF_TYPE_TRIAD   0x01000000 /* Handles simple chords - triads. */  
-#define DMUS_VARIATIONF_TYPE_6AND7   0x02000000 /* Handles simple chords - 6 and 7. */  
-#define DMUS_VARIATIONF_TYPE_COMPLEX 0x04000000 /* Handles complex chords. */  
-#define DMUS_VARIATIONF_DEST_TO1     0x08000000 /* Handles transitions to 1 chord. */  
-#define DMUS_VARIATIONF_DEST_TO5     0x10000000 /* Handles transitions to 5 chord. */  
+#define DMUS_VARIATIONF_MAJOR 0x0000007F        /* Seven positions in the scale - major chords. */
+#define DMUS_VARIATIONF_MINOR 0x00003F80        /* Seven positions in the scale - minor chords. */
+#define DMUS_VARIATIONF_OTHER 0x001FC000        /* Seven positions in the scale - other chords. */
+#define DMUS_VARIATIONF_ROOT_SCALE 0x00200000   /* Handles chord roots in the scale. */
+#define DMUS_VARIATIONF_ROOT_FLAT 0x00400000    /* Handles flat chord roots (based on scale notes). */
+#define DMUS_VARIATIONF_ROOT_SHARP 0x00800000   /* Handles sharp chord roots (based on scale notes). */
+#define DMUS_VARIATIONF_TYPE_TRIAD 0x01000000   /* Handles simple chords - triads. */
+#define DMUS_VARIATIONF_TYPE_6AND7 0x02000000   /* Handles simple chords - 6 and 7. */
+#define DMUS_VARIATIONF_TYPE_COMPLEX 0x04000000 /* Handles complex chords. */
+#define DMUS_VARIATIONF_DEST_TO1 0x08000000     /* Handles transitions to 1 chord. */
+#define DMUS_VARIATIONF_DEST_TO5 0x10000000     /* Handles transitions to 5 chord. */
 
-/* The top three bits of the variation flags are the Mode bits.  If all are 0, it's IMA. */  
+/* The top three bits of the variation flags are the Mode bits.  If all are 0, it's IMA. */
 /* If the smallest is 1, it's Direct Music. */
-#define DMUS_VARIATIONF_MODES        0xE0000000
-#define DMUS_VARIATIONF_IMA25_MODE   0x00000000
-#define DMUS_VARIATIONF_DMUS_MODE    0x20000000
+#define DMUS_VARIATIONF_MODES 0xE0000000
+#define DMUS_VARIATIONF_IMA25_MODE 0x00000000
+#define DMUS_VARIATIONF_DMUS_MODE 0x20000000
 
 #pragma pack(2)
 
-typedef struct _DMUS_IO_TIMESIG
-{
-    /* Time signatures define how many beats per measure, which note receives */
-    /* the beat, and the grid resolution. */
-    BYTE    bBeatsPerMeasure;   /* beats per measure (top of time sig) */
-    BYTE    bBeat;              /* what note receives the beat (bottom of time sig.) */
-                                /* we can assume that 0 means 256th note */
-    WORD    wGridsPerBeat;      /* grids per beat */
+typedef struct _DMUS_IO_TIMESIG {
+  /* Time signatures define how many beats per measure, which note receives */
+  /* the beat, and the grid resolution. */
+  BYTE bBeatsPerMeasure; /* beats per measure (top of time sig) */
+  BYTE bBeat;            /* what note receives the beat (bottom of time sig.) */
+                         /* we can assume that 0 means 256th note */
+  WORD wGridsPerBeat;    /* grids per beat */
 } DMUS_IO_TIMESIG;
 
-typedef struct _DMUS_IO_STYLE
-{
-    DMUS_IO_TIMESIG     timeSig;        /* Styles have a default Time Signature */
-    double              dblTempo;   
+typedef struct _DMUS_IO_STYLE {
+  DMUS_IO_TIMESIG timeSig; /* Styles have a default Time Signature */
+  double dblTempo;
 } DMUS_IO_STYLE;
 
-typedef struct _DMUS_IO_VERSION
-{
-    DWORD               dwVersionMS;        /* Version # high-order 32 bits */
-    DWORD               dwVersionLS;        /* Version # low-order 32 bits  */
+typedef struct _DMUS_IO_VERSION {
+  DWORD dwVersionMS; /* Version # high-order 32 bits */
+  DWORD dwVersionLS; /* Version # low-order 32 bits  */
 } DMUS_IO_VERSION;
 
-typedef struct _DMUS_IO_PATTERN
-{
-    DMUS_IO_TIMESIG     timeSig;        /* Patterns can override the Style's Time sig. */
-    BYTE                bGrooveBottom;  /* bottom of groove range */
-    BYTE                bGrooveTop;     /* top of groove range */
-    WORD                wEmbellishment; /* Fill, Break, Intro, End, Normal, Motif */
-    WORD                wNbrMeasures;   /* length in measures */
+typedef struct _DMUS_IO_PATTERN {
+  DMUS_IO_TIMESIG timeSig; /* Patterns can override the Style's Time sig. */
+  BYTE bGrooveBottom;      /* bottom of groove range */
+  BYTE bGrooveTop;         /* top of groove range */
+  WORD wEmbellishment;     /* Fill, Break, Intro, End, Normal, Motif */
+  WORD wNbrMeasures;       /* length in measures */
 } DMUS_IO_PATTERN;
 
-typedef struct _DMUS_IO_STYLEPART
-{
-    DMUS_IO_TIMESIG     timeSig;        /* can override pattern's */
-    DWORD               dwVariationChoices[32]; /* MOAW choice bitfield */
-    GUID                guidPartID;     /* identifies the part */
-    WORD                wNbrMeasures;   /* length of the Part */
-    BYTE                bPlayModeFlags; /* see PLAYMODE flags */
-    BYTE                bInvertUpper;   /* inversion upper limit */
-    BYTE                bInvertLower;   /* inversion lower limit */
+typedef struct _DMUS_IO_STYLEPART {
+  DMUS_IO_TIMESIG timeSig;      /* can override pattern's */
+  DWORD dwVariationChoices[32]; /* MOAW choice bitfield */
+  GUID guidPartID;              /* identifies the part */
+  WORD wNbrMeasures;            /* length of the Part */
+  BYTE bPlayModeFlags;          /* see PLAYMODE flags */
+  BYTE bInvertUpper;            /* inversion upper limit */
+  BYTE bInvertLower;            /* inversion lower limit */
 } DMUS_IO_STYLEPART;
 
-typedef struct _DMUS_IO_PARTREF
-{
-    GUID    guidPartID;         /* unique ID for matching up with parts */
-    WORD    wLogicalPartID;     /* corresponds to port/device/midi channel */
-    BYTE    bVariationLockID;   /* parts with the same ID lock variations. */
-                                /* high bit is used to identify master Part */
-    BYTE    bSubChordLevel;     /* tells which sub chord level this part wants */
-    BYTE    bPriority;          /* 256 priority levels. Parts with lower priority */
-                                /* aren't played first when a device runs out of */
-                                /* notes */
-    BYTE    bRandomVariation;   /* when set, matching variations play in random order */
-                                /* when clear, matching variations play sequentially */
+typedef struct _DMUS_IO_PARTREF {
+  GUID guidPartID;       /* unique ID for matching up with parts */
+  WORD wLogicalPartID;   /* corresponds to port/device/midi channel */
+  BYTE bVariationLockID; /* parts with the same ID lock variations. */
+                         /* high bit is used to identify master Part */
+  BYTE bSubChordLevel;   /* tells which sub chord level this part wants */
+  BYTE bPriority;        /* 256 priority levels. Parts with lower priority */
+                         /* aren't played first when a device runs out of */
+                         /* notes */
+  BYTE bRandomVariation; /* when set, matching variations play in random order */
+                         /* when clear, matching variations play sequentially */
 } DMUS_IO_PARTREF;
 
-typedef struct _DMUS_IO_STYLENOTE
-{
-    MUSIC_TIME  mtGridStart;    /* when this note occurs */
-    DWORD       dwVariation;    /* variation bits */
-    MUSIC_TIME  mtDuration;     /* how long this note lasts */
-    short       nTimeOffset;    /* offset from mtGridStart */
-    WORD        wMusicValue;    /* Position in scale. */
-    BYTE        bVelocity;      /* Note velocity. */
-    BYTE        bTimeRange;     /* Range to randomize start time. */
-    BYTE        bDurRange;      /* Range to randomize duration. */
-    BYTE        bVelRange;      /* Range to randomize velocity. */
-    BYTE        bInversionID;   /* Identifies inversion group to which this note belongs */
-    BYTE        bPlayModeFlags; /* Can override part */
+typedef struct _DMUS_IO_STYLENOTE {
+  MUSIC_TIME mtGridStart; /* when this note occurs */
+  DWORD dwVariation;      /* variation bits */
+  MUSIC_TIME mtDuration;  /* how long this note lasts */
+  short nTimeOffset;      /* offset from mtGridStart */
+  WORD wMusicValue;       /* Position in scale. */
+  BYTE bVelocity;         /* Note velocity. */
+  BYTE bTimeRange;        /* Range to randomize start time. */
+  BYTE bDurRange;         /* Range to randomize duration. */
+  BYTE bVelRange;         /* Range to randomize velocity. */
+  BYTE bInversionID;      /* Identifies inversion group to which this note belongs */
+  BYTE bPlayModeFlags;    /* Can override part */
 } DMUS_IO_STYLENOTE;
 
-typedef struct _DMUS_IO_STYLECURVE
-{
-    MUSIC_TIME  mtGridStart;    /* when this curve occurs */
-    DWORD       dwVariation;    /* variation bits */
-    MUSIC_TIME  mtDuration;     /* how long this curve lasts */
-    MUSIC_TIME  mtResetDuration;/* how long after the end of the curve to reset the curve */
-    short       nTimeOffset;    /* offset from mtGridStart */
-    short       nStartValue;    /* curve's start value */
-    short       nEndValue;      /* curve's end value */
-    short       nResetValue;    /* the value to which to reset the curve */
-    BYTE        bEventType;     /* type of curve */
-    BYTE        bCurveShape;    /* shape of curve */
-    BYTE        bCCData;        /* CC# */
-    BYTE        bFlags;         /* Bit 1=TRUE means to send nResetValue. Otherwise, don't.
-                                   Other bits are reserved. */
+typedef struct _DMUS_IO_STYLECURVE {
+  MUSIC_TIME mtGridStart;     /* when this curve occurs */
+  DWORD dwVariation;          /* variation bits */
+  MUSIC_TIME mtDuration;      /* how long this curve lasts */
+  MUSIC_TIME mtResetDuration; /* how long after the end of the curve to reset the curve */
+  short nTimeOffset;          /* offset from mtGridStart */
+  short nStartValue;          /* curve's start value */
+  short nEndValue;            /* curve's end value */
+  short nResetValue;          /* the value to which to reset the curve */
+  BYTE bEventType;            /* type of curve */
+  BYTE bCurveShape;           /* shape of curve */
+  BYTE bCCData;               /* CC# */
+  BYTE bFlags;                /* Bit 1=TRUE means to send nResetValue. Otherwise, don't.
+                                 Other bits are reserved. */
 } DMUS_IO_STYLECURVE;
 
-typedef struct _DMUS_IO_MOTIFSETTINGS
-{
-    DWORD       dwRepeats;      /* Number of repeats. By default, 0. */
-    MUSIC_TIME  mtPlayStart;    /* Start of playback. By default, 0. */
-    MUSIC_TIME  mtLoopStart;    /* Start of looping portion. By default, 0. */
-    MUSIC_TIME  mtLoopEnd;      /* End of loop. Must be greater than mtLoopStart. By default equal to length of motif. */
-    DWORD       dwResolution;   /* Default resolution. */
+typedef struct _DMUS_IO_MOTIFSETTINGS {
+  DWORD dwRepeats;        /* Number of repeats. By default, 0. */
+  MUSIC_TIME mtPlayStart; /* Start of playback. By default, 0. */
+  MUSIC_TIME mtLoopStart; /* Start of looping portion. By default, 0. */
+  MUSIC_TIME mtLoopEnd;   /* End of loop. Must be greater than mtLoopStart. By default equal to length of motif. */
+  DWORD dwResolution;     /* Default resolution. */
 } DMUS_IO_MOTIFSETTINGS;
 
 #pragma pack()
-
 
 /*
 RIFF
@@ -402,40 +376,36 @@ RIFF
 
 /* Chord and command file formats */
 
-#define DMUS_FOURCC_CHORDTRACK_LIST         mmioFOURCC('c','o','r','d')
-#define DMUS_FOURCC_CHORDTRACKHEADER_CHUNK  mmioFOURCC('c','r','d','h')
-#define DMUS_FOURCC_CHORDTRACKBODY_CHUNK    mmioFOURCC('c','r','d','b')
+#define DMUS_FOURCC_CHORDTRACK_LIST mmioFOURCC('c', 'o', 'r', 'd')
+#define DMUS_FOURCC_CHORDTRACKHEADER_CHUNK mmioFOURCC('c', 'r', 'd', 'h')
+#define DMUS_FOURCC_CHORDTRACKBODY_CHUNK mmioFOURCC('c', 'r', 'd', 'b')
 
-#define DMUS_FOURCC_COMMANDTRACK_CHUNK      mmioFOURCC('c','m','n','d')
+#define DMUS_FOURCC_COMMANDTRACK_CHUNK mmioFOURCC('c', 'm', 'n', 'd')
 
-typedef struct _DMUS_IO_CHORD
-{
-    WCHAR       wszName[16];    /* Name of the chord */
-    MUSIC_TIME  mtTime;         /* Time of this chord */
-    WORD        wMeasure;       /* Measure this falls on */
-    BYTE        bBeat;          /* Beat this falls on */
+typedef struct _DMUS_IO_CHORD {
+  WCHAR wszName[16]; /* Name of the chord */
+  MUSIC_TIME mtTime; /* Time of this chord */
+  WORD wMeasure;     /* Measure this falls on */
+  BYTE bBeat;        /* Beat this falls on */
 } DMUS_IO_CHORD;
 
-typedef struct _DMUS_IO_SUBCHORD
-{
-    DWORD   dwChordPattern;     /* Notes in the subchord */
-    DWORD   dwScalePattern;     /* Notes in the scale */
-    DWORD   dwInversionPoints;  /* Where inversions can occur */
-    DWORD   dwLevels;           /* Which levels are supported by this subchord */
-    BYTE    bChordRoot;         /* Root of the subchord */
-    BYTE    bScaleRoot;         /* Root of the scale */
+typedef struct _DMUS_IO_SUBCHORD {
+  DWORD dwChordPattern;    /* Notes in the subchord */
+  DWORD dwScalePattern;    /* Notes in the scale */
+  DWORD dwInversionPoints; /* Where inversions can occur */
+  DWORD dwLevels;          /* Which levels are supported by this subchord */
+  BYTE bChordRoot;         /* Root of the subchord */
+  BYTE bScaleRoot;         /* Root of the scale */
 } DMUS_IO_SUBCHORD;
 
-typedef struct _DMUS_IO_COMMAND
-{
-    MUSIC_TIME  mtTime;         /* Time of this command */
-    WORD        wMeasure;       /* Measure this falls on */
-    BYTE        bBeat;          /* Beat this falls on */
-    BYTE        bCommand;       /* Command type (see #defines below) */
-    BYTE        bGrooveLevel;   /* Groove level (0 if command is not a groove) */
-    BYTE        bGrooveRange;   /* Groove range  */
+typedef struct _DMUS_IO_COMMAND {
+  MUSIC_TIME mtTime; /* Time of this command */
+  WORD wMeasure;     /* Measure this falls on */
+  BYTE bBeat;        /* Beat this falls on */
+  BYTE bCommand;     /* Command type (see #defines below) */
+  BYTE bGrooveLevel; /* Groove level (0 if command is not a groove) */
+  BYTE bGrooveRange; /* Groove range  */
 } DMUS_IO_COMMAND;
-
 
 /*
 
@@ -474,25 +444,24 @@ typedef struct _DMUS_IO_COMMAND
 */
 
 /*  File io for DirectMusic Tool and ToolGraph objects
-*/
+ */
 
 /* RIFF ids: */
 
-#define DMUS_FOURCC_TOOLGRAPH_FORM  mmioFOURCC('D','M','T','G')
-#define DMUS_FOURCC_TOOL_LIST       mmioFOURCC('t','o','l','l')
-#define DMUS_FOURCC_TOOL_FORM       mmioFOURCC('D','M','T','L')
-#define DMUS_FOURCC_TOOL_CHUNK      mmioFOURCC('t','o','l','h')
+#define DMUS_FOURCC_TOOLGRAPH_FORM mmioFOURCC('D', 'M', 'T', 'G')
+#define DMUS_FOURCC_TOOL_LIST mmioFOURCC('t', 'o', 'l', 'l')
+#define DMUS_FOURCC_TOOL_FORM mmioFOURCC('D', 'M', 'T', 'L')
+#define DMUS_FOURCC_TOOL_CHUNK mmioFOURCC('t', 'o', 'l', 'h')
 
 /* io structures: */
 
-typedef struct _DMUS_IO_TOOL_HEADER
-{
-    GUID        guidClassID;    /* Class id of tool. */
-    long        lIndex;         /* Position in graph. */
-    DWORD       cPChannels;     /* Number of items in channels array. */
-    FOURCC      ckid;           /* chunk ID of tool's data chunk if 0 fccType valid. */
-    FOURCC      fccType;        /* list type if NULL ckid valid. */
-    DWORD       dwPChannels[1]; /* Array of PChannels, size determined by cPChannels. */
+typedef struct _DMUS_IO_TOOL_HEADER {
+  GUID guidClassID;     /* Class id of tool. */
+  long lIndex;          /* Position in graph. */
+  DWORD cPChannels;     /* Number of items in channels array. */
+  FOURCC ckid;          /* chunk ID of tool's data chunk if 0 fccType valid. */
+  FOURCC fccType;       /* list type if NULL ckid valid. */
+  DWORD dwPChannels[1]; /* Array of PChannels, size determined by cPChannels. */
 } DMUS_IO_TOOL_HEADER;
 
 /*
@@ -544,23 +513,20 @@ RIFF
 
 /*  File io for DirectMusic Band Track object */
 
-
 /* RIFF ids: */
-#define DMUS_FOURCC_BANDTRACK_FORM  mmioFOURCC('D','M','B','T')
-#define DMUS_FOURCC_BANDTRACK_CHUNK mmioFOURCC('b','d','t','h')
-#define DMUS_FOURCC_BANDS_LIST      mmioFOURCC('l','b','d','l')
-#define DMUS_FOURCC_BAND_LIST       mmioFOURCC('l','b','n','d')
-#define DMUS_FOURCC_BANDITEM_CHUNK  mmioFOURCC('b','d','i','h')
+#define DMUS_FOURCC_BANDTRACK_FORM mmioFOURCC('D', 'M', 'B', 'T')
+#define DMUS_FOURCC_BANDTRACK_CHUNK mmioFOURCC('b', 'd', 't', 'h')
+#define DMUS_FOURCC_BANDS_LIST mmioFOURCC('l', 'b', 'd', 'l')
+#define DMUS_FOURCC_BAND_LIST mmioFOURCC('l', 'b', 'n', 'd')
+#define DMUS_FOURCC_BANDITEM_CHUNK mmioFOURCC('b', 'd', 'i', 'h')
 
 /*  io structures */
-typedef struct _DMUS_IO_BAND_TRACK_HEADER
-{
-    BOOL bAutoDownload;     /* Determines if Auto-Download is enabled. */
+typedef struct _DMUS_IO_BAND_TRACK_HEADER {
+  BOOL bAutoDownload; /* Determines if Auto-Download is enabled. */
 } DMUS_IO_BAND_TRACK_HEADER;
 
-typedef struct _DMUS_IO_BAND_ITEM_HEADER
-{
-    MUSIC_TIME lBandTime;   /* Position in track list. */
+typedef struct _DMUS_IO_BAND_ITEM_HEADER {
+  MUSIC_TIME lBandTime; /* Position in track list. */
 } DMUS_IO_BAND_ITEM_HEADER;
 
 /*
@@ -611,47 +577,45 @@ RIFF
             (
                 <DMUS_IO_BAND_ITEM_HEADER>  // Band item header
             )
-*/      
-
+*/
 
 /*  File io for DirectMusic Band object
-*/
+ */
 
 /* RIFF ids: */
 
-#define DMUS_FOURCC_BAND_FORM           mmioFOURCC('D','M','B','D')
-#define DMUS_FOURCC_INSTRUMENTS_LIST    mmioFOURCC('l','b','i','l')
-#define DMUS_FOURCC_INSTRUMENT_LIST     mmioFOURCC('l','b','i','n')
-#define DMUS_FOURCC_INSTRUMENT_CHUNK    mmioFOURCC('b','i','n','s')
+#define DMUS_FOURCC_BAND_FORM mmioFOURCC('D', 'M', 'B', 'D')
+#define DMUS_FOURCC_INSTRUMENTS_LIST mmioFOURCC('l', 'b', 'i', 'l')
+#define DMUS_FOURCC_INSTRUMENT_LIST mmioFOURCC('l', 'b', 'i', 'n')
+#define DMUS_FOURCC_INSTRUMENT_CHUNK mmioFOURCC('b', 'i', 'n', 's')
 
 /* Flags for DMUS_IO_INSTRUMENT
  */
-#define DMUS_IO_INST_PATCH          (1 << 0)        /* dwPatch is valid. */
-#define DMUS_IO_INST_BANKSELECT     (1 << 1)        /* dwPatch contains a valid Bank Select MSB and LSB part */
-#define DMUS_IO_INST_ASSIGN_PATCH   (1 << 3)        /* dwAssignPatch is valid */
-#define DMUS_IO_INST_NOTERANGES     (1 << 4)        /* dwNoteRanges is valid */
-#define DMUS_IO_INST_PAN            (1 << 5)        /* bPan is valid */
-#define DMUS_IO_INST_VOLUME         (1 << 6 )       /* bVolume is valid */
-#define DMUS_IO_INST_TRANSPOSE      (1 << 7)        /* nTranspose is valid */
-#define DMUS_IO_INST_GM             (1 << 8)        /* Instrument is from GM collection */
-#define DMUS_IO_INST_GS             (1 << 9)        /* Instrument is from GS collection */
-#define DMUS_IO_INST_XG             (1 << 10)       /* Instrument is from XG collection */
-#define DMUS_IO_INST_CHANNEL_PRIORITY (1 << 11)     /* dwChannelPriority is valid */
-#define DMUS_IO_INST_USE_DEFAULT_GM_SET (1 << 12)   /* Always use the default GM set for this patch,  */
-                                                    /* don't rely on the synth caps stating GM or GS in hardware. */
+#define DMUS_IO_INST_PATCH (1 << 0)               /* dwPatch is valid. */
+#define DMUS_IO_INST_BANKSELECT (1 << 1)          /* dwPatch contains a valid Bank Select MSB and LSB part */
+#define DMUS_IO_INST_ASSIGN_PATCH (1 << 3)        /* dwAssignPatch is valid */
+#define DMUS_IO_INST_NOTERANGES (1 << 4)          /* dwNoteRanges is valid */
+#define DMUS_IO_INST_PAN (1 << 5)                 /* bPan is valid */
+#define DMUS_IO_INST_VOLUME (1 << 6)              /* bVolume is valid */
+#define DMUS_IO_INST_TRANSPOSE (1 << 7)           /* nTranspose is valid */
+#define DMUS_IO_INST_GM (1 << 8)                  /* Instrument is from GM collection */
+#define DMUS_IO_INST_GS (1 << 9)                  /* Instrument is from GS collection */
+#define DMUS_IO_INST_XG (1 << 10)                 /* Instrument is from XG collection */
+#define DMUS_IO_INST_CHANNEL_PRIORITY (1 << 11)   /* dwChannelPriority is valid */
+#define DMUS_IO_INST_USE_DEFAULT_GM_SET (1 << 12) /* Always use the default GM set for this patch,  */
+                                                  /* don't rely on the synth caps stating GM or GS in hardware. */
 
 /*  io structures */
-typedef struct _DMUS_IO_INSTRUMENT
-{
-    DWORD   dwPatch;            /* MSB, LSB and Program change to define instrument */
-    DWORD   dwAssignPatch;      /* MSB, LSB and Program change to assign to instrument when downloading */
-    DWORD   dwNoteRanges[4];    /* 128 bits; one for each MIDI note instrument needs to able to play */
-    DWORD   dwPChannel;         /* PChannel instrument plays on */
-    DWORD   dwFlags;            /* DMUS_IO_INST_ flags */
-    BYTE    bPan;               /* Pan for instrument */
-    BYTE    bVolume;            /* Volume for instrument */
-    short   nTranspose;         /* Number of semitones to transpose notes */
-    DWORD   dwChannelPriority;  /* Channel priority */
+typedef struct _DMUS_IO_INSTRUMENT {
+  DWORD dwPatch;           /* MSB, LSB and Program change to define instrument */
+  DWORD dwAssignPatch;     /* MSB, LSB and Program change to assign to instrument when downloading */
+  DWORD dwNoteRanges[4];   /* 128 bits; one for each MIDI note instrument needs to able to play */
+  DWORD dwPChannel;        /* PChannel instrument plays on */
+  DWORD dwFlags;           /* DMUS_IO_INST_ flags */
+  BYTE bPan;               /* Pan for instrument */
+  BYTE bVolume;            /* Volume for instrument */
+  short nTranspose;        /* Number of semitones to transpose notes */
+  DWORD dwChannelPriority; /* Channel priority */
 } DMUS_IO_INSTRUMENT;
 
 /*
@@ -697,37 +661,35 @@ RIFF
                 'bins'
                 <DMUS_IO_INSTRUMENT>    // Instrument header
             )
-*/      
+*/
 
 /*  File io for DirectMusic Segment object */
 
 /* RIFF ids: */
 
-#define DMUS_FOURCC_SEGMENT_FORM    mmioFOURCC('D','M','S','G')
-#define DMUS_FOURCC_SEGMENT_CHUNK   mmioFOURCC('s','e','g','h')
-#define DMUS_FOURCC_TRACK_LIST      mmioFOURCC('t','r','k','l')
-#define DMUS_FOURCC_TRACK_FORM      mmioFOURCC('D','M','T','K')
-#define DMUS_FOURCC_TRACK_CHUNK     mmioFOURCC('t','r','k','h')
+#define DMUS_FOURCC_SEGMENT_FORM mmioFOURCC('D', 'M', 'S', 'G')
+#define DMUS_FOURCC_SEGMENT_CHUNK mmioFOURCC('s', 'e', 'g', 'h')
+#define DMUS_FOURCC_TRACK_LIST mmioFOURCC('t', 'r', 'k', 'l')
+#define DMUS_FOURCC_TRACK_FORM mmioFOURCC('D', 'M', 'T', 'K')
+#define DMUS_FOURCC_TRACK_CHUNK mmioFOURCC('t', 'r', 'k', 'h')
 
 /*  io structures:*/
 
-typedef struct _DMUS_IO_SEGMENT_HEADER
-{
-    DWORD       dwRepeats;      /* Number of repeats. By default, 0. */
-    MUSIC_TIME  mtLength;       /* Length, in music time. */
-    MUSIC_TIME  mtPlayStart;    /* Start of playback. By default, 0. */
-    MUSIC_TIME  mtLoopStart;    /* Start of looping portion. By default, 0. */
-    MUSIC_TIME  mtLoopEnd;      /* End of loop. Must be greater than dwPlayStart. By default equal to length. */
-    DWORD       dwResolution;   /* Default resolution. */
+typedef struct _DMUS_IO_SEGMENT_HEADER {
+  DWORD dwRepeats;        /* Number of repeats. By default, 0. */
+  MUSIC_TIME mtLength;    /* Length, in music time. */
+  MUSIC_TIME mtPlayStart; /* Start of playback. By default, 0. */
+  MUSIC_TIME mtLoopStart; /* Start of looping portion. By default, 0. */
+  MUSIC_TIME mtLoopEnd;   /* End of loop. Must be greater than dwPlayStart. By default equal to length. */
+  DWORD dwResolution;     /* Default resolution. */
 } DMUS_IO_SEGMENT_HEADER;
 
-typedef struct _DMUS_IO_TRACK_HEADER
-{
-    GUID        guidClassID;    /* Class id of track. */
-    DWORD       dwPosition;     /* Position in track list. */
-    DWORD       dwGroup;        /* Group bits for track. */
-    FOURCC      ckid;           /* chunk ID of track's data chunk if 0 fccType valid. */
-    FOURCC      fccType;        /* list type if NULL ckid valid */
+typedef struct _DMUS_IO_TRACK_HEADER {
+  GUID guidClassID; /* Class id of track. */
+  DWORD dwPosition; /* Position in track list. */
+  DWORD dwGroup;    /* Group bits for track. */
+  FOURCC ckid;      /* chunk ID of track's data chunk if 0 fccType valid. */
+  FOURCC fccType;   /* list type if NULL ckid valid */
 } DMUS_IO_TRACK_HEADER;
 
 /*
@@ -742,12 +704,12 @@ RIFF
     [<DMTG-form>]   // Optional ToolGraph
 )
 
-    // <segh-ck>        
+    // <segh-ck>
     'segh'
     (
         <DMUS_IO_SEGMENT_HEADER>
     )
-    
+
     // <guid-ck>
     'guid'
     (
@@ -785,22 +747,21 @@ RIFF
     )
 */
 
-/*  File io for DirectMusic reference chunk. 
+/*  File io for DirectMusic reference chunk.
     This is used to embed a reference to an object.
 */
 
 /*  RIFF ids: */
 
-#define DMUS_FOURCC_REF_LIST        mmioFOURCC('D','M','R','F')
-#define DMUS_FOURCC_REF_CHUNK       mmioFOURCC('r','e','f','h')
-#define DMUS_FOURCC_DATE_CHUNK      mmioFOURCC('d','a','t','e')
-#define DMUS_FOURCC_NAME_CHUNK      mmioFOURCC('n','a','m','e')
-#define DMUS_FOURCC_FILE_CHUNK      mmioFOURCC('f','i','l','e')
+#define DMUS_FOURCC_REF_LIST mmioFOURCC('D', 'M', 'R', 'F')
+#define DMUS_FOURCC_REF_CHUNK mmioFOURCC('r', 'e', 'f', 'h')
+#define DMUS_FOURCC_DATE_CHUNK mmioFOURCC('d', 'a', 't', 'e')
+#define DMUS_FOURCC_NAME_CHUNK mmioFOURCC('n', 'a', 'm', 'e')
+#define DMUS_FOURCC_FILE_CHUNK mmioFOURCC('f', 'i', 'l', 'e')
 
-typedef struct _DMUS_IO_REFERENCE
-{
-    GUID    guidClassID;    /* Class id is always required. */
-    DWORD   dwValidData;    /* Flags. */
+typedef struct _DMUS_IO_REFERENCE {
+  GUID guidClassID;  /* Class id is always required. */
+  DWORD dwValidData; /* Flags. */
 } DMUS_IO_REFERENCE;
 
 /*
@@ -862,90 +823,88 @@ LIST
 /* Chord Maps */
 
 /* runtime chunks */
-#define DMUS_FOURCC_CHORDMAP_FORM       mmioFOURCC('D','M','P','R')
-#define DMUS_FOURCC_IOCHORDMAP_CHUNK    mmioFOURCC('p','e','r','h')
-#define DMUS_FOURCC_SUBCHORD_CHUNK      mmioFOURCC('c','h','d','t')
-#define DMUS_FOURCC_CHORDENTRY_CHUNK    mmioFOURCC('c','h','e','h')
-#define DMUS_FOURCC_SUBCHORDID_CHUNK    mmioFOURCC('s','b','c','n')
-#define DMUS_FOURCC_IONEXTCHORD_CHUNK   mmioFOURCC('n','c','r','d')
-#define DMUS_FOURCC_NEXTCHORDSEQ_CHUNK  mmioFOURCC('n','c','s','q')
-#define DMUS_FOURCC_IOSIGNPOST_CHUNK    mmioFOURCC('s','p','s','h')
-#define DMUS_FOURCC_CHORDNAME_CHUNK     mmioFOURCC('I','N','A','M')
+#define DMUS_FOURCC_CHORDMAP_FORM mmioFOURCC('D', 'M', 'P', 'R')
+#define DMUS_FOURCC_IOCHORDMAP_CHUNK mmioFOURCC('p', 'e', 'r', 'h')
+#define DMUS_FOURCC_SUBCHORD_CHUNK mmioFOURCC('c', 'h', 'd', 't')
+#define DMUS_FOURCC_CHORDENTRY_CHUNK mmioFOURCC('c', 'h', 'e', 'h')
+#define DMUS_FOURCC_SUBCHORDID_CHUNK mmioFOURCC('s', 'b', 'c', 'n')
+#define DMUS_FOURCC_IONEXTCHORD_CHUNK mmioFOURCC('n', 'c', 'r', 'd')
+#define DMUS_FOURCC_NEXTCHORDSEQ_CHUNK mmioFOURCC('n', 'c', 's', 'q')
+#define DMUS_FOURCC_IOSIGNPOST_CHUNK mmioFOURCC('s', 'p', 's', 'h')
+#define DMUS_FOURCC_CHORDNAME_CHUNK mmioFOURCC('I', 'N', 'A', 'M')
 
 /* runtime list chunks */
-#define DMUS_FOURCC_CHORDENTRY_LIST     mmioFOURCC('c','h','o','e')
-#define DMUS_FOURCC_CHORDMAP_LIST       mmioFOURCC('c','m','a','p')
-#define DMUS_FOURCC_CHORD_LIST          mmioFOURCC('c','h','r','d')
-#define DMUS_FOURCC_CHORDPALETTE_LIST   mmioFOURCC('c','h','p','l')
-#define DMUS_FOURCC_CADENCE_LIST        mmioFOURCC('c','a','d','e')
-#define DMUS_FOURCC_SIGNPOSTITEM_LIST   mmioFOURCC('s','p','s','t')
+#define DMUS_FOURCC_CHORDENTRY_LIST mmioFOURCC('c', 'h', 'o', 'e')
+#define DMUS_FOURCC_CHORDMAP_LIST mmioFOURCC('c', 'm', 'a', 'p')
+#define DMUS_FOURCC_CHORD_LIST mmioFOURCC('c', 'h', 'r', 'd')
+#define DMUS_FOURCC_CHORDPALETTE_LIST mmioFOURCC('c', 'h', 'p', 'l')
+#define DMUS_FOURCC_CADENCE_LIST mmioFOURCC('c', 'a', 'd', 'e')
+#define DMUS_FOURCC_SIGNPOSTITEM_LIST mmioFOURCC('s', 'p', 's', 't')
 
-#define DMUS_FOURCC_SIGNPOST_LIST       mmioFOURCC('s','p','s','q')
+#define DMUS_FOURCC_SIGNPOST_LIST mmioFOURCC('s', 'p', 's', 'q')
 
 /* values for dwChord field of DMUS_IO_PERS_SIGNPOST */
 /* DMUS_SIGNPOSTF_ flags are also used in templates (DMUS_IO_SIGNPOST) */
-#define DMUS_SIGNPOSTF_A        1      
-#define DMUS_SIGNPOSTF_B        2
-#define DMUS_SIGNPOSTF_C        4
-#define DMUS_SIGNPOSTF_D        8
-#define DMUS_SIGNPOSTF_E        0x10
-#define DMUS_SIGNPOSTF_F        0x20
-#define DMUS_SIGNPOSTF_LETTER   (DMUS_SIGNPOSTF_A | DMUS_SIGNPOSTF_B | DMUS_SIGNPOSTF_C | DMUS_SIGNPOSTF_D | DMUS_SIGNPOSTF_E | DMUS_SIGNPOSTF_F)
-#define DMUS_SIGNPOSTF_1        0x100
-#define DMUS_SIGNPOSTF_2        0x200
-#define DMUS_SIGNPOSTF_3        0x400
-#define DMUS_SIGNPOSTF_4        0x800
-#define DMUS_SIGNPOSTF_5        0x1000
-#define DMUS_SIGNPOSTF_6        0x2000
-#define DMUS_SIGNPOSTF_7        0x4000
-#define DMUS_SIGNPOSTF_ROOT     (DMUS_SIGNPOSTF_1 | DMUS_SIGNPOSTF_2 | DMUS_SIGNPOSTF_3 | DMUS_SIGNPOSTF_4 | DMUS_SIGNPOSTF_5 | DMUS_SIGNPOSTF_6 | DMUS_SIGNPOSTF_7)
-#define DMUS_SIGNPOSTF_CADENCE  0x8000
+#define DMUS_SIGNPOSTF_A 1
+#define DMUS_SIGNPOSTF_B 2
+#define DMUS_SIGNPOSTF_C 4
+#define DMUS_SIGNPOSTF_D 8
+#define DMUS_SIGNPOSTF_E 0x10
+#define DMUS_SIGNPOSTF_F 0x20
+#define DMUS_SIGNPOSTF_LETTER                                                                                          \
+  (DMUS_SIGNPOSTF_A | DMUS_SIGNPOSTF_B | DMUS_SIGNPOSTF_C | DMUS_SIGNPOSTF_D | DMUS_SIGNPOSTF_E | DMUS_SIGNPOSTF_F)
+#define DMUS_SIGNPOSTF_1 0x100
+#define DMUS_SIGNPOSTF_2 0x200
+#define DMUS_SIGNPOSTF_3 0x400
+#define DMUS_SIGNPOSTF_4 0x800
+#define DMUS_SIGNPOSTF_5 0x1000
+#define DMUS_SIGNPOSTF_6 0x2000
+#define DMUS_SIGNPOSTF_7 0x4000
+#define DMUS_SIGNPOSTF_ROOT                                                                                            \
+  (DMUS_SIGNPOSTF_1 | DMUS_SIGNPOSTF_2 | DMUS_SIGNPOSTF_3 | DMUS_SIGNPOSTF_4 | DMUS_SIGNPOSTF_5 | DMUS_SIGNPOSTF_6 |   \
+   DMUS_SIGNPOSTF_7)
+#define DMUS_SIGNPOSTF_CADENCE 0x8000
 
 /* values for dwChord field of DMUS_IO_PERS_SIGNPOST */
-#define DMUS_SPOSTCADENCEF_1  2   /* Use the first cadence chord. */
-#define DMUS_SPOSTCADENCEF_2  4   /* Use the second cadence chord. */
+#define DMUS_SPOSTCADENCEF_1 2 /* Use the first cadence chord. */
+#define DMUS_SPOSTCADENCEF_2 4 /* Use the second cadence chord. */
 
 /* run time data structs */
-typedef struct _DMUS_IO_CHORDMAP
-{
-    WCHAR   wszLoadName[20];
-    DWORD   dwScalePattern;
-    DWORD   dwFlags;
+typedef struct _DMUS_IO_CHORDMAP {
+  WCHAR wszLoadName[20];
+  DWORD dwScalePattern;
+  DWORD dwFlags;
 } DMUS_IO_CHORDMAP;
 
-typedef struct _DMUS_IO_CHORDMAP_SUBCHORD
-{
-    DWORD   dwChordPattern;
-    DWORD   dwScalePattern;
-    DWORD   dwInvertPattern;
-    BYTE    bChordRoot;
-    BYTE    bScaleRoot;
-    WORD    wCFlags;
-    DWORD   dwLevels;   /* parts or which subchord levels this chord supports */
+typedef struct _DMUS_IO_CHORDMAP_SUBCHORD {
+  DWORD dwChordPattern;
+  DWORD dwScalePattern;
+  DWORD dwInvertPattern;
+  BYTE bChordRoot;
+  BYTE bScaleRoot;
+  WORD wCFlags;
+  DWORD dwLevels; /* parts or which subchord levels this chord supports */
 } DMUS_IO_CHORDMAP_SUBCHORD;
 
 /* Legacy name... */
 typedef DMUS_IO_CHORDMAP_SUBCHORD DMUS_IO_PERS_SUBCHORD;
 
-typedef struct _DMUS_IO_CHORDENTRY
-{
-    DWORD   dwFlags;
-    WORD    wConnectionID;  /* replaces runtime "pointer to this" */
+typedef struct _DMUS_IO_CHORDENTRY {
+  DWORD dwFlags;
+  WORD wConnectionID; /* replaces runtime "pointer to this" */
 } DMUS_IO_CHORDENTRY;
 
-typedef struct _DMUS_IO_NEXTCHORD
-{
-    DWORD   dwFlags;
-    WORD    nWeight;
-    WORD    wMinBeats;
-    WORD    wMaxBeats;
-    WORD    wConnectionID;  /* points to an ioChordEntry */
+typedef struct _DMUS_IO_NEXTCHORD {
+  DWORD dwFlags;
+  WORD nWeight;
+  WORD wMinBeats;
+  WORD wMaxBeats;
+  WORD wConnectionID; /* points to an ioChordEntry */
 } DMUS_IO_NEXTCHORD;
 
-typedef struct _DMUS_IO_CHORDMAP_SIGNPOST
-{
-    DWORD   dwChords;   /* 1bit per group */
-    DWORD   dwFlags;
+typedef struct _DMUS_IO_CHORDMAP_SIGNPOST {
+  DWORD dwChords; /* 1bit per group */
+  DWORD dwFlags;
 } DMUS_IO_CHORDMAP_SIGNPOST;
 
 /* Legacy name... */
@@ -973,12 +932,12 @@ RIFF
                                 <ncsq-ck>   // connecting(next) chords
                      )
 
-<chrd-list> ::= LIST('chrd' 
+<chrd-list> ::= LIST('chrd'
                                 <INAM-ck>   // name of chord in wide char format
                                 <sbcn-ck>   // list of subchords composing chord
                     )
 
-<chpl-list> ::= LIST('chpl' 
+<chpl-list> ::= LIST('chpl'
                                 <chrd-list> ... // chord definition
                     )
 
@@ -1001,7 +960,7 @@ RIFF
 
 <sbcn-ck> ::= sbcn(<cSubChordID:WORD> ...)
 
-<ncsq-ck> ::= ncsq(<wNextChordSize:WORD> 
+<ncsq-ck> ::= ncsq(<wNextChordSize:WORD>
                    <DMUS_IO_NEXTCHORD>...)
 
 <spsh-ck> ::= spsh(<DMUS_IO_PERS_SIGNPOST>)
@@ -1010,14 +969,12 @@ RIFF
 
 /* Signpost tracks */
 
-#define DMUS_FOURCC_SIGNPOST_TRACK_CHUNK     mmioFOURCC( 's', 'g', 'n', 'p' )
+#define DMUS_FOURCC_SIGNPOST_TRACK_CHUNK mmioFOURCC('s', 'g', 'n', 'p')
 
-
-typedef struct _DMUS_IO_SIGNPOST
-{
-    MUSIC_TIME  mtTime;
-    DWORD       dwChords;
-    WORD        wMeasure;
+typedef struct _DMUS_IO_SIGNPOST {
+  MUSIC_TIME mtTime;
+  DWORD dwChords;
+  WORD wMeasure;
 } DMUS_IO_SIGNPOST;
 
 /*
@@ -1031,13 +988,12 @@ typedef struct _DMUS_IO_SIGNPOST
 
 */
 
-#define DMUS_FOURCC_MUTE_CHUNK  mmioFOURCC('m','u','t','e')
+#define DMUS_FOURCC_MUTE_CHUNK mmioFOURCC('m', 'u', 't', 'e')
 
-typedef struct _DMUS_IO_MUTE
-{
-    MUSIC_TIME  mtTime;
-    DWORD       dwPChannel;
-    DWORD       dwPChannelMap;
+typedef struct _DMUS_IO_MUTE {
+  MUSIC_TIME mtTime;
+  DWORD dwPChannel;
+  DWORD dwPChannelMap;
 } DMUS_IO_MUTE;
 
 /*
@@ -1054,12 +1010,12 @@ typedef struct _DMUS_IO_MUTE
 
 /* Used for both style and chord map tracks */
 
-#define DMUS_FOURCC_TIME_STAMP_CHUNK    mmioFOURCC('s', 't', 'm', 'p')
+#define DMUS_FOURCC_TIME_STAMP_CHUNK mmioFOURCC('s', 't', 'm', 'p')
 
 /* Style tracks */
 
-#define DMUS_FOURCC_STYLE_TRACK_LIST    mmioFOURCC('s', 't', 't', 'r')
-#define DMUS_FOURCC_STYLE_REF_LIST      mmioFOURCC('s', 't', 'r', 'f')
+#define DMUS_FOURCC_STYLE_TRACK_LIST mmioFOURCC('s', 't', 't', 'r')
+#define DMUS_FOURCC_STYLE_REF_LIST mmioFOURCC('s', 't', 'r', 'f')
 
 /*
 
@@ -1083,7 +1039,7 @@ typedef struct _DMUS_IO_MUTE
 /* Chord map tracks */
 
 #define DMUS_FOURCC_PERS_TRACK_LIST mmioFOURCC('p', 'f', 't', 'r')
-#define DMUS_FOURCC_PERS_REF_LIST   mmioFOURCC('p', 'f', 'r', 'f')
+#define DMUS_FOURCC_PERS_REF_LIST mmioFOURCC('p', 'f', 'r', 'f')
 
 /*
 
@@ -1110,7 +1066,7 @@ typedef struct _DMUS_IO_MUTE
 
 */
 
-#define DMUS_FOURCC_TEMPO_TRACK     mmioFOURCC('t','e','t','r')
+#define DMUS_FOURCC_TEMPO_TRACK mmioFOURCC('t', 'e', 't', 'r')
 
 /*
     // tempo list
@@ -1121,9 +1077,9 @@ typedef struct _DMUS_IO_MUTE
     )
   */
 
-#define DMUS_FOURCC_SEQ_TRACK       mmioFOURCC('s','e','q','t')
-#define DMUS_FOURCC_SEQ_LIST        mmioFOURCC('e','v','t','l')
-#define DMUS_FOURCC_CURVE_LIST      mmioFOURCC('c','u','r','l')
+#define DMUS_FOURCC_SEQ_TRACK mmioFOURCC('s', 'e', 'q', 't')
+#define DMUS_FOURCC_SEQ_LIST mmioFOURCC('e', 'v', 't', 'l')
+#define DMUS_FOURCC_CURVE_LIST mmioFOURCC('c', 'u', 'r', 'l')
 
 /*
     // sequence track
@@ -1144,7 +1100,7 @@ typedef struct _DMUS_IO_MUTE
     )
 */
 
-#define DMUS_FOURCC_SYSEX_TRACK     mmioFOURCC('s','y','e','x')
+#define DMUS_FOURCC_SYSEX_TRACK mmioFOURCC('s', 'y', 'e', 'x')
 
 /*
     // sysex track
@@ -1158,7 +1114,7 @@ typedef struct _DMUS_IO_MUTE
     )
 */
 
-#define DMUS_FOURCC_TIMESIGNATURE_TRACK mmioFOURCC('t','i','m','s')
+#define DMUS_FOURCC_TIMESIGNATURE_TRACK mmioFOURCC('t', 'i', 'm', 's')
 
 /*
     // time signature track

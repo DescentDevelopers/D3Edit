@@ -10,28 +10,25 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #ifndef __SCRIPTCOMPILERAPI_H_
 #define __SCRIPTCOMPILERAPI_H_
 
 #include "pstypes.h"
 
-#define ST_LEVEL	0
-#define ST_GAME		1
-typedef struct{
-	char source_filename[_MAX_PATH];
-	ubyte script_type;
-	void (*callback)(char *str);
-}tCompilerInfo;
+#define ST_LEVEL 0
+#define ST_GAME 1
+typedef struct {
+  char source_filename[_MAX_PATH];
+  ubyte script_type;
+  void (*callback)(char *str);
+} tCompilerInfo;
 
-#define CERR_NOERR				0
-#define CERR_NOCOMPILERDEFINED	1
-#define CERR_COMPILERMISSING	2
-#define CERR_SOURCENOEXIST		3
-
+#define CERR_NOERR 0
+#define CERR_NOCOMPILERDEFINED 1
+#define CERR_COMPILERMISSING 2
+#define CERR_SOURCENOEXIST 3
 
 int ScriptCompile(tCompilerInfo *ci);
-bool ScriptCreateEmptyScript(char *filename,ubyte script_type);
+bool ScriptCreateEmptyScript(char *filename, ubyte script_type);
 #endif

@@ -10,13 +10,12 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_LEVELFRAME_H__8F6C1720_EC20_11D2_A6A1_006097E07445__INCLUDED_)
+#if !defined(AFX_LEVELFRAME_H__8F6C1720_EC20_11D2_A6A1_006097E07445__INCLUDED_)
 #define AFX_LEVELFRAME_H__8F6C1720_EC20_11D2_A6A1_006097E07445__INCLUDED_
 
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-
 
 // LevelFrame.h : header file
 //
@@ -24,75 +23,74 @@
 /////////////////////////////////////////////////////////////////////////////
 // CLevelFrame frame
 
-class CLevelFrame : public CMDIChildWnd
-{
-	DECLARE_DYNCREATE(CLevelFrame)
+class CLevelFrame : public CMDIChildWnd {
+  DECLARE_DYNCREATE(CLevelFrame)
 protected:
-	CLevelFrame();           // protected constructor used by dynamic creation
+  CLevelFrame(); // protected constructor used by dynamic creation
 
-// Attributes
+  // Attributes
 public:
-
-// Operations
+  // Operations
 public:
-	void InitLevelResources();
-	void ShutdownLevelResources();
-	void CloseLevel();
+  void InitLevelResources();
+  void ShutdownLevelResources();
+  void CloseLevel();
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CLevelFrame)
-	public:
-	virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
-	protected:
-	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	//}}AFX_VIRTUAL
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CLevelFrame)
+public:
+  virtual BOOL OnCmdMsg(UINT nID, int nCode, void *pExtra, AFX_CMDHANDLERINFO *pHandlerInfo);
 
-// Implementation
 protected:
-	virtual ~CLevelFrame();
+  virtual BOOL PreCreateWindow(CREATESTRUCT &cs);
+  //}}AFX_VIRTUAL
+
+  // Implementation
+protected:
+  virtual ~CLevelFrame();
 #ifdef _DEBUG
-	virtual void AssertValid() const;
-	virtual void Dump(CDumpContext& dc) const;
+  virtual void AssertValid() const;
+  virtual void Dump(CDumpContext &dc) const;
 #endif
 
-	// Generated message map functions
-	//{{AFX_MSG(CLevelFrame)
-	afx_msg void OnSetFocus(CWnd* pOldWnd);
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnDestroy();
-	afx_msg void OnWireframe();
-	afx_msg void OnUpdateWireframe(CCmdUI* pCmdUI);
-	afx_msg void OnCenterMine();
-	afx_msg void OnCenterOrigin();
-	afx_msg void OnCenterRoom();
-	afx_msg void OnViewMoveCameraToCurrentFace();
-	afx_msg void OnViewMoveCameraToCurrentObject();
-	afx_msg void OnClose();
-	afx_msg void OnTextured();
-	afx_msg void OnUpdateTextured(CCmdUI* pCmdUI);
-	afx_msg void OnViewTexturedOutline();
-	afx_msg void OnUpdateViewTexturedOutline(CCmdUI* pCmdUI);
-	afx_msg void OnFileClose();
-	afx_msg void OnDisplayCurrentRoomView();
-	afx_msg void OnViewMoveCameraToCurrentRoom();
-	afx_msg void OnPaint();
-	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnKillFocus(CWnd* pNewWnd);
-	afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnSysKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnMButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnMButtonUp(UINT nFlags, CPoint point);
-	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
-	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Generated message map functions
+  //{{AFX_MSG(CLevelFrame)
+  afx_msg void OnSetFocus(CWnd *pOldWnd);
+  afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+  afx_msg void OnDestroy();
+  afx_msg void OnWireframe();
+  afx_msg void OnUpdateWireframe(CCmdUI *pCmdUI);
+  afx_msg void OnCenterMine();
+  afx_msg void OnCenterOrigin();
+  afx_msg void OnCenterRoom();
+  afx_msg void OnViewMoveCameraToCurrentFace();
+  afx_msg void OnViewMoveCameraToCurrentObject();
+  afx_msg void OnClose();
+  afx_msg void OnTextured();
+  afx_msg void OnUpdateTextured(CCmdUI *pCmdUI);
+  afx_msg void OnViewTexturedOutline();
+  afx_msg void OnUpdateViewTexturedOutline(CCmdUI *pCmdUI);
+  afx_msg void OnFileClose();
+  afx_msg void OnDisplayCurrentRoomView();
+  afx_msg void OnViewMoveCameraToCurrentRoom();
+  afx_msg void OnPaint();
+  afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+  afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
+  afx_msg void OnSize(UINT nType, int cx, int cy);
+  afx_msg void OnKillFocus(CWnd *pNewWnd);
+  afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+  afx_msg void OnSysKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
+  afx_msg void OnMButtonDown(UINT nFlags, CPoint point);
+  afx_msg void OnMButtonUp(UINT nFlags, CPoint point);
+  afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+  afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
+  afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 
 private:
-	Cned_LevelWnd m_LevelWnd;
+  Cned_LevelWnd m_LevelWnd;
 };
 
 /////////////////////////////////////////////////////////////////////////////

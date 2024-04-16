@@ -10,20 +10,19 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- // This file interpolates gradients down the left edge of the triangle
+// This file interpolates gradients down the left edge of the triangle
 
 right_height = l2->screeny - l1->screeny;
-if (right_height>0)
-{
-    Delta_right_x = IntToFix(l2->screenx - l1->screenx) / right_height;
-    Right_x = IntToFix(l1->screenx);
+if (right_height > 0) {
+  Delta_right_x = IntToFix(l2->screenx - l1->screenx) / right_height;
+  Right_x = IntToFix(l1->screenx);
 
-#ifdef PERSPECTIVE 
-	FRight_DZ = (l2->flzcoord - l1->flzcoord)/right_height;
-	FRightZ=  (l1->flzcoord);
-	FRight_DU = (l2->flucoord - l1->flucoord)/right_height;
-	FRightU=  (l1->flucoord);
-	FRight_DV = (l2->flvcoord - l1->flvcoord)/right_height;
-	FRightV=  (l1->flvcoord);
+#ifdef PERSPECTIVE
+  FRight_DZ = (l2->flzcoord - l1->flzcoord) / right_height;
+  FRightZ = (l1->flzcoord);
+  FRight_DU = (l2->flucoord - l1->flucoord) / right_height;
+  FRightU = (l1->flucoord);
+  FRight_DV = (l2->flvcoord - l1->flvcoord) / right_height;
+  FRightV = (l1->flvcoord);
 #endif
 }

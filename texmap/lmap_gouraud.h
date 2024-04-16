@@ -10,19 +10,17 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
+#ifdef ACTIVATE_INNER_LOOP
 
-__asm 
-{
+__asm {
 	mov edi, LightBase
 	mov eax, LeftMonoLight
 	mov ebx, dldx
 	mov ecx, width
 	sar eax, 8
-	sar ebx, 8 
+	sar ebx, 8
 
-
-	// This sucks: this loop is so tight I'm just asking for AGIs.
+  // This sucks: this loop is so tight I'm just asking for AGIs.
 	LoopIt:
 
 	mov [edi], ah

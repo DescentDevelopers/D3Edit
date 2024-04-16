@@ -10,45 +10,40 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
-		
+#ifdef ACTIVATE_INNER_LOOP
 
-			dest=(destptr+x1);
+dest = (destptr + x1);
 
-			int i;
-                
-			fix u  = LeftU;
-            fix v  = LeftV;
-			fix cu,cv;
+int i;
 
-			int srcptr;
+fix u = LeftU;
+fix v = LeftV;
+fix cu, cv;
 
-			int tw=bm_w(Tex_bitmap,Current_mip);
-			int th=bm_h(Tex_bitmap,Current_mip);
+int srcptr;
 
-			TexSrc16=bm_data(Tex_bitmap,Current_mip);
-						
-			dest=(destptr+x1);
-	
-			for (i=0;i<width;i++)
-			{
-				cu=FixToInt(u);
-				cv=FixToInt(v);
-								
-				cu&=(tw-1);
-				cv&=(tw-1);
-				srcptr=(cv*tw)+cu;
+int tw = bm_w(Tex_bitmap, Current_mip);
+int th = bm_h(Tex_bitmap, Current_mip);
 
-				if (TexSrc16[srcptr] & OPAQUE_FLAG)
-					*dest = FLAT_SHADE_COLOR;
-				
-				dest++;
-				
-                u += dudx;
-                v += dvdx;
+TexSrc16 = bm_data(Tex_bitmap, Current_mip);
 
-			}
-		
-			
-			
+dest = (destptr + x1);
+
+for (i = 0; i < width; i++) {
+  cu = FixToInt(u);
+  cv = FixToInt(v);
+
+  cu &= (tw - 1);
+  cv &= (tw - 1);
+  srcptr = (cv * tw) + cu;
+
+  if (TexSrc16[srcptr] & OPAQUE_FLAG)
+    *dest = FLAT_SHADE_COLOR;
+
+  dest++;
+
+  u += dudx;
+  v += dvdx;
+}
+
 #endif

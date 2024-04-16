@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- // ListDialog.cpp : implementation file
+// ListDialog.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -32,58 +32,47 @@ extern CListDialog *bn_verify_dlg;
 /////////////////////////////////////////////////////////////////////////////
 // CListDialog dialog
 
-
-CListDialog::CListDialog(CWnd* pParent )
-	: CDialog(CListDialog::IDD, pParent)
-{
-	//{{AFX_DATA_INIT(CListDialog)
-	//}}AFX_DATA_INIT
+CListDialog::CListDialog(CWnd *pParent) : CDialog(CListDialog::IDD, pParent) {
+  //{{AFX_DATA_INIT(CListDialog)
+  //}}AFX_DATA_INIT
 }
 
-
-void CListDialog::DoDataExchange(CDataExchange* pDX)
-{
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CListDialog)
-	//}}AFX_DATA_MAP
+void CListDialog::DoDataExchange(CDataExchange *pDX) {
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(CListDialog)
+  //}}AFX_DATA_MAP
 }
-
 
 BEGIN_MESSAGE_MAP(CListDialog, CDialog)
-	//{{AFX_MSG_MAP(CListDialog)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CListDialog)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // CListDialog message handlers
 
+void CListDialog::PostNcDestroy() {
+  // TODO: Add your specialized code here and/or call the base class
+  if (this == mverify_dlg)
+    mverify_dlg = NULL;
+  else if (this == rverify_dlg)
+    rverify_dlg = NULL;
+  else if (this == rstats_dlg)
+    rstats_dlg = NULL;
+  else if (this == lstats_dlg)
+    lstats_dlg = NULL;
+  else if (this == bn_verify_dlg)
+    bn_verify_dlg = NULL;
 
-void CListDialog::PostNcDestroy() 
-{
-	// TODO: Add your specialized code here and/or call the base class
-	if (this == mverify_dlg)
-		mverify_dlg = NULL;
-	else if (this == rverify_dlg)
-		rverify_dlg = NULL;
-	else if (this == rstats_dlg)
-		rstats_dlg = NULL;
-	else if (this == lstats_dlg)
-		lstats_dlg = NULL;
-	else if (this == bn_verify_dlg)
-		bn_verify_dlg = NULL;
-
-	delete this;
+  delete this;
 }
 
-void CListDialog::OnOK() 
-{
-	// TODO: Add extra validation here
-	DestroyWindow();
+void CListDialog::OnOK() {
+  // TODO: Add extra validation here
+  DestroyWindow();
 }
 
-
-void CListDialog::OnCancel() 
-{
-	// TODO: Add extra cleanup here
-	DestroyWindow();
+void CListDialog::OnCancel() {
+  // TODO: Add extra cleanup here
+  DestroyWindow();
 }

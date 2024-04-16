@@ -10,14 +10,12 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef __HLSOUNDLIB_H__
 #define __HLSOUNDLIB_H__
 
 #include "ssl_lib.h"
 #include "object.h"
-
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -35,185 +33,183 @@ extern char Sound_quality;
 extern char Sound_mixer;
 extern char Sound_card_name[];
 
-class sound_object 
-{
+class sound_object {
 public:
-	sound_object() { m_obj_type_flags = SIF_UNUSED; }
+  sound_object() { m_obj_type_flags = SIF_UNUSED; }
 
 public:
-	unsigned int m_obj_type_flags;
-	int m_sound_uid;
-	int m_sound_index;
-	int m_hlsound_uid;
+  unsigned int m_obj_type_flags;
+  int m_sound_uid;
+  int m_sound_index;
+  int m_hlsound_uid;
 
-	play_information play_info;
+  play_information play_info;
 
-	float volume_3d;  // Used so that 3d sounds can have a base volume (for 2d this is in play_information)
+  float volume_3d; // Used so that 3d sounds can have a base volume (for 2d this is in play_information)
 
-	union 
-	{
-		struct 
-		{
-			int segnum;			// Use physics' bit-bit stuff (inside/outside)
-			vector pos;
-			matrix orient;	  // only need pitch and heading -- not roll (sound cones are symetrical)
-		} pos_info;
-		
-		int object_handle;
-	} m_link_info;
+  union {
+    struct {
+      int segnum; // Use physics' bit-bit stuff (inside/outside)
+      vector pos;
+      matrix orient; // only need pitch and heading -- not roll (sound cones are symetrical)
+    } pos_info;
+
+    int object_handle;
+  } m_link_info;
 };
 
+class hlsSystem {
+  int m_f_hls_system_init;
 
+  class sound_object m_sound_objects[MAX_SOUND_OBJECTS];
 
-class hlsSystem 
-{
-	int m_f_hls_system_init;
+  float m_master_volume;
+  int m_sounds_played;
 
-	class sound_object m_sound_objects[MAX_SOUND_OBJECTS];
+  bool m_pause_new;
+  ubyte m_cur_environment; // current environment being played.
+  int n_lls_sounds;        // number of sounds that we want the low level mixer to mix.
 
-	float m_master_volume;
-	int m_sounds_played;
+  bool Emulate3dSound(int sound_obj_index);
+  bool ComputePlayInfo(int sound_obj_index, vector *virtual_pos, vector *virtual_vel, float *adjusted_volume);
 
-	bool m_pause_new;
-	ubyte m_cur_environment;						// current environment being played.
-	int n_lls_sounds;									// number of sounds that we want the low level mixer to mix.
+  inline int MakeUniqueId(int sound_obj_index);
+  inline int ValidateUniqueId(int hl_sound_uid);
 
-	bool Emulate3dSound(int sound_obj_index);
-	bool ComputePlayInfo(int sound_obj_index, vector *virtual_pos, vector *virtual_vel, float *adjusted_volume);
-
-	inline int MakeUniqueId(int sound_obj_index);
-	inline int ValidateUniqueId(int hl_sound_uid);
-
-	// Forcefully ends a sound
-	void StopSound(int sound_obj_index, unsigned char f_immediately = SKT_STOP_IMMEDIATELY);
+  // Forcefully ends a sound
+  void StopSound(int sound_obj_index, unsigned char f_immediately = SKT_STOP_IMMEDIATELY);
 
 private:
-	int Play3dSound(int sound_index, pos_state *cur_pos, object *cur_obj, int priority, float volume, int flags, float offset=0.0);
+  int Play3dSound(int sound_index, pos_state *cur_pos, object *cur_obj, int priority, float volume, int flags,
+                  float offset = 0.0);
 
 public:
-	
-		// Include a lowel-level sound system
-	class llsSystem *m_ll_sound_ptr;
-	
-	hlsSystem();// {m_f_hls_system_init = 0; m_sounds_played=0; m_master_volume = 1.0; m_pause_new = false;}
-	~hlsSystem() {KillSoundLib(true);}
+  // Include a lowel-level sound system
+  class llsSystem *m_ll_sound_ptr;
 
-	bool IsActive(void);
+  hlsSystem(); // {m_f_hls_system_init = 0; m_sounds_played=0; m_master_volume = 1.0; m_pause_new = false;}
+  ~hlsSystem() { KillSoundLib(true); }
 
-	// Start and clean-up after the sound library
-	int InitSoundLib(oeApplication *sos, char mixer_type, char quality, bool f_kill_sound_lib = false);
-	void KillSoundLib(bool f_kill_sound_list);
-	void SetLLSoundQuantity(int n_sounds);
-	int GetLLSoundQuantity();
-	
-	bool SetLLevelType();  // These are 
+  bool IsActive(void);
 
-	// Pause and Resume the library
-	void PauseSounds(bool f_all_sounds = false);
-	void ResumeSounds();
-	void StopAllSounds();
+  // Start and clean-up after the sound library
+  int InitSoundLib(oeApplication *sos, char mixer_type, char quality, bool f_kill_sound_lib = false);
+  void KillSoundLib(bool f_kill_sound_list);
+  void SetLLSoundQuantity(int n_sounds);
+  int GetLLSoundQuantity();
 
-	// Code for the beginning and ending of a frame of action
+  bool SetLLevelType(); // These are
 
-	// Begin_sound_frame(listener pos/orient/velocity)
-	// SyncSounds
-	// Do sound pos updates -- IF VOLUME IS LOW AND NOT FOREVER, THEN STOP SOUND
-	// compute echo / reverb
-	// indirect/direct path sounds
-	void BeginSoundFrame(bool f_in_game = true);
-	
-	// Plays the deffered 3d stuff
-	void EndSoundFrame();
+  // Pause and Resume the library
+  void PauseSounds(bool f_all_sounds = false);
+  void ResumeSounds();
+  void StopAllSounds();
 
-	// Functions that play a sound
+  // Code for the beginning and ending of a frame of action
 
-	// 3d functions (we use the sound flags in the page to determine all the cool stuff)
-	// Functions that play a 3d sound -- includes the 2d emulation of 3d sound
-	int Play3dSound(int sound_index, pos_state *cur_pos, float volume=MAX_GAME_VOLUME, int flags=0, float offset=0.0);
-	int Play3dSound(int sound_index, object *cur_obj, float volume=MAX_GAME_VOLUME, int flags=0, float offset=0.0);
+  // Begin_sound_frame(listener pos/orient/velocity)
+  // SyncSounds
+  // Do sound pos updates -- IF VOLUME IS LOW AND NOT FOREVER, THEN STOP SOUND
+  // compute echo / reverb
+  // indirect/direct path sounds
+  void BeginSoundFrame(bool f_in_game = true);
 
-	int Play3dSound(int sound_index, int priority, pos_state *cur_pos, float volume = MAX_GAME_VOLUME, int flags = 0, float offset=0.0);
-	int Play3dSound(int sound_index, int priority, object *cur_obj, float volume = MAX_GAME_VOLUME, int flags = 0, float offset=0.0);
+  // Plays the deffered 3d stuff
+  void EndSoundFrame();
 
-	int PlayStream(int unique_handle, void *data, int size, int stream_format, float volume, void *stream_callback(void *user_data, int handle, int *size) = NULL);
+  // Functions that play a sound
 
-	// 2d functions
-	int Play2dSound(int sound_index, float volume = MAX_GAME_VOLUME/2, float pan = 0.0, unsigned short frequency = 22050);
-	
-	int Play2dSound(int sound_index, int priority, float volume = MAX_GAME_VOLUME/2, float pan = 0.0, unsigned short frequency = 22050);
+  // 3d functions (we use the sound flags in the page to determine all the cool stuff)
+  // Functions that play a 3d sound -- includes the 2d emulation of 3d sound
+  int Play3dSound(int sound_index, pos_state *cur_pos, float volume = MAX_GAME_VOLUME, int flags = 0,
+                  float offset = 0.0);
+  int Play3dSound(int sound_index, object *cur_obj, float volume = MAX_GAME_VOLUME, int flags = 0, float offset = 0.0);
 
-	int Update2dSound(int hlsound_uid, float volume, float pan);
+  int Play3dSound(int sound_index, int priority, pos_state *cur_pos, float volume = MAX_GAME_VOLUME, int flags = 0,
+                  float offset = 0.0);
+  int Play3dSound(int sound_index, int priority, object *cur_obj, float volume = MAX_GAME_VOLUME, int flags = 0,
+                  float offset = 0.0);
 
-	// Do nice looping stop stuff
-	void StopSoundLooping(int hlsound_uid);
-	void StopSoundImmediate(int hlsound_uid);
+  int PlayStream(int unique_handle, void *data, int size, int stream_format, float volume,
+                 void *stream_callback(void *user_data, int handle, int *size) = NULL);
 
-	// Stop all sounds attached to an object
-	void StopObjectSound(int objhandle);
+  // 2d functions
+  int Play2dSound(int sound_index, float volume = MAX_GAME_VOLUME / 2, float pan = 0.0,
+                  unsigned short frequency = 22050);
 
-	// Set the volume for all the sounds attached to an object
-	void SetVolumeObject(int objhandle,float volume);
+  int Play2dSound(int sound_index, int priority, float volume = MAX_GAME_VOLUME / 2, float pan = 0.0,
+                  unsigned short frequency = 22050);
 
-	// Master volume controls for sound effects
-	void SetMasterVolume(float volume);
-	float GetMasterVolume();
+  int Update2dSound(int hlsound_uid, float volume, float pan);
 
-	// Queued sound functions
-	void Add2dSoundQueued(int q_num, int sound_index, float volume, float pan, unsigned short frequency);
-	void KillQueue(int q_num = 0);
-	void KillAllQueues();
+  // Do nice looping stop stuff
+  void StopSoundLooping(int hlsound_uid);
+  void StopSoundImmediate(int hlsound_uid);
 
-	bool CheckAndForceSoundDataAlloc(int sound_file_index);
-	bool SetSoundQuality(char quality);
-	char GetSoundQuality(void);
-	bool SetSoundMixer(char mixer_type);
-	char GetSoundMixer(void);
+  // Stop all sounds attached to an object
+  void StopObjectSound(int objhandle);
 
-	bool IsSoundPlaying(int hlsound_uid);
+  // Set the volume for all the sounds attached to an object
+  void SetVolumeObject(int objhandle, float volume);
 
-	// Midi play stuff
-	void SetMidiVolume();
-	void GetMidiVolume();
-	void PlayMidi();
-	void StopMidi();
-	void PauseMidi();
-	void ResumeMidi();
+  // Master volume controls for sound effects
+  void SetMasterVolume(float volume);
+  float GetMasterVolume();
+
+  // Queued sound functions
+  void Add2dSoundQueued(int q_num, int sound_index, float volume, float pan, unsigned short frequency);
+  void KillQueue(int q_num = 0);
+  void KillAllQueues();
+
+  bool CheckAndForceSoundDataAlloc(int sound_file_index);
+  bool SetSoundQuality(char quality);
+  char GetSoundQuality(void);
+  bool SetSoundMixer(char mixer_type);
+  char GetSoundMixer(void);
+
+  bool IsSoundPlaying(int hlsound_uid);
+
+  // Midi play stuff
+  void SetMidiVolume();
+  void GetMidiVolume();
+  void PlayMidi();
+  void StopMidi();
+  void PauseMidi();
+  void ResumeMidi();
 };
 
 extern hlsSystem Sound_system;
 
-
 //////////////////////////////////////////////////////////////////////////
 //	ENVIRONMENTAL REVERB PRESETS
 
-#define N_ENVAUDIO_PRESETS		26
+#define N_ENVAUDIO_PRESETS 26
 
-#define ENVAUD_PRESET_NONE						0
-#define ENVAUD_PRESET_PADDEDCELL				1
-#define ENVAUD_PRESET_ROOM						2
-#define ENVAUD_PRESET_BATHROOM				3
-#define ENVAUD_PRESET_LIVINGROOM				4
-#define ENVAUD_PRESET_STONEROOM				5
-#define ENVAUD_PRESET_AUDITORIUM				6
-#define ENVAUD_PRESET_CONCERTHALL			7
-#define ENVAUD_PRESET_CAVE						8
-#define ENVAUD_PRESET_ARENA         		9
-#define ENVAUD_PRESET_HANGAR        		10
-#define ENVAUD_PRESET_CARPETEDHALLWAY		11
-#define ENVAUD_PRESET_HALLWAY					12
-#define ENVAUD_PRESET_STONECORRIDOR			13
-#define ENVAUD_PRESET_ALLEY					14
-#define ENVAUD_PRESET_FOREST					15
-#define ENVAUD_PRESET_CITY						16
-#define ENVAUD_PRESET_MOUNTAINS				17
-#define ENVAUD_PRESET_QUARRY					18
-#define ENVAUD_PRESET_PLAIN					19
-#define ENVAUD_PRESET_PARKINGLOT				20
-#define ENVAUD_PRESET_SEWERPIPE				21
-#define ENVAUD_PRESET_UNDERWATER				22
-#define ENVAUD_PRESET_DRUGGED					23
-#define ENVAUD_PRESET_DIZZY					24
-#define ENVAUD_PRESET_PSYCHOTIC				25
-
+#define ENVAUD_PRESET_NONE 0
+#define ENVAUD_PRESET_PADDEDCELL 1
+#define ENVAUD_PRESET_ROOM 2
+#define ENVAUD_PRESET_BATHROOM 3
+#define ENVAUD_PRESET_LIVINGROOM 4
+#define ENVAUD_PRESET_STONEROOM 5
+#define ENVAUD_PRESET_AUDITORIUM 6
+#define ENVAUD_PRESET_CONCERTHALL 7
+#define ENVAUD_PRESET_CAVE 8
+#define ENVAUD_PRESET_ARENA 9
+#define ENVAUD_PRESET_HANGAR 10
+#define ENVAUD_PRESET_CARPETEDHALLWAY 11
+#define ENVAUD_PRESET_HALLWAY 12
+#define ENVAUD_PRESET_STONECORRIDOR 13
+#define ENVAUD_PRESET_ALLEY 14
+#define ENVAUD_PRESET_FOREST 15
+#define ENVAUD_PRESET_CITY 16
+#define ENVAUD_PRESET_MOUNTAINS 17
+#define ENVAUD_PRESET_QUARRY 18
+#define ENVAUD_PRESET_PLAIN 19
+#define ENVAUD_PRESET_PARKINGLOT 20
+#define ENVAUD_PRESET_SEWERPIPE 21
+#define ENVAUD_PRESET_UNDERWATER 22
+#define ENVAUD_PRESET_DRUGGED 23
+#define ENVAUD_PRESET_DIZZY 24
+#define ENVAUD_PRESET_PSYCHOTIC 25
 
 #endif

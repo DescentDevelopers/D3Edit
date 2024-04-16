@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 // ChildFrm.cpp : implementation of the CChildFrame class
 //
@@ -32,93 +31,71 @@ static char THIS_FILE[] = __FILE__;
 IMPLEMENT_DYNCREATE(CChildFrame, CMDIChildWnd)
 
 BEGIN_MESSAGE_MAP(CChildFrame, CMDIChildWnd)
-	//{{AFX_MSG_MAP(CChildFrame)
-		ON_COMMAND(ID_FILE_CLOSE, OnFileClose)
-		ON_WM_SETFOCUS()
-		ON_WM_CREATE()
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CChildFrame)
+ON_COMMAND(ID_FILE_CLOSE, OnFileClose)
+ON_WM_SETFOCUS()
+ON_WM_CREATE()
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // CChildFrame construction/destruction
 
-CChildFrame::CChildFrame()
-{
+CChildFrame::CChildFrame() {}
+
+CChildFrame::~CChildFrame() {}
+
+BOOL CChildFrame::PreCreateWindow(CREATESTRUCT &cs) {
+  if (!CMDIChildWnd::PreCreateWindow(cs))
+    return FALSE;
+
+  cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
+  cs.lpszClass = AfxRegisterWndClass(0);
+
+  return TRUE;
 }
-
-CChildFrame::~CChildFrame()
-{
-}
-
-BOOL CChildFrame::PreCreateWindow(CREATESTRUCT& cs)
-{
-	if( !CMDIChildWnd::PreCreateWindow(cs) )
-		return FALSE;
-
-	cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
-	cs.lpszClass = AfxRegisterWndClass(0);
-
-	return TRUE;
-}
-
-
 
 /////////////////////////////////////////////////////////////////////////////
 // CChildFrame diagnostics
 
 #ifdef _DEBUG
-void CChildFrame::AssertValid() const
-{
-	CMDIChildWnd::AssertValid();
-}
+void CChildFrame::AssertValid() const { CMDIChildWnd::AssertValid(); }
 
-void CChildFrame::Dump(CDumpContext& dc) const
-{
-	CMDIChildWnd::Dump(dc);
-}
+void CChildFrame::Dump(CDumpContext &dc) const { CMDIChildWnd::Dump(dc); }
 
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
 // CChildFrame message handlers
-void CChildFrame::OnFileClose() 
-{
+void CChildFrame::OnFileClose() { SendMessage(WM_CLOSE); }
 
-	SendMessage(WM_CLOSE);
+int CChildFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
+  if (CMDIChildWnd::OnCreate(lpCreateStruct) == -1)
+    return -1;
+
+  RECT rect;
+  GetClientRect(&rect);
+  // create a view to occupy the client area of the frame
+  if (!m_wndView.Create( // NULL, NULL, AFX_WS_DEFAULT_VIEW,
+          CRect(rect.left, rect.top, rect.right, rect.bottom), this, "", NULL)) {
+    TRACE0("Failed to create view window\n");
+    return -1;
+  }
+  m_wndView.m_Title = "World View";
+  return 0;
 }
 
-int CChildFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) 
-{
-	if (CMDIChildWnd::OnCreate(lpCreateStruct) == -1)
-		return -1;
+void CChildFrame::OnSetFocus(CWnd *pOldWnd) {
+  CMDIChildWnd::OnSetFocus(pOldWnd);
 
-	RECT rect;
-	GetClientRect(&rect);
-	// create a view to occupy the client area of the frame
-	if (!m_wndView.Create(//NULL, NULL, AFX_WS_DEFAULT_VIEW, 
-		CRect(rect.left, rect.top, rect.right, rect.bottom), this, "", NULL))
-	{
-		TRACE0("Failed to create view window\n");
-		return -1;
-	}
-	m_wndView.m_Title = "World View";
-	return 0;
+  m_wndView.SetFocus();
 }
 
-void CChildFrame::OnSetFocus(CWnd* pOldWnd) 
-{
-	CMDIChildWnd::OnSetFocus(pOldWnd);
+BOOL CChildFrame::OnCmdMsg(UINT nID, int nCode, void *pExtra, AFX_CMDHANDLERINFO *pHandlerInfo) {
+  // let the view have first crack at the command
+  if (m_wndView.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo))
+    return TRUE;
 
-	m_wndView.SetFocus();
+  // otherwise, do default handling
+  return CMDIChildWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
-
-BOOL CChildFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo) 
-{
-	// let the view have first crack at the command
-	if (m_wndView.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo))
-		return TRUE;
-	
-	// otherwise, do default handling
-	return CMDIChildWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
-}
-

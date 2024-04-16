@@ -10,10 +10,10 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifndef __OSIRIS_SHARE_H_
+#ifndef __OSIRIS_SHARE_H_
 #define __OSIRIS_SHARE_H_
 
-// include this file for access to the structs, types and defines shared by 
+// include this file for access to the structs, types and defines shared by
 // the osiris modules
 #define INCLUDED_FROM_D3
 #ifdef MACINTOSH

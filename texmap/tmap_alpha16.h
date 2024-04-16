@@ -10,37 +10,35 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
+#ifdef ACTIVATE_INNER_LOOP
 
-			fix u  = LeftU;
-            fix v  = LeftV;
-			int cu,cv;
-			int srcptr;
-			ushort pix;
-			int texture_width=bm_w(Tex_bitmap,Current_mip);
-			ushort *src16=bm_data (Tex_bitmap,Current_mip);
-			
-			dest=(destptr+x1);
+fix u = LeftU;
+fix v = LeftV;
+int cu, cv;
+int srcptr;
+ushort pix;
+int texture_width = bm_w(Tex_bitmap, Current_mip);
+ushort *src16 = bm_data(Tex_bitmap, Current_mip);
 
-			int i,cl;
-									
-			for (i=0;i<width;i++)
-			{
+dest = (destptr + x1);
 
-				cu=FixToInt (u);
-				cv=FixToInt(v);
-		
-				srcptr=(cv*texture_width)+cu;
-				
-				// read from screen
-				pix=*dest;
+int i, cl;
 
-				// get alpha 
-				cl=src16[srcptr];
-				
-				
-				*dest++ = (TexShadeTable16[cl][pix>>8])+TexShadeTable8[cl][pix & 0xFF];
-                u += dudx;
-                v += dvdx;
-			}
+for (i = 0; i < width; i++) {
+
+  cu = FixToInt(u);
+  cv = FixToInt(v);
+
+  srcptr = (cv * texture_width) + cu;
+
+  // read from screen
+  pix = *dest;
+
+  // get alpha
+  cl = src16[srcptr];
+
+  *dest++ = (TexShadeTable16[cl][pix >> 8]) + TexShadeTable8[cl][pix & 0xFF];
+  u += dudx;
+  v += dvdx;
+}
 #endif

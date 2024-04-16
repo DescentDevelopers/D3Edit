@@ -10,19 +10,16 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #include "room.h"
-
 
 //	Given u,v coordinates at two vertices, assign u,v coordinates to the other vertices on a face.
 //	va, vb = face-relative vertex indices corresponding to uva, uvb.  Ie, they are always in 0..num_verts_in_face
 void AssignUVsToFace(room *rp, int facenum, roomUVL *uva, roomUVL *uvb, int va, int vb);
 
-// Stretches the UVS of a face 
+// Stretches the UVS of a face
 // Edge is the vertex number - so the edge is actually edge,edge+1
 void StretchRoomUVs(room *rp, int facenum, int edge);
 
-//Scale all the UV values in a face from the center point (as defined by averaging the u & v values)
-void ScaleFaceUVs(room *rp,int facenum,float scale);
-
+// Scale all the UV values in a face from the center point (as defined by averaging the u & v values)
+void ScaleFaceUVs(room *rp, int facenum, float scale);

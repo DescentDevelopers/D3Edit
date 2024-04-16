@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_LEVELINFODIALOG_H__FBB555C1_E754_11D2_A6A1_006097E07445__INCLUDED_)
+#if !defined(AFX_LEVELINFODIALOG_H__FBB555C1_E754_11D2_A6A1_006097E07445__INCLUDED_)
 #define AFX_LEVELINFODIALOG_H__FBB555C1_E754_11D2_A6A1_006097E07445__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -24,43 +24,40 @@
 /////////////////////////////////////////////////////////////////////////////
 // CLevelInfoDialog dialog
 
-class CLevelInfoDialog : public CDialog
-{
-// Construction
+class CLevelInfoDialog : public CDialog {
+  // Construction
 public:
-	CLevelInfoDialog(level_info *li, CWnd* pParent = NULL);   // standard constructor
+  CLevelInfoDialog(level_info *li, CWnd *pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CLevelInfoDialog)
-	enum { IDD = IDD_LEVELINFO };
-	CString	m_copyright;
-	CString	m_designer;
-	CString	m_name;
-	CString	m_notes;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CLevelInfoDialog)
+  enum { IDD = IDD_LEVELINFO };
+  CString m_copyright;
+  CString m_designer;
+  CString m_name;
+  CString m_notes;
+  //}}AFX_DATA
 
-
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CLevelInfoDialog)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CLevelInfoDialog)
 protected:
+  virtual void DoDataExchange(CDataExchange *pDX); // DDX/DDV support
+                                                   //}}AFX_VIRTUAL
 
-	//Copy data back out of dialog
-	void GetLevelInfo(level_info *li);
+  // Implementation
+protected:
+  // Copy data back out of dialog
+  void GetLevelInfo(level_info *li);
 
-	//The data we're editing
-	level_info *m_level_info;
+  // The data we're editing
+  level_info *m_level_info;
 
-	// Generated message map functions
-	//{{AFX_MSG(CLevelInfoDialog)
-	virtual void OnOK();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Generated message map functions
+  //{{AFX_MSG(CLevelInfoDialog)
+  virtual void OnOK();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

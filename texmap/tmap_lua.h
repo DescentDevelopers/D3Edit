@@ -10,15 +10,14 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP			
-			dest = destptr + x1;
-			BigSteps=width>>4;
-			Leftovers=width & 0x0F;
-			
-			TexSrc=bm_data8(Tex_bitmap,Current_mip);
+#ifdef ACTIVATE_INNER_LOOP
+dest = destptr + x1;
+BigSteps = width >> 4;
+Leftovers = width & 0x0F;
 
-			__asm 
-			{
+TexSrc = bm_data8(Tex_bitmap, Current_mip);
+
+__asm {
 				; edx = U and V in 8:8 format
 				; ecx = DU and DV in 8:8 format
 
@@ -219,8 +218,6 @@
 
 				Done:
 				pop ebp
-			}
+}
 
 #endif
-
-

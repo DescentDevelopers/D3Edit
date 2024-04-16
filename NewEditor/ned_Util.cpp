@@ -10,182 +10,150 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #include "stdafx.h"
 #include "vecmat.h"
 #include "globals.h"
 #include "ned_Util.h"
 
-//Returns a pointer to enough spaces to right-justify a number that's printed after the spaces
-char *IntSpacing(int i)
-{
-	static char *spaces = "               ";
+// Returns a pointer to enough spaces to right-justify a number that's printed after the spaces
+char *IntSpacing(int i) {
+  static char *spaces = "               ";
 
-	i = abs(i);
+  i = abs(i);
 
-	for (int n=1;i >= 10;n++)
-		i /= 10;
+  for (int n = 1; i >= 10; n++)
+    i /= 10;
 
-	ASSERT(n <= 20);
+  ASSERT(n <= 20);
 
-	return spaces+n*2+n/2;
+  return spaces + n * 2 + n / 2;
 }
 
+// Strips leading and trailing spaces from a string
+// Returns true if spaces were stripped
+bool StripLeadingTrailingSpaces(char *s) {
+  char *t;
+  bool stripped = 0;
 
-//Strips leading and trailing spaces from a string
-//Returns true if spaces were stripped
-bool StripLeadingTrailingSpaces(char *s)
-{
-	char *t;
-	bool stripped = 0;
+  // Look for leading spaces
+  t = s;
+  while (*t == ' ')
+    t++;
 
-	//Look for leading spaces
-	t = s;
-	while (*t == ' ')
-		t++;
+  // Leading spaces found, so copy string over spaces
+  if (t != s) {
+    strcpy(s, t);
+    stripped = 1;
+  }
 
-	//Leading spaces found, so copy string over spaces
-	if (t != s) {
-		strcpy(s,t);
-		stripped = 1;
-	}
+  // Strip any trailing spaces
+  for (t = s + strlen(s) - 1; (t >= s) && (*t == ' '); t--) {
+    *t = 0;
+    stripped = 1;
+  }
 
-	//Strip any trailing spaces
-	for (t = s + strlen(s) - 1;(t >= s) && (*t == ' ');t--) {
-		*t = 0;
-		stripped = 1;
-	}
-
-	return stripped;
+  return stripped;
 }
-
-
 
 // Split a pathname into its component parts
-void SplitPath(const char* srcPath, char* path, char* filename, char* ext)
-{
-	char drivename[_MAX_DRIVE], dirname[_MAX_DIR];
+void SplitPath(const char *srcPath, char *path, char *filename, char *ext) {
+  char drivename[_MAX_DRIVE], dirname[_MAX_DIR];
 
-	_splitpath(srcPath, drivename, dirname, filename, ext);
+  _splitpath(srcPath, drivename, dirname, filename, ext);
 
-	if (path) 
-		sprintf(path, "%s%s", drivename, dirname);
+  if (path)
+    sprintf(path, "%s%s", drivename, dirname);
 }
 
-
-
-
-static int TotalArgs=0;
+static int TotalArgs = 0;
 char GameArgs[MAX_ARGS][MAX_CHARS_PER_ARG];
 
 // Gathers all arguments
-void GatherArgs (char *str)
-{
-	int i,t,curarg=1;
-	int len=strlen(str);
-	bool gotquote = false;
+void GatherArgs(char *str) {
+  int i, t, curarg = 1;
+  int len = strlen(str);
+  bool gotquote = false;
 
-	for (t=0,i=0;i<len;i++)
-	{
-		if(t==0)
-		{
-			if(str[i]=='\"')
-			{
-				gotquote = true;
-				continue;
-			}
-		}
-		if(gotquote)
-		{
-			if (str[i]!='\"' && str[i]!=0)
-				GameArgs[curarg][t++]=str[i];
-			else
-			{
-				GameArgs[curarg][t]=0;
-				t=0;
-				mprintf ((0,"Arg %d is %s\n",curarg,GameArgs[curarg]));
-				gotquote = false;
-				curarg++;
-			}
-		}
-		else
-		{
-			if (str[i]!=' ' && str[i]!=0)
-				GameArgs[curarg][t++]=str[i];
-			else
-			{
-				GameArgs[curarg][t]=0;
-				t=0;
-				mprintf ((0,"Arg %d is %s\n",curarg,GameArgs[curarg]));
-				curarg++;
-			}
-		}
-	}
+  for (t = 0, i = 0; i < len; i++) {
+    if (t == 0) {
+      if (str[i] == '\"') {
+        gotquote = true;
+        continue;
+      }
+    }
+    if (gotquote) {
+      if (str[i] != '\"' && str[i] != 0)
+        GameArgs[curarg][t++] = str[i];
+      else {
+        GameArgs[curarg][t] = 0;
+        t = 0;
+        mprintf((0, "Arg %d is %s\n", curarg, GameArgs[curarg]));
+        gotquote = false;
+        curarg++;
+      }
+    } else {
+      if (str[i] != ' ' && str[i] != 0)
+        GameArgs[curarg][t++] = str[i];
+      else {
+        GameArgs[curarg][t] = 0;
+        t = 0;
+        mprintf((0, "Arg %d is %s\n", curarg, GameArgs[curarg]));
+        curarg++;
+      }
+    }
+  }
 
-	GameArgs[curarg][t]=0;
-	curarg++;
-	TotalArgs=curarg;
+  GameArgs[curarg][t] = 0;
+  curarg++;
+  TotalArgs = curarg;
 }
- 
+
 // Returns index of argument sought, or 0 if not found
-int FindArg (char *which)
- {
+int FindArg(char *which) {
   int i;
-  
-  for (i=1;i<=TotalArgs;i++)
-   if (stricmp (which,GameArgs[i])==0)
-     return (i);
+
+  for (i = 1; i <= TotalArgs; i++)
+    if (stricmp(which, GameArgs[i]) == 0)
+      return (i);
 
   return (0);
- }
-
-
-
-void EnableTabControls(CWnd *parentwnd, bool enable, int first_id, int last_id)
-{
-	int old_id, id = 0;
-	CWnd *pwnd = parentwnd->GetDlgItem(first_id);
-
-	while (id != last_id)
-	{
-		if (last_id != -1)
-			id = pwnd->GetDlgCtrlID();
-		else
-		{
-			old_id = id;
-			id = pwnd->GetDlgCtrlID();
-			if (id == old_id)
-				break; // we've reached the last dialog item
-		}
-
-		pwnd->EnableWindow(enable);
-		pwnd = parentwnd->GetNextDlgTabItem(pwnd);
-	}
 }
 
+void EnableTabControls(CWnd *parentwnd, bool enable, int first_id, int last_id) {
+  int old_id, id = 0;
+  CWnd *pwnd = parentwnd->GetDlgItem(first_id);
 
-void EnableTabControls(HWND hDlg, bool enable, int first_id, int last_id)
-{
-	int old_id, id = 0;
-	HWND hwnd = ::GetDlgItem(hDlg,first_id);
+  while (id != last_id) {
+    if (last_id != -1)
+      id = pwnd->GetDlgCtrlID();
+    else {
+      old_id = id;
+      id = pwnd->GetDlgCtrlID();
+      if (id == old_id)
+        break; // we've reached the last dialog item
+    }
 
-	while (id != last_id)
-	{
-		if (last_id != -1)
-			id = ::GetDlgCtrlID(hwnd);
-		else
-		{
-			old_id = id;
-			id = ::GetDlgCtrlID(hwnd);
-			if (id == old_id)
-				break; // we've reached the last dialog item
-		}
-
-		::EnableWindow(hwnd,enable);
-		hwnd = ::GetNextDlgTabItem(hDlg,hwnd,FALSE);
-	}
+    pwnd->EnableWindow(enable);
+    pwnd = parentwnd->GetNextDlgTabItem(pwnd);
+  }
 }
 
+void EnableTabControls(HWND hDlg, bool enable, int first_id, int last_id) {
+  int old_id, id = 0;
+  HWND hwnd = ::GetDlgItem(hDlg, first_id);
 
+  while (id != last_id) {
+    if (last_id != -1)
+      id = ::GetDlgCtrlID(hwnd);
+    else {
+      old_id = id;
+      id = ::GetDlgCtrlID(hwnd);
+      if (id == old_id)
+        break; // we've reached the last dialog item
+    }
+
+    ::EnableWindow(hwnd, enable);
+    hwnd = ::GetNextDlgTabItem(hDlg, hwnd, FALSE);
+  }
+}

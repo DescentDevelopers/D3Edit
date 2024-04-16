@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef __NED_TABLEFILE_H_
 #define __NED_TABLEFILE_H_
@@ -19,39 +18,38 @@
 
 #include "bitmap.h"
 
-#define MAX_LOADED_TABLE_FILES	3
-#define TABLE_FILE_BASE			0
-#define TABLE_FILE_MISSION		1
-#define TABLE_FILE_MODULE		2
+#define MAX_LOADED_TABLE_FILES 3
+#define TABLE_FILE_BASE 0
+#define TABLE_FILE_MISSION 1
+#define TABLE_FILE_MODULE 2
 
-#define PAGENAME_LEN		35
-#define PAGETYPE_TEXTURE	1
-#define PAGETYPE_DOOR		5
-#define PAGETYPE_SOUND		7
-#define PAGETYPE_GENERIC	10
+#define PAGENAME_LEN 35
+#define PAGETYPE_TEXTURE 1
+#define PAGETYPE_DOOR 5
+#define PAGETYPE_SOUND 7
+#define PAGETYPE_GENERIC 10
 
 // Object stuff now in ned_Object.h
 // Texture stuff now in ned_GameTexture.h
 // Door stuff now in ned_Door.h
 // Sound stuff now in ned_Sound.h
 
-#define MAX_IDENTIFIER_NAME		256
+#define MAX_IDENTIFIER_NAME 256
 
-typedef struct
-{
-	bool used;			// if this slot is in use
-	int type;			// base, mission, module
-	int count;			// how many files are loaded from it
-	char identifier[MAX_IDENTIFIER_NAME];	//name
-}tTableFileInfo;
+typedef struct {
+  bool used;                            // if this slot is in use
+  int type;                             // base, mission, module
+  int count;                            // how many files are loaded from it
+  char identifier[MAX_IDENTIFIER_NAME]; // name
+} tTableFileInfo;
 extern tTableFileInfo Ntbl_loaded_table_files[MAX_LOADED_TABLE_FILES];
 
 // ntbl_LoadTableFile() return codes
-#define NTBL_NOT_FOUND		-1
-#define NTBL_CORRUPT		-2
-#define NTBL_TABLE_IN_MEM	-3
-#define NTBL_FATAL			-4
-#define NTBL_NO_AVAIL_TABLE_SLOTS	-5
+#define NTBL_NOT_FOUND -1
+#define NTBL_CORRUPT -2
+#define NTBL_TABLE_IN_MEM -3
+#define NTBL_FATAL -4
+#define NTBL_NO_AVAIL_TABLE_SLOTS -5
 
 // ==========================
 // ntbl_LoadTableFile
@@ -82,7 +80,6 @@ void ntbl_DeleteTableFilePages(char *filename);
 //
 // Initializes the manage system
 void ntbl_Initialize(void);
-
 
 // ====================
 // ned_FindObjectID
@@ -127,7 +124,7 @@ int ntbl_PopTableStack(int *table_stack);
 // =======================
 //
 // Pushes a tablefile id on to the table stack
-void ntbl_PushTableStack(int *table_stack,int id);
+void ntbl_PushTableStack(int *table_stack, int id);
 
 // =============================
 // ntbl_OverlayPage
@@ -135,7 +132,6 @@ void ntbl_PushTableStack(int *table_stack,int id);
 //
 // Given the pagetype and an id, this function takes the information from table_file_id and
 // reloads it's data into the page
-bool ntbl_OverlayPage(int pagetype,int slot);
-
+bool ntbl_OverlayPage(int pagetype, int slot);
 
 #endif

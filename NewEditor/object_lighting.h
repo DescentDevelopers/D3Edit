@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef OBJECT_LIGHTING_H
 #define OBJECT_LIGHTING_H
@@ -21,24 +20,24 @@
 void DoObjectLight(object *obj);
 
 // Frees all the memory associated with lightmap objects
-void ClearAllObjectLightmaps (int terrain);
+void ClearAllObjectLightmaps(int terrain);
 
 // Frees all the memory associated with this objects lightmap
-void ClearObjectLightmaps (object *obj);
+void ClearObjectLightmaps(object *obj);
 
 // Sets up the memory to be used by an object for lightmaps
-void SetupObjectLightmapMemory (object *obj);
+void SetupObjectLightmapMemory(object *obj);
 
 //	makes the an object cloaked
-void MakeObjectInvisible(object *obj,float time,float fade_time=1.0,bool no_hud_message=false);
+void MakeObjectInvisible(object *obj, float time, float fade_time = 1.0, bool no_hud_message = false);
 
 //	makes the player visbile
 void MakeObjectVisible(object *obj);
 
-//Returns a pointer to the lighting info for the specified object
+// Returns a pointer to the lighting info for the specified object
 light_info *ObjGetLightInfo(object *objp);
 
-//Sets an object to have local lighting info
+// Sets an object to have local lighting info
 void ObjSetLocalLighting(object *objp);
 
 #endif

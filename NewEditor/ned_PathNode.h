@@ -10,20 +10,20 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifndef _NED_PATHNODE_H
+#ifndef _NED_PATHNODE_H
 #define _NED_PATHNODE_H
 
 #include "vecmat.h"
 
-void ned_InsertPath(int roomnum,vector pos,matrix orient);
-void ned_InsertNode(int roomnum,vector pos,matrix orient);
+void ned_InsertPath(int roomnum, vector pos, matrix orient);
+void ned_InsertNode(int roomnum, vector pos, matrix orient);
 void ned_DeletePath(bool force = false);
 void ned_DeleteNode();
-bool ned_MoveNode(int path,int node,float x,float y,float z);
-bool ned_MoveBNode(int room,int node,float x,float y,float z);
+bool ned_MoveNode(int path, int node, float x, float y, float z);
+bool ned_MoveBNode(int room, int node, float x, float y, float z);
 void ned_DeleteBNode();
 void ned_DeleteEdge();
-void ned_InsertBNode(int roomnum,vector pos);
+void ned_InsertBNode(int roomnum, vector pos);
 void ned_InsertEdge();
 
-#endif 
+#endif

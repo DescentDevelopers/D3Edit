@@ -10,8 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #ifndef DDIO_WIN_H
 #define DDIO_WIN_H
@@ -22,16 +20,15 @@
 class oeWin32Application;
 
 typedef struct dinput_data {
-	oeWin32Application *app;
-	HWND hwnd;
-	LPDIRECTINPUT lpdi;
-	bool preemptive;
+  oeWin32Application *app;
+  HWND hwnd;
+  LPDIRECTINPUT lpdi;
+  bool preemptive;
 } dinput_data;
 
 extern dinput_data DInputData;
 extern bool DDIO_init;
 extern bool DDIO_preemptive;
-
 
 bool ddio_JoyHandler();
 float ddio_TickToSeconds(unsigned long ticks);
@@ -45,12 +42,10 @@ void ddio_DebugMessage(unsigned err, char *fmt, ...);
 
 #define MAKE_DDIO_TIME(_ms) ddio_TickToSeconds(_ms)
 
-
 //	hook in timer function at certain period.  returns a handle to this function
-DWORD timer_HookFunction(void (CALLBACK *fncptr)(UINT, UINT, DWORD, DWORD, DWORD), UINT period);
+DWORD timer_HookFunction(void(CALLBACK *fncptr)(UINT, UINT, DWORD, DWORD, DWORD), UINT period);
 
 //	clears function from hook list specified by a handle returned from HookFunction
 void timer_ReleaseFunction(DWORD func);
-
 
 #endif

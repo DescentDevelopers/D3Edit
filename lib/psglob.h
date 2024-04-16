@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef __PSGLOB_H_
 #define __PSGLOB_H_
@@ -37,7 +36,7 @@ int PSGlobHasPattern(char *string);
 //	9) If case_sensitive is 0, than case does not matter for the non-pattern characters
 int PSGlobMatch(char *pattern, char *text, int case_sensitive, int dot_special);
 
-//Like PSGlobMatch, but match pattern against any final segment of text
+// Like PSGlobMatch, but match pattern against any final segment of text
 int PSGlobMatchAfterStar(char *pattern, int case_sensitive, char *text);
 
 #endif

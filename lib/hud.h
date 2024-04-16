@@ -10,27 +10,23 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
-
 
 #ifndef HUD_H
 #define HUD_H
-
 
 #include "pstypes.h"
 #include "grdefs.h"
 
 #define MAX_HUD_MESSAGES 3
 #define HUD_MESSAGE_LENGTH 200
-#define HUD_TEXT_LENGTH	32
-#define DEFAULT_HUD_WIDTH		(float)FIXED_SCREEN_WIDTH
-#define DEFAULT_HUD_HEIGHT		(float)FIXED_SCREEN_HEIGHT
+#define HUD_TEXT_LENGTH 32
+#define DEFAULT_HUD_WIDTH (float)FIXED_SCREEN_WIDTH
+#define DEFAULT_HUD_HEIGHT (float)FIXED_SCREEN_HEIGHT
 
 struct object;
 struct poly_model;
 struct bsp_info;
-struct g3Point; 
+struct g3Point;
 
 //	type to pass to functions that draw stats
 typedef ushort tStatMask;
@@ -38,50 +34,49 @@ typedef ushort tStatMask;
 struct CFILE;
 
 //	hud (or gauge) stat flag.
-#define STAT_FPS				0x0001
-#define STAT_SHIELDS			0x0002
-#define STAT_ENERGY			0x0004
-#define STAT_PRIMARYLOAD	0x0008
-#define STAT_SECONDARYLOAD	0x0010
-#define STAT_MESSAGES		0x0020
-#define STAT_INVENTORY		0x0040
-#define STAT_SHIP				0x0080
-#define STAT_AFTERBURN		0x0100
-#define STAT_WARNING			0x0200
-#define STAT_GOALS			0x0400
-#define STAT_TIMER			0x0800
-#define STAT_CUSTOM			0x1000
-#define STAT_CNTRMEASURE	0x2000
-#define STAT_STANDARD		0x3ffe
-#define STAT_ALL				0x3fff
+#define STAT_FPS 0x0001
+#define STAT_SHIELDS 0x0002
+#define STAT_ENERGY 0x0004
+#define STAT_PRIMARYLOAD 0x0008
+#define STAT_SECONDARYLOAD 0x0010
+#define STAT_MESSAGES 0x0020
+#define STAT_INVENTORY 0x0040
+#define STAT_SHIP 0x0080
+#define STAT_AFTERBURN 0x0100
+#define STAT_WARNING 0x0200
+#define STAT_GOALS 0x0400
+#define STAT_TIMER 0x0800
+#define STAT_CUSTOM 0x1000
+#define STAT_CNTRMEASURE 0x2000
+#define STAT_STANDARD 0x3ffe
+#define STAT_ALL 0x3fff
 
 // is this the special version? (defined by huddisplay.cpp or user equiv.)
-#define STAT_SPECIAL			0x4000
+#define STAT_SPECIAL 0x4000
 //	is this the graphical version?
-#define STAT_GRAPHICAL		0x8000
+#define STAT_GRAPHICAL 0x8000
 
 //	hud modes
 typedef enum tHUDMode {
 
-	HUD_FULLSCREEN,
-	HUD_LETTERBOX,
-	HUD_COCKPIT,
-	HUD_OBSERVER
-}
-tHUDMode;
+  HUD_FULLSCREEN,
+  HUD_LETTERBOX,
+  HUD_COCKPIT,
+  HUD_OBSERVER
+} tHUDMode;
 
-#define MAX_HUD_ITEMS			32
-#define HUD_COLOR					GR_RGB(0,255,0)
-#define HUD_ALPHA					192
-#define HUD_ZOOM					0.56f
+#define MAX_HUD_ITEMS 32
+#define HUD_COLOR GR_RGB(0, 255, 0)
+#define HUD_ALPHA 192
+#define HUD_ZOOM 0.56f
 
-#define HUD_MSG_PERSISTENT_INFINITE	10000.0f
-#define HUD_MSG_PERSISTENT_CENTER	-1
+#define HUD_MSG_PERSISTENT_INFINITE 10000.0f
+#define HUD_MSG_PERSISTENT_CENTER -1
 
 /////////////////////////////////////////////////////////////////////////////////
 
 // Max characters in a hud input message
-#define MAX_HUD_INPUT_LEN	80
+#define MAX_HUD_INPUT_LEN 80
 
 extern char HudInputMessage[MAX_HUD_INPUT_LEN];
 extern int HudInputMessageLen;
@@ -104,25 +99,24 @@ extern float Hud_aspect_y;
 #define HUD_Y(_y) ((float)(_y)*Hud_aspect_y)
 
 //	number of shield frames in gauge
-#define NUM_SHIELD_GAUGE_FRAMES		5
-#define SHIELD_GAUGE_FRAME_FULL		0
-#define SHIELD_GAUGE_FRAME_PARTIAL	1
-#define SHIELD_GAUGE_FRAME_HALF		2
-#define SHIELD_GAUGE_FRAME_SERIOUS	3
-#define SHIELD_GAUGE_FRAME_CRITICAL	4
-
+#define NUM_SHIELD_GAUGE_FRAMES 5
+#define SHIELD_GAUGE_FRAME_FULL 0
+#define SHIELD_GAUGE_FRAME_PARTIAL 1
+#define SHIELD_GAUGE_FRAME_HALF 2
+#define SHIELD_GAUGE_FRAME_SERIOUS 3
+#define SHIELD_GAUGE_FRAME_CRITICAL 4
 
 /////////////////////////////////////////////////////////////////////////////////
 
 // Adds a message to the HUD message list.  If the list is already full, punt the
-// top one and move the others up 
-//Returns true if message added, or false if message not (because the previous message was the same)
-bool AddHUDMessage (char *format, ... );
-bool AddBlinkingHUDMessage (char *format, ... );
+// top one and move the others up
+// Returns true if message added, or false if message not (because the previous message was the same)
+bool AddHUDMessage(char *format, ...);
+bool AddBlinkingHUDMessage(char *format, ...);
 
 // Adds a HUD message (similar to AddHUDMessage), however can be filtered out by
 // a "-playermessages" command line.
-bool AddFilteredHUDMessage (char *format, ... );
+bool AddFilteredHUDMessage(char *format, ...);
 
 //	initializes other hud stuff
 void SetHUDEnergyImage(const char *energy_img);
@@ -130,29 +124,29 @@ void SetHUDAfterburnImage(const char *afterburn_img);
 
 // Renders all the messages we have in the message list.  If HUD_MESSAGE_TIME has
 // elapsed, then punt the oldest message and move the others up one
-void RenderHUDMessages ();
+void RenderHUDMessages();
 
 //	renders ship stats
 void RenderHUDStats(tStatMask stat_mask);
 
 // Handles all incoming keys for an inputted hud message
-void DoHUDInputMessageKey (int key);
+void DoHUDInputMessageKey(int key);
 
-//Called when the player hit the Multiplayer message key. 
-//Puts the player in input mode, or if already inputting resets the hud input message.
+// Called when the player hit the Multiplayer message key.
+// Puts the player in input mode, or if already inputting resets the hud input message.
 void StartHUDInputMessage();
 
-//Called when the player hits the Multiplayer team-message key.
-//Puts the player in input mode, or if already inputting resets the hud input message.
+// Called when the player hits the Multiplayer team-message key.
+// Puts the player in input mode, or if already inputting resets the hud input message.
 void StartTeamHUDInputMessage();
 
 // Adds a colored message to the hud
-//Returns true if message added, or false if message not (because the previous message was the same)
-bool AddColoredHUDMessage (ddgr_color color,char *format,...);
+// Returns true if message added, or false if message not (because the previous message was the same)
+bool AddColoredHUDMessage(ddgr_color color, char *format, ...);
 
 // Adds a HUD message (similar to AddColoredHUDMessage), however can be filtered out by
 // a "-playermessages" command line.
-bool AddFilteredColoredHUDMessage (ddgr_color color,char *format,...);
+bool AddFilteredColoredHUDMessage(ddgr_color color, char *format, ...);
 
 //	Initializes Reticle on Hud.  Usually called when weapon changes.
 void InitReticle(int primary_slots, int secondary_slots);
@@ -160,14 +154,15 @@ void InitReticle(int primary_slots, int secondary_slots);
 //	resets reticle to current weapon.
 void ResetReticle();
 
-//Flags for persistent HUD messages
-#define HPF_FADEOUT			1		  // message fades out when done
-#define HPF_FREESPACE_DRAW	2		  // message draws with the FreeSpace briefing effect
+// Flags for persistent HUD messages
+#define HPF_FADEOUT 1        // message fades out when done
+#define HPF_FREESPACE_DRAW 2 // message draws with the FreeSpace briefing effect
 
 //	adds a persistent hud message that is timed, or infinite until removed
 // for infinite, time = HUD_MSG_PERSISTENT_INFINITE
 // for centering on an axis,set either x or y to HUD_MSG_PERSISTENT_CENTER
-void AddPersistentHUDMessage(ddgr_color color,int x, int y, float time, int flags, int sound_index, const char *fmt, ...);
+void AddPersistentHUDMessage(ddgr_color color, int x, int y, float time, int flags, int sound_index, const char *fmt,
+                             ...);
 
 // removes persistent hud message
 void ResetPersistentHUDMessage();
@@ -186,107 +181,101 @@ void ResetPersistentHUDMessage();
 //		MULTI_SEND_MESSAGE_GREEN_TEAM	= only green team (2) should get this message
 //		MULTI_SEND_MESSAGE_YELLOW_TEAM	= only yellow team (3) should get this message
 //		0-32							= player num of the player to get the message
-char *GetMessageDestination(char *message,int *destination);
-
+char *GetMessageDestination(char *message, int *destination);
 
 // HUD System
-	
+
 //	predefined types (tHUDItem::type)
-#define HUD_ITEM_PRIMARY		1
-#define HUD_ITEM_SECONDARY		2
-#define HUD_ITEM_SHIELD			3
-#define HUD_ITEM_ENERGY			4
-#define HUD_ITEM_AFTERBURNER	5
-#define HUD_ITEM_INVENTORY		6
-#define HUD_ITEM_SHIPSTATUS	7
-#define HUD_ITEM_WARNINGS		8
-#define HUD_ITEM_GOALS			9
-#define HUD_ITEM_GOALSTATES	10
-#define HUD_ITEM_CNTRMEASURE	11
-#define HUD_ITEM_SCORE			12
-#define HUD_ITEM_CUSTOMTEXT	20
-#define HUD_ITEM_CUSTOMIMAGE	21
-#define HUD_ITEM_TIMER			22
-#define HUD_ITEM_CUSTOMTEXT2	23				// like custom text, keeps string pointer passed in
+#define HUD_ITEM_PRIMARY 1
+#define HUD_ITEM_SECONDARY 2
+#define HUD_ITEM_SHIELD 3
+#define HUD_ITEM_ENERGY 4
+#define HUD_ITEM_AFTERBURNER 5
+#define HUD_ITEM_INVENTORY 6
+#define HUD_ITEM_SHIPSTATUS 7
+#define HUD_ITEM_WARNINGS 8
+#define HUD_ITEM_GOALS 9
+#define HUD_ITEM_GOALSTATES 10
+#define HUD_ITEM_CNTRMEASURE 11
+#define HUD_ITEM_SCORE 12
+#define HUD_ITEM_CUSTOMTEXT 20
+#define HUD_ITEM_CUSTOMIMAGE 21
+#define HUD_ITEM_TIMER 22
+#define HUD_ITEM_CUSTOMTEXT2 23 // like custom text, keeps string pointer passed in
 
-#define HUD_FLAG_PERSISTANT	1				// this hud item will not be resetted.
-#define HUD_FLAG_SMALL			2				// when small version of hud is rendered, this will render in the AUX frame
-#define HUD_FLAG_LEVEL			4				// persistent for the current level, but cleared between levels
+#define HUD_FLAG_PERSISTANT 1 // this hud item will not be resetted.
+#define HUD_FLAG_SMALL 2      // when small version of hud is rendered, this will render in the AUX frame
+#define HUD_FLAG_LEVEL 4      // persistent for the current level, but cleared between levels
 
-#define HUD_INVALID_ID			255			// hud invalid id constant.
+#define HUD_INVALID_ID 255 // hud invalid id constant.
 
-typedef struct t_dirty_rect
-{
-	struct
-	{
-		short l,t,r,b;
-	}
-	r[3];												// three rectangles for each frame buffer (3 max)
+typedef struct t_dirty_rect {
+  struct {
+    short l, t, r, b;
+  } r[3]; // three rectangles for each frame buffer (3 max)
 
-	void set(short l0, short t0, short r0, short b0) { r[0].l = l0; r[0].t = t0; r[0].r = r0; r[0].b = b0; };
-	void reset();
-	void fill(ddgr_color col);
-}
-tDirtyRect;											// dirty rectangle for hud item (small hud version)
+  void set(short l0, short t0, short r0, short b0) {
+    r[0].l = l0;
+    r[0].t = t0;
+    r[0].r = r0;
+    r[0].b = b0;
+  };
+  void reset();
+  void fill(ddgr_color col);
+} tDirtyRect; // dirty rectangle for hud item (small hud version)
 
+typedef struct tHUDItem {
+  short x, y;
+  short xa, ya; // auxillary points
+  short xb, yb;
+  short tx, ty;             // text version x and y.
+  float grscalex, grscaley; // used to scale graphics.
 
-typedef struct tHUDItem
-{
-	short x, y;
-	short xa, ya;									// auxillary points
-	short xb, yb;									
-	short tx, ty;									// text version x and y.
-	float grscalex,grscaley;					// used to scale graphics.
+  ubyte id;    // id number.
+  ubyte type;  // custom of predefined hud item type.
+  ushort stat; // stat mask (what class of hud items does this one belong to)
 
-	ubyte id;										// id number.
-	ubyte type;										// custom of predefined hud item type.
-	ushort stat;									// stat mask (what class of hud items does this one belong to)
+  ushort flags;           // more flags.
+  ubyte alpha;            // alpha of hud item
+  ubyte saturation_count; // how saturated is this hud item (how bright).
 
-	ushort flags;									// more flags.
-	ubyte alpha;									// alpha of hud item
-	ubyte saturation_count;						// how saturated is this hud item (how bright).
+  ddgr_color color;  // color of hud item.
+  ddgr_color tcolor; // text color of item.
 
-	ddgr_color color;								// color of hud item.
-	ddgr_color tcolor;							// text color of item.
+  void (*render_fn)(struct tHUDItem *); // called by hud system to draw the hud item.
 
-	void (*render_fn)(struct tHUDItem *);	// called by hud system to draw the hud item.
+  int buffer_size; // for customtext2 item
 
-	int buffer_size;								// for customtext2 item
+  // data is initialized depending on 'type'.
+  // custom types must have either element of data already initialized.
+  //	all predefined types can ignore this data field externally.
+  union {
+    int bm_handle;    // custom images
+    int timer_handle; // timer
+    char *text;       // custom text.
+  } data;
 
-// data is initialized depending on 'type'.
-// custom types must have either element of data already initialized.
-//	all predefined types can ignore this data field externally.
-	union 											
-	{
-		int bm_handle;								// custom images
-		int timer_handle;							// timer
-		char *text;									// custom text.
-	}
-	data;
-
-	tDirtyRect dirty_rect;						// used in small version of hud to clear only 'dirty' area
-}
-tHUDItem;
+  tDirtyRect dirty_rect; // used in small version of hud to clear only 'dirty' area
+} tHUDItem;
 
 //	hud resources
-struct sHUDResources 
-{
-	char hud_inf_name[PSFILENAME_LEN+1];
-	int arrow_bmp;
-	int goal_complete_bmp;
-	int goal_bmp;
-	int lock_bmp[2];
-	int wpn_bmp;
-	int ship_bmp;
-	int energy_bmp;
-	int shield_bmp[NUM_SHIELD_GAUGE_FRAMES];
-	int invpulse_bmp;
-	int dot_bmp;
-	int afterburn_bmp;
-	int antigrav_bmp[2];
+struct sHUDResources {
+  char hud_inf_name[PSFILENAME_LEN + 1];
+  int arrow_bmp;
+  int goal_complete_bmp;
+  int goal_bmp;
+  int lock_bmp[2];
+  int wpn_bmp;
+  int ship_bmp;
+  int energy_bmp;
+  int shield_bmp[NUM_SHIELD_GAUGE_FRAMES];
+  int invpulse_bmp;
+  int dot_bmp;
+  int afterburn_bmp;
+  int antigrav_bmp[2];
 };
 
-#define HUD_ARROW_SCALE	0.20f
+#define HUD_ARROW_SCALE 0.20f
 #define HUD_WPN_SCALE 0.75f
 #define HUD_SHIP_SCALE 0.33f
 #define HUD_ENERGY_SCALE 0.50f
@@ -330,14 +319,14 @@ void AddHUDItem(tHUDItem *item);
 //	frees hud items based off their type class.
 void FreeHUDItem(int item);
 
-//Updates the customtext2 item, if there is one
+// Updates the customtext2 item, if there is one
 void UpdateCustomtext2HUDItem(char *text);
 
 //	resets hud
 void ResetHUD();
 
 //	loads in hud configuration file, adds hud items.
-void LoadHUDConfig(const char *filename, bool (*fn)(const char *,const char *, void *) = NULL, void *data=NULL);
+void LoadHUDConfig(const char *filename, bool (*fn)(const char *, const char *, void *) = NULL, void *data = NULL);
 
 //	render cockpit and gauges frame
 void RenderHUDFrame();
@@ -359,22 +348,23 @@ int RenderHUDGetTextLineWidth(char *string);
 int RenderHUDGetTextHeight(char *string);
 
 //	renders a bitmap onto the hud
-void RenderHUDQuad(int x, int y, int w, int h, float u0, float v0, float u1, float v1, int bm, ubyte alpha, int sat_count=0);
+void RenderHUDQuad(int x, int y, int w, int h, float u0, float v0, float u1, float v1, int bm, ubyte alpha,
+                   int sat_count = 0);
 
-//	renders text, scaled, alphaed, saturated, 
+//	renders text, scaled, alphaed, saturated,
 void RenderHUDText(ddgr_color col, ubyte alpha, int sat_count, int x, int y, char *fmt, ...);
 
 //	flags for RenderHudText.
 #define HUDTEXT_CENTERED 1
 
-//	renders text, scaled, alphaed, saturated, 
+//	renders text, scaled, alphaed, saturated,
 void RenderHUDTextFlags(int flags, ddgr_color col, ubyte alpha, int sat_count, int x, int y, char *fmt, ...);
 
 // reset hud messages.
 void ResetHUDMessages();
 
 // Sends off the input message the player was typing
-void SendOffHUDInputMessage ();
+void SendOffHUDInputMessage();
 
 //	reset hud message list.
 void ResetHUDMessages();
@@ -405,48 +395,43 @@ void CloseGameMessageConsole();
 void HUDPauseMessages(void);
 void HUDUnpauseMessages(void);
 
-
 /////////////////////////////////////////////////////////////////////////
 // Message Console System
 /////////////////////////////////////////////////////////////////////////
 
-struct tMsgList
-{
-	int m_nmsg, m_limit;
-	char **m_msg;
+struct tMsgList {
+  int m_nmsg, m_limit;
+  char **m_msg;
 
-	tMsgList();
-	void set_limit(int limit) { m_limit = limit; };
-	bool add(const char *msg, ubyte lvl=0, ubyte hr=0, ubyte min=0, ubyte sec=0);
-	const char *get(int i);
-	void reset();
+  tMsgList();
+  void set_limit(int limit) { m_limit = limit; };
+  bool add(const char *msg, ubyte lvl = 0, ubyte hr = 0, ubyte min = 0, ubyte sec = 0);
+  const char *get(int i);
+  void reset();
 };
-
 
 //////////////////////////////////////////////////////////////////////////////
 
-class MsgListConsole
-{
-	tMsgList *m_list;
-	int m_x, m_y, m_w, m_h;
-	int m_bufline, m_buflen, m_curmsgs, m_numlines;
-	bool m_opened;
-	char *m_buffer;
-	char m_title[32];
-	char **m_conlines;
-	int n_conlines;
-	int m_keydownstate;				// -1 for up key, 1 for down key, 0 for none.
-	float m_keydowntime;
+class MsgListConsole {
+  tMsgList *m_list;
+  int m_x, m_y, m_w, m_h;
+  int m_bufline, m_buflen, m_curmsgs, m_numlines;
+  bool m_opened;
+  char *m_buffer;
+  char m_title[32];
+  char **m_conlines;
+  int n_conlines;
+  int m_keydownstate; // -1 for up key, 1 for down key, 0 for none.
+  float m_keydowntime;
 
 public:
-	MsgListConsole();
-	~MsgListConsole();
-	bool Open(const char *title, int x, int y, int w, int h);				// registers dimensions of box
-	void Close();
-	void AttachMsgList(tMsgList *msglist);
-	void Draw();
-	void DoInput();												// do scrolling ui on this console
+  MsgListConsole();
+  ~MsgListConsole();
+  bool Open(const char *title, int x, int y, int w, int h); // registers dimensions of box
+  void Close();
+  void AttachMsgList(tMsgList *msglist);
+  void Draw();
+  void DoInput(); // do scrolling ui on this console
 };
-
 
 #endif

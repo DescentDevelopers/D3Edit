@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #include "RoomUVs.h"
 
@@ -22,163 +21,149 @@
 
 #include "pserror.h"
 
-//returns the magnatude of the 2d vector <a,b>
-static float zhypot(float a,float b)
-{
-	return sqrt(a*a + b*b);
-}
+// returns the magnatude of the 2d vector <a,b>
+static float zhypot(float a, float b) { return sqrt(a * a + b * b); }
 
 //	Given u,v coordinates at two vertices, assign u,v coordinates to the other vertices on a face.
 //	va, vb = face-relative vertex indices corresponding to uva, uvb.  Ie, they are always in 0..num_verts_in_face
-void AssignUVsToFace(room *rp, int facenum, roomUVL *uva, roomUVL *uvb, int va, int vb)
-{
-	face		*fp = &rp->faces[facenum];
-	int		nv = fp->num_verts;
-	int		vlo,vhi;
-	vector	fvec,rvec,tvec;
-	roomUVL	ruvmag,fuvmag,uvlo,uvhi;
-	float		fmag,mag01;
-	int		i;
-	
-	float saveu2[MAX_VERTS_PER_FACE],savev2[MAX_VERTS_PER_FACE];
-	for (i=0;i<fp->num_verts;i++)
-	{
-		saveu2[i]=fp->face_uvls[i].u2;
-		savev2[i]=fp->face_uvls[i].v2;
-	}
+void AssignUVsToFace(room *rp, int facenum, roomUVL *uva, roomUVL *uvb, int va, int vb) {
+  face *fp = &rp->faces[facenum];
+  int nv = fp->num_verts;
+  int vlo, vhi;
+  vector fvec, rvec, tvec;
+  roomUVL ruvmag, fuvmag, uvlo, uvhi;
+  float fmag, mag01;
+  int i;
 
-	ASSERT( (va<nv) && (vb<nv) );
-	ASSERT((abs(va - vb) == 1) || (abs(va - vb) == nv-1));		// make sure the verticies specify an edge
+  float saveu2[MAX_VERTS_PER_FACE], savev2[MAX_VERTS_PER_FACE];
+  for (i = 0; i < fp->num_verts; i++) {
+    saveu2[i] = fp->face_uvls[i].u2;
+    savev2[i] = fp->face_uvls[i].v2;
+  }
 
-	// We want vlo precedes vhi, ie vlo < vhi, or vlo = num_verts, vhi = 0
-	if (va == ((vb + 1) % nv)) {		// va = vb + 1
-		vlo = vb;
-		vhi = va;
-		uvlo = *uvb;
-		uvhi = *uva;
-	} else {
-		vlo = va;
-		vhi = vb;
-		uvlo = *uva;
-		uvhi = *uvb;
-	}
+  ASSERT((va < nv) && (vb < nv));
+  ASSERT((abs(va - vb) == 1) || (abs(va - vb) == nv - 1)); // make sure the verticies specify an edge
 
-	ASSERT(((vlo+1) % nv) == vhi);	// If we are on an edge, then uvhi is one more than uvlo (mod num_verts)
-	fp->face_uvls[vlo] = uvlo;
-	fp->face_uvls[vhi] = uvhi;
+  // We want vlo precedes vhi, ie vlo < vhi, or vlo = num_verts, vhi = 0
+  if (va == ((vb + 1) % nv)) { // va = vb + 1
+    vlo = vb;
+    vhi = va;
+    uvlo = *uvb;
+    uvhi = *uva;
+  } else {
+    vlo = va;
+    vhi = vb;
+    uvlo = *uva;
+    uvhi = *uvb;
+  }
 
-	// Now we have vlo precedes vhi, compute vertices ((vhi+1) % nv) and ((vhi+2) % nv)
+  ASSERT(((vlo + 1) % nv) == vhi); // If we are on an edge, then uvhi is one more than uvlo (mod num_verts)
+  fp->face_uvls[vlo] = uvlo;
+  fp->face_uvls[vhi] = uvhi;
 
-	// Assign u,v scale to a unit length right vector.
-	fmag = zhypot(uvhi.v - uvlo.v,uvhi.u - uvlo.u);
-	if (fmag < 0.001) {
-		//mprintf((0,"Warning: fmag = %7.3f, using approximate u,v values\n",f2fl(fmag)));
-		ruvmag.u = 256.0;
-		ruvmag.v = 256.0;
-		fuvmag.u = 256.0;
-		fuvmag.v = 256.0;
-	} else {
-		ruvmag.u = uvhi.v - uvlo.v;
-		ruvmag.v = uvlo.u - uvhi.u;
+  // Now we have vlo precedes vhi, compute vertices ((vhi+1) % nv) and ((vhi+2) % nv)
 
-		fuvmag.u = uvhi.u - uvlo.u;
-		fuvmag.v = uvhi.v - uvlo.v;
-	}
+  // Assign u,v scale to a unit length right vector.
+  fmag = zhypot(uvhi.v - uvlo.v, uvhi.u - uvlo.u);
+  if (fmag < 0.001) {
+    // mprintf((0,"Warning: fmag = %7.3f, using approximate u,v values\n",f2fl(fmag)));
+    ruvmag.u = 256.0;
+    ruvmag.v = 256.0;
+    fuvmag.u = 256.0;
+    fuvmag.v = 256.0;
+  } else {
+    ruvmag.u = uvhi.v - uvlo.v;
+    ruvmag.v = uvlo.u - uvhi.u;
 
-	//Get pointers to our verts
-	vector *vv0 = &rp->verts[fp->face_verts[vlo]],
-			 *vv1 = &rp->verts[fp->face_verts[vhi]];
+    fuvmag.u = uvhi.u - uvlo.u;
+    fuvmag.v = uvhi.v - uvlo.v;
+  }
 
-	//Get forward vector from our edge
-	fvec = *vv1 - *vv0;
-	mag01 = vm_NormalizeVector(&fvec);
+  // Get pointers to our verts
+  vector *vv0 = &rp->verts[fp->face_verts[vlo]], *vv1 = &rp->verts[fp->face_verts[vhi]];
 
-	//Check for bad vector
-	if (mag01 < 0.001 ) {
-		OutrageMessageBox("U, V bogosity in room #%i, probably on face #%i.  CLEAN UP YOUR MESS!", ROOMNUM(rp), facenum);
-		return;
-	}
+  // Get forward vector from our edge
+  fvec = *vv1 - *vv0;
+  mag01 = vm_NormalizeVector(&fvec);
 
-	//Get right vector from the cross product of the forward vec with the surface normal
-	rvec = fvec ^ fp->normal;
+  // Check for bad vector
+  if (mag01 < 0.001) {
+    OutrageMessageBox("U, V bogosity in room #%i, probably on face #%i.  CLEAN UP YOUR MESS!", ROOMNUM(rp), facenum);
+    return;
+  }
 
-	//Normalize uv values
-	ruvmag.u /= mag01;
-	ruvmag.v /= mag01;
-	fuvmag.u /= mag01;
-	fuvmag.v /= mag01;
+  // Get right vector from the cross product of the forward vec with the surface normal
+  rvec = fvec ^ fp->normal;
 
-	//Compute UVs for each point
-	for (i=1;i<nv-1;i++) {
-  		int fv = (vhi+i)%nv;					//vert index in face
-  		int rv = fp->face_verts[fv];		//vert index in room
+  // Normalize uv values
+  ruvmag.u /= mag01;
+  ruvmag.v /= mag01;
+  fuvmag.u /= mag01;
+  fuvmag.v /= mag01;
 
-		//Get the vector for this edge
-  		tvec = rp->verts[rv] - *vv0;
+  // Compute UVs for each point
+  for (i = 1; i < nv - 1; i++) {
+    int fv = (vhi + i) % nv;     // vert index in face
+    int rv = fp->face_verts[fv]; // vert index in room
 
-		//Project the current edge onto our forward & right vectors
-		float rproj = tvec * rvec,
-				fproj = tvec * fvec;
+    // Get the vector for this edge
+    tvec = rp->verts[rv] - *vv0;
 
-		//Compute and assign UV values
-  		fp->face_uvls[fv].u = uvlo.u + (ruvmag.u * rproj) + (fuvmag.u * fproj);
-  		fp->face_uvls[fv].v = uvlo.v + (ruvmag.v * rproj) + (fuvmag.v * fproj);
-  	}
+    // Project the current edge onto our forward & right vectors
+    float rproj = tvec * rvec, fproj = tvec * fvec;
 
+    // Compute and assign UV values
+    fp->face_uvls[fv].u = uvlo.u + (ruvmag.u * rproj) + (fuvmag.u * fproj);
+    fp->face_uvls[fv].v = uvlo.v + (ruvmag.v * rproj) + (fuvmag.v * fproj);
+  }
 }
 
-// Stretches the UVS of a face 
-void StretchRoomUVs(room *rp, int facenum, int edge)
-{
-	roomUVL	uv0,uv1;
-	int		v0, v1;
-	face *fp=&rp->faces[facenum];
+// Stretches the UVS of a face
+void StretchRoomUVs(room *rp, int facenum, int edge) {
+  roomUVL uv0, uv1;
+  int v0, v1;
+  face *fp = &rp->faces[facenum];
 
-	int i;
-	float saveu2[MAX_VERTS_PER_FACE],savev2[MAX_VERTS_PER_FACE];
-	for (i=0;i<fp->num_verts;i++)
-	{
-		saveu2[i]=fp->face_uvls[i].u2;
-		savev2[i]=fp->face_uvls[i].v2;
-	}
+  int i;
+  float saveu2[MAX_VERTS_PER_FACE], savev2[MAX_VERTS_PER_FACE];
+  for (i = 0; i < fp->num_verts; i++) {
+    saveu2[i] = fp->face_uvls[i].u2;
+    savev2[i] = fp->face_uvls[i].v2;
+  }
 
-	v0 = edge;
-	v1 = (v0 + 1) % rp->faces[facenum].num_verts;
+  v0 = edge;
+  v1 = (v0 + 1) % rp->faces[facenum].num_verts;
 
-	uv0 = rp->faces[facenum].face_uvls[v0];		//copy uv AND l
-	uv1 = rp->faces[facenum].face_uvls[v1];
+  uv0 = rp->faces[facenum].face_uvls[v0]; // copy uv AND l
+  uv1 = rp->faces[facenum].face_uvls[v1];
 
-	AssignUVsToFace(rp, facenum, &uv0, &uv1, v0, v1);
+  AssignUVsToFace(rp, facenum, &uv0, &uv1, v0, v1);
 
-	for (i=0;i<fp->num_verts;i++)
-	{
-		fp->face_uvls[i].u2=saveu2[i];
-		fp->face_uvls[i].v2=savev2[i];
-	}
-
+  for (i = 0; i < fp->num_verts; i++) {
+    fp->face_uvls[i].u2 = saveu2[i];
+    fp->face_uvls[i].v2 = savev2[i];
+  }
 }
 
-//Scale all the UV values in a face from the center point (as defined by averaging the u & v values)
-void ScaleFaceUVs(room *rp,int facenum,float scale)
-{
-	face *fp=&rp->faces[facenum];
+// Scale all the UV values in a face from the center point (as defined by averaging the u & v values)
+void ScaleFaceUVs(room *rp, int facenum, float scale) {
+  face *fp = &rp->faces[facenum];
 
-	int i;
-	float midu=0,midv=0;
+  int i;
+  float midu = 0, midv = 0;
 
-	for (i=0;i<fp->num_verts;i++) {
-		midu += fp->face_uvls[i].u;
-		midv += fp->face_uvls[i].v;
-	}
+  for (i = 0; i < fp->num_verts; i++) {
+    midu += fp->face_uvls[i].u;
+    midv += fp->face_uvls[i].v;
+  }
 
-	midu /= fp->num_verts;
-	midv /= fp->num_verts;
+  midu /= fp->num_verts;
+  midv /= fp->num_verts;
 
-	for (i=0;i<fp->num_verts;i++)
-	{
-		fp->face_uvls[i].u = midu + (fp->face_uvls[i].u - midu) * scale;
-		fp->face_uvls[i].v = midv + (fp->face_uvls[i].v - midv) * scale;
-	}
+  for (i = 0; i < fp->num_verts; i++) {
+    fp->face_uvls[i].u = midu + (fp->face_uvls[i].u - midu) * scale;
+    fp->face_uvls[i].v = midv + (fp->face_uvls[i].v - midv) * scale;
+  }
 
-	World_changed=1;
+  World_changed = 1;
 }

@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_LISTDIALOG_H__8AEF1020_246B_11D3_A6A2_AFA8C7C9F924__INCLUDED_)
+#if !defined(AFX_LISTDIALOG_H__8AEF1020_246B_11D3_A6A2_AFA8C7C9F924__INCLUDED_)
 #define AFX_LISTDIALOG_H__8AEF1020_246B_11D3_A6A2_AFA8C7C9F924__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -22,35 +22,32 @@
 /////////////////////////////////////////////////////////////////////////////
 // CListDialog dialog
 
-class CListDialog : public CDialog
-{
-// Construction
+class CListDialog : public CDialog {
+  // Construction
 public:
-	CListDialog(CWnd* pParent = NULL);   // standard constructor
+  CListDialog(CWnd *pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CListDialog)
-	enum { IDD = IDD_LISTDIALOG };
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CListDialog)
+  enum { IDD = IDD_LISTDIALOG };
+  //}}AFX_DATA
 
-
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CListDialog)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	virtual void PostNcDestroy();
-	//}}AFX_VIRTUAL
-
-// Implementation
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CListDialog)
 protected:
+  virtual void DoDataExchange(CDataExchange *pDX); // DDX/DDV support
+  virtual void PostNcDestroy();
+  //}}AFX_VIRTUAL
 
-	// Generated message map functions
-	//{{AFX_MSG(CListDialog)
-	virtual void OnOK();
-	virtual void OnCancel();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+protected:
+  // Generated message map functions
+  //{{AFX_MSG(CListDialog)
+  virtual void OnOK();
+  virtual void OnCancel();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

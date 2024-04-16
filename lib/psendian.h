@@ -10,14 +10,11 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #ifndef __ENDIAN_H___
 #define __ENDIAN_H___
 
-extern "C"
-{
+extern "C" {
 // Endian_IsLittleEndian
 //
 //	Returns true if the machine is Little Endian (i.e. 80x86)

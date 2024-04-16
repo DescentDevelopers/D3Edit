@@ -10,7 +10,7 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #if !defined(AFX_LATHEDIALOG_H__A0BA7220_FEA8_11D2_A6A1_006097E07445__INCLUDED_)
+#if !defined(AFX_LATHEDIALOG_H__A0BA7220_FEA8_11D2_A6A1_006097E07445__INCLUDED_)
 #define AFX_LATHEDIALOG_H__A0BA7220_FEA8_11D2_A6A1_006097E07445__INCLUDED_
 
 #if _MSC_VER > 1000
@@ -20,50 +20,47 @@
 //
 
 // lathe rotations
-#define X_AXIS	0
-#define Y_AXIS	1
-#define Z_AXIS	2
+#define X_AXIS 0
+#define Y_AXIS 1
+#define Z_AXIS 2
 
 /////////////////////////////////////////////////////////////////////////////
 // CLatheDialog dialog
 
-class CLatheDialog : public CDialog
-{
-// Construction
+class CLatheDialog : public CDialog {
+  // Construction
 public:
-	CLatheDialog(CWnd* pParent = NULL);   // standard constructor
+  CLatheDialog(CWnd *pParent = NULL); // standard constructor
 
-	BOOL m_Inward;
+  BOOL m_Inward;
 
-// Dialog Data
-	//{{AFX_DATA(CLatheDialog)
-	enum { IDD = IDD_LATHE_VERTS };
-	BOOL	m_bEndCaps;
-	UINT	m_Num_sides;
-	int		m_Rotation;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CLatheDialog)
+  enum { IDD = IDD_LATHE_VERTS };
+  BOOL m_bEndCaps;
+  UINT m_Num_sides;
+  int m_Rotation;
+  //}}AFX_DATA
 
-
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CLatheDialog)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CLatheDialog)
 protected:
+  virtual void DoDataExchange(CDataExchange *pDX); // DDX/DDV support
+                                                   //}}AFX_VIRTUAL
 
-	// Generated message map functions
-	//{{AFX_MSG(CLatheDialog)
-	virtual BOOL OnInitDialog();
-	afx_msg void OnXAxis();
-	afx_msg void OnYAxis();
-	afx_msg void OnZAxis();
-	afx_msg void OnInward();
-	afx_msg void OnOutward();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+protected:
+  // Generated message map functions
+  //{{AFX_MSG(CLatheDialog)
+  virtual BOOL OnInitDialog();
+  afx_msg void OnXAxis();
+  afx_msg void OnYAxis();
+  afx_msg void OnZAxis();
+  afx_msg void OnInward();
+  afx_msg void OnOutward();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

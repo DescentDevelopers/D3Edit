@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef DDACCESS_H
 #define DDACCESS_H
@@ -18,7 +17,6 @@
 //	allows access to DD system information, such as OS specific info.
 
 #define DD_ACCESS_RING
-
 
 //	Win32 region of DD_ACCESS
 //		Include the standard windows header since API calls are available in DD_ACCESS_RING
@@ -31,10 +29,8 @@
 #include <windows.h>
 
 //	Messages
-#define WM_SYNCMOUSEACQUIRE		(WM_USER+0)
+#define WM_SYNCMOUSEACQUIRE (WM_USER + 0)
 
-#endif		// WIN32
-
+#endif // WIN32
 
 #endif
-

@@ -10,34 +10,29 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
-		
+#ifdef ACTIVATE_INNER_LOOP
 
-			dest=(destptr+x1);
+dest = (destptr + x1);
 
-			int i;
-                
-			fix u  = LeftU;
-            fix v  = LeftV;
-			int tw=bm_w(Tex_bitmap,Current_mip);
-			int th=bm_h(Tex_bitmap,Current_mip);
+int i;
 
-			TexSrc=bm_data8(Tex_bitmap,Current_mip);
-						
-			dest=(destptr+x1);
-	
-			for (i=0;i<width;i++)
-			{
-				if (TexSrc[(abs(FixToInt(v)%th)<<8)+abs(FixToInt(u)%tw)]!=0)
-					*dest = FLAT_SHADE_COLOR;
-				
-				dest++;
-				
-                u += dudx;
-                v += dvdx;
+fix u = LeftU;
+fix v = LeftV;
+int tw = bm_w(Tex_bitmap, Current_mip);
+int th = bm_h(Tex_bitmap, Current_mip);
 
-			}
-		
-			
-			
+TexSrc = bm_data8(Tex_bitmap, Current_mip);
+
+dest = (destptr + x1);
+
+for (i = 0; i < width; i++) {
+  if (TexSrc[(abs(FixToInt(v) % th) << 8) + abs(FixToInt(u) % tw)] != 0)
+    *dest = FLAT_SHADE_COLOR;
+
+  dest++;
+
+  u += dudx;
+  v += dvdx;
+}
+
 #endif

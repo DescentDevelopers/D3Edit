@@ -10,31 +10,30 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
+#ifdef ACTIVATE_INNER_LOOP
 
-			fix u  = LeftU;
-            fix v  = LeftV;
-			fix l  = LeftMonoLight;
-			ushort pix;
-			
-			dest=(destptr+x1);
-			ushort *srcdata=bm_data (Tex_bitmap,Current_mip);
-			int tw=bm_w(Tex_bitmap,Current_mip);
-			
-			int i;
-									
-			for (i=0;i<width;i++)
-			{
-				int cu,cv;
+fix u = LeftU;
+fix v = LeftV;
+fix l = LeftMonoLight;
+ushort pix;
 
-				cu=FixToInt(u)%tw;
-				cv=(FixToInt(v)%tw)*tw;
+dest = (destptr + x1);
+ushort *srcdata = bm_data(Tex_bitmap, Current_mip);
+int tw = bm_w(Tex_bitmap, Current_mip);
 
-				pix=srcdata[cu+cv];
-				
-				*dest++ = (TexShadeTable16[FixToInt(l)][pix>>8])+TexShadeTable8[FixToInt(l)][pix & 0xFF];
-                u += dudx;
-                v += dvdx;
-				l += dldx;
-			}
+int i;
+
+for (i = 0; i < width; i++) {
+  int cu, cv;
+
+  cu = FixToInt(u) % tw;
+  cv = (FixToInt(v) % tw) * tw;
+
+  pix = srcdata[cu + cv];
+
+  *dest++ = (TexShadeTable16[FixToInt(l)][pix >> 8]) + TexShadeTable8[FixToInt(l)][pix & 0xFF];
+  u += dudx;
+  v += dvdx;
+  l += dldx;
+}
 #endif

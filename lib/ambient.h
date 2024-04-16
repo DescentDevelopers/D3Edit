@@ -10,27 +10,26 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef _AMBIENT_H
 #define _AMBIENT_H
 
 #include "manage.h"
 
-//An Ambient Sound Element, one part of an Ambient Sound Pattern (ASP)
+// An Ambient Sound Element, one part of an Ambient Sound Pattern (ASP)
 typedef struct {
-	int	handle;							//the sample's handle
-	float	min_volume,max_volume;		//minimum and maximum volume
-	int	probability;					//between 0 and 100
+  int handle;                   // the sample's handle
+  float min_volume, max_volume; // minimum and maximum volume
+  int probability;              // between 0 and 100
 } ase;
 
-//An Ambient Sound Element, one part of an Ambient Sound Pattern (ASP)
+// An Ambient Sound Element, one part of an Ambient Sound Pattern (ASP)
 typedef struct {
-	char		name[PAGENAME_LEN];		//the name of this pattern
-	float		min_delay,max_delay;		//delay time between sounds
-	int		num_sounds;					//how many sounds in this pattern
-	ase		*sounds;						//array of sounds
-	float		delay;						//how long until the next sound
+  char name[PAGENAME_LEN];    // the name of this pattern
+  float min_delay, max_delay; // delay time between sounds
+  int num_sounds;             // how many sounds in this pattern
+  ase *sounds;                // array of sounds
+  float delay;                // how long until the next sound
 } asp;
 
 extern int Num_ambient_sound_patterns;
@@ -41,26 +40,26 @@ extern asp Ambient_sound_patterns[];
 $$TABLE_GENERIC "ambient.dat"
 */
 
-//Initialize the ambient sound system
+// Initialize the ambient sound system
 void InitAmbientSoundSystem();
 
-//Does the ambient sound processing for one frame, maybe playing a sound or two
+// Does the ambient sound processing for one frame, maybe playing a sound or two
 void DoAmbientSounds();
 
-//Initializes the ambient sounds for the current level
+// Initializes the ambient sounds for the current level
 void InitAmbientSounds();
 
-//Return the index of a named ambient sound pattern
-//Returns number, or -1 if can't find
+// Return the index of a named ambient sound pattern
+// Returns number, or -1 if can't find
 int FindAmbientSoundPattern(char *aspname);
 
-//Returns a pointer to the name of the specified ambient sound pattern
+// Returns a pointer to the name of the specified ambient sound pattern
 char *AmbientSoundPatternName(int n);
 
-//Reads data from the ambient sound data file
+// Reads data from the ambient sound data file
 void ReadAmbientData();
 
-//Writes data from the ambient sound data file
+// Writes data from the ambient sound data file
 void WriteAmbientData();
 
 #endif

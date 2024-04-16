@@ -10,8 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
-
 
 #ifndef _TEXFIX_H
 #define _TEXFIX_H
@@ -20,20 +18,20 @@
 #include "fix.h"
 
 #define TexFloatScaler (16777216.0)
-#define TexFixShift    24
-#define TF1_0 		   (16777216)
+#define TexFixShift 24
+#define TF1_0 (16777216)
 
 //#define FloatToFix(num) vm_FloatToFix(num)
 #define TexFloatToFix(num) (num * TexFloatScaler)
 
-#define TexIntToFix(num) ((num)<<TexFixShift)
-#define TexShortToFix(num) (((long)a)<< TexFixShift)
-#define TexFixToFloat(num) ((num)/TexFloatScaler)
-#define TexFixToInt(num) ((num)>>TexFixShift)
-#define TexFixToShort(num) ((short)((num)>>TexFixShift))
-#define TexFixMul(a,b) tex_FixMul824(a,b)
-#define TexFixDiv(a,b) tex_FixDiv824(a,b)
+#define TexIntToFix(num) ((num) << TexFixShift)
+#define TexShortToFix(num) (((long)a) << TexFixShift)
+#define TexFixToFloat(num) ((num) / TexFloatScaler)
+#define TexFixToInt(num) ((num) >> TexFixShift)
+#define TexFixToShort(num) ((short)((num) >> TexFixShift))
+#define TexFixMul(a, b) tex_FixMul824(a, b)
+#define TexFixDiv(a, b) tex_FixDiv824(a, b)
 
-__inline extern fix tex_FixMul824 (fix a, fix b );
-__inline extern fix tex_FixDiv824 (fix a, fix b );
+__inline extern fix tex_FixMul824(fix a, fix b);
+__inline extern fix tex_FixDiv824(fix a, fix b);
 #endif

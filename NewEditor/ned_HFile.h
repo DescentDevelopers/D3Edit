@@ -10,18 +10,17 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #include "vecmat.h"
-//Create a default room for a new mine
+// Create a default room for a new mine
 room *CreateDefaultRoom();
-//Create a new mine with one segment, specified by filename
+// Create a new mine with one segment, specified by filename
 bool CreateNewMineFromRoom(char *filename);
-//Create a new mine with one segment
-void CreateNewMine(bool new_room=true);
-//Shows the stats for a level in a messagebox
+// Create a new mine with one segment
+void CreateNewMine(bool new_room = true);
+// Shows the stats for a level in a messagebox
 void ShowLevelStats();
-//Shows the stats for a room in a messagebox
+// Shows the stats for a room in a messagebox
 void ShowRoomStats(room *rp);
 
 extern vector Mine_origin;

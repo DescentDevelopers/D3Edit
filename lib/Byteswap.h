@@ -10,7 +10,6 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef _BYTESWAP_H
 #define _BYTESWAP_H
@@ -21,13 +20,14 @@
 #include "psendian.h"
 
 #define SWAPSHORT(x)	(	((x) << 8) | (((ushort)(x)) >> 8) )
-#define SWAPINT(x)	(	((x) << 24) | (((ulong)(x)) >> 24) | (((x) & 0x0000ff00) << 8) | (((x) & 0x00ff0000) >> 8)	)
+#define SWAPINT(x)	(	((x) << 24) | (((ulong)(x)) >> 24) | (((x) & 0x0000ff00) << 8) | (((x) & 0x00ff0000) >>
+8)	)
 
 //Stupid function to trick the compiler into letting me byteswap a float
 inline float SWAPFLOAT(float x)
 {
-	int i = SWAPINT(*((int *) &(x)));
-	return *((float *) &(i));
+        int i = SWAPINT(*((int *) &(x)));
+        return *((float *) &(i));
 }
 
 // INTEL_ assumes the returned value will be in "Little Endian Format"
@@ -40,43 +40,41 @@ inline float SWAPFLOAT(float x)
 #define MOTOROLA_SHORT(x)	SWAPSHORT(Endian_SwapShort(x))
 #define MOTOROLA_FLOAT(x)	SWAPFLOAT(Endian_SwapFloat(x))
 */
-#define SWAPSHORT(x)	(0xFFFF & ( ((x) << 8) | (((ushort)(x)) >> 8) ))
-#define SWAPINT(x)	(	((x) << 24) | (((ulong)(x)) >> 24) | (((x) & 0x0000ff00) << 8) | (((x) & 0x00ff0000) >> 8)	)
+#define SWAPSHORT(x) (0xFFFF & (((x) << 8) | (((ushort)(x)) >> 8)))
+#define SWAPINT(x) (((x) << 24) | (((ulong)(x)) >> 24) | (((x)&0x0000ff00) << 8) | (((x)&0x00ff0000) >> 8))
 
-//Stupid function to trick the compiler into letting me byteswap a float
-inline float SWAPFLOAT(float x)
-{
-	int i = SWAPINT(*((int *) &(x)));
-	return *((float *) &(i));
+// Stupid function to trick the compiler into letting me byteswap a float
+inline float SWAPFLOAT(float x) {
+  int i = SWAPINT(*((int *)&(x)));
+  return *((float *)&(i));
 }
 
-
-//Default is little endian, so change for Macintosh
+// Default is little endian, so change for Macintosh
 #ifdef MACINTOSH
-   #define OUTRAGE_BIG_ENDIAN
+#define OUTRAGE_BIG_ENDIAN
 #endif
 
 #ifdef __LINUX__
 #include <endian.h>
 #if BYTE_ORDER == BIG_ENDIAN
-	#define OUTRAGE_BIG_ENDIAN
+#define OUTRAGE_BIG_ENDIAN
 #endif
 #endif
 
 #ifndef OUTRAGE_BIG_ENDIAN
-	#define INTEL_INT(x)			x
-	#define INTEL_SHORT(x)		x
-	#define INTEL_FLOAT(x)		x
-	#define MOTOROLA_INT(x)		SWAPINT(x)
-	#define MOTOROLA_SHORT(x)	SWAPSHORT(x)
-	#define MOTOROLA_FLOAT(x)	SWAPFLOAT(x)
+#define INTEL_INT(x) x
+#define INTEL_SHORT(x) x
+#define INTEL_FLOAT(x) x
+#define MOTOROLA_INT(x) SWAPINT(x)
+#define MOTOROLA_SHORT(x) SWAPSHORT(x)
+#define MOTOROLA_FLOAT(x) SWAPFLOAT(x)
 #else
-	#define INTEL_INT(x)			SWAPINT(x)
-	#define INTEL_SHORT(x)		SWAPSHORT(x)
-	#define INTEL_FLOAT(x)		SWAPFLOAT(x)
-	#define MOTOROLA_INT(x)		x
-	#define MOTOROLA_SHORT(x)	x	
-	#define MOTOROLA_FLOAT(x)	x
+#define INTEL_INT(x) SWAPINT(x)
+#define INTEL_SHORT(x) SWAPSHORT(x)
+#define INTEL_FLOAT(x) SWAPFLOAT(x)
+#define MOTOROLA_INT(x) x
+#define MOTOROLA_SHORT(x) x
+#define MOTOROLA_FLOAT(x) x
 #endif
 
 #endif

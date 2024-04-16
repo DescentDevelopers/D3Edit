@@ -10,34 +10,33 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
+#ifdef ACTIVATE_INNER_LOOP
 
-			fix u  = LeftU;
-         fix v  = LeftV;
-			int cu,cv;
-			int srcptr;
-			ushort pix;
-			int texture_width=bm_w(Tex_bitmap,Current_mip);
-			ushort *src16=bm_data (Tex_bitmap,Current_mip);
-			
-			dest=(destptr+x1);
+fix u = LeftU;
+fix v = LeftV;
+int cu, cv;
+int srcptr;
+ushort pix;
+int texture_width = bm_w(Tex_bitmap, Current_mip);
+ushort *src16 = bm_data(Tex_bitmap, Current_mip);
 
-			int i;
-									
-			for (i=0;i<width;i++)
-			{
-				cu=FixToInt(u);
-				cv=FixToInt(v);
-							
-				cu&=(texture_width-1);
-				cv&=(texture_width-1);
-				srcptr=(cv*texture_width)+cu;
-				
-				pix=src16[srcptr];
-				
-				*dest++ = Translate4444To1555[pix];
-				
-            u += dudx;
-            v += dvdx;
-			}
+dest = (destptr + x1);
+
+int i;
+
+for (i = 0; i < width; i++) {
+  cu = FixToInt(u);
+  cv = FixToInt(v);
+
+  cu &= (texture_width - 1);
+  cv &= (texture_width - 1);
+  srcptr = (cv * texture_width) + cu;
+
+  pix = src16[srcptr];
+
+  *dest++ = Translate4444To1555[pix];
+
+  u += dudx;
+  v += dvdx;
+}
 #endif

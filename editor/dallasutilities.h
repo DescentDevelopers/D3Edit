@@ -10,12 +10,11 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- 
 
 #ifndef _DALLAS_UTILITIES_H_
 #define _DALLAS_UTILITIES_H_
 
-#define WHITESPACE_CHARS	" \t\r\n"
+#define WHITESPACE_CHARS " \t\r\n"
 
 // Removes any whitespace padding from the end of a string
 void RemoveTrailingWhitespace(char *s);
@@ -23,8 +22,7 @@ void RemoveTrailingWhitespace(char *s);
 // Returns a pointer to the first non-whitespace char in given string
 char *SkipInitialWhitespace(char *s);
 
-
-bool FindManageFirst(char *buffer,char *wildcard);
+bool FindManageFirst(char *buffer, char *wildcard);
 bool FindManageNext(char *buffer);
 void FindManageClose(void);
 bool GamefileExists(char *name);

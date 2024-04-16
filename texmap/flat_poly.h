@@ -10,14 +10,13 @@
  AND AGREES TO THE TERMS HEREIN AND ACCEPTS THE SAME BY USE OF THIS FILE.
  COPYRIGHT 1996-2000 OUTRAGE ENTERTAINMENT, INC.  ALL RIGHTS RESERVED.
  */
- #ifdef ACTIVATE_INNER_LOOP
-		
+#ifdef ACTIVATE_INNER_LOOP
 
-			dest=(destptr+x1);
+dest = (destptr + x1);
 
-			int i;
-									
-			for (i=0;i<width;i++)
-				*dest++ = Flat_polygon_color;
-			
+int i;
+
+for (i = 0; i < width; i++)
+  *dest++ = Flat_polygon_color;
+
 #endif
