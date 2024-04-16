@@ -1,0 +1,6 @@
+# Microsoft Developer Studio Generated Dependency File, included by fix.mak
+
+.\fix.cpp : \
+	"..\lib\fix.h"\
+	"..\lib\win\fixwin32.h"\
+	

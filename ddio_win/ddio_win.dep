@@ -1,0 +1,102 @@
+# Microsoft Developer Studio Generated Dependency File, included by ddio_win.mak
+
+.\winfile.cpp : \
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\mem.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	".\ddio_win.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\winforcefeedback.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\DDAccess.h"\
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\forcefeedback.h"\
+	"..\lib\mem.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstring.h"\
+	"..\lib\pstypes.h"\
+	"..\Lib\Win\IFORCE2.h"\
+	"..\lib\win\Win32App.h"\
+	".\ddio_win.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\winio.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\DDAccess.h"\
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\forcefeedback.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstring.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\win\Win32App.h"\
+	".\ddio_win.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\winjoy.cpp : \
+	"..\lib\Debug.h"\
+	"..\lib\forcefeedback.h"\
+	"..\lib\joystick.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mem.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	".\ddio_win.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\winkey.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\DDAccess.h"\
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\TaskSystem.h"\
+	"..\lib\win\Win32App.h"\
+	".\ddio_win.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\winmouse.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\DDAccess.h"\
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\Lib\psclass.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\win\Win32App.h"\
+	".\ddio_win.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\wintimer.cpp : \
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	".\ddio_win.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	

@@ -1,0 +1,10 @@
+# Microsoft Developer Studio Generated Dependency File, included by mem.mak
+
+.\mem.cpp : \
+	"..\lib\Debug.h"\
+	"..\lib\mem.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	

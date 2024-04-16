@@ -1,0 +1,129 @@
+# Microsoft Developer Studio Generated Dependency File, included by 2dlib.mak
+
+.\font.cpp : \
+	"..\lib\bitmap.h"\
+	"..\lib\Cfile.h"\
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mem.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\win\fixwin32.h"\
+	
+
+.\hardsurf.cpp : \
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\win\fixwin32.h"\
+	
+
+.\memsurf.cpp : \
+	"..\lib\bitmap.h"\
+	"..\lib\Cfile.h"\
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mem.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\win\fixwin32.h"\
+	".\lib2d.h"\
+	
+
+.\pen.cpp : \
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\win\fixwin32.h"\
+	".\lib2d.h"\
+	
+
+.\pentext.cpp : \
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstring.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\win\fixwin32.h"\
+	
+
+.\screen.cpp : \
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\win\fixwin32.h"\
+	
+
+.\surface.cpp : \
+	"..\lib\3d.h"\
+	"..\lib\bitmap.h"\
+	"..\lib\Cfile.h"\
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\texture.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	".\lib2d.h"\
+	
+
+.\viewport.cpp : \
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\win\fixwin32.h"\
+	".\lib2d.h"\
+	

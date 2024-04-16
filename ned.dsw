@@ -1,0 +1,299 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "2dlib"=.\2dlib\2dlib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "3d"=.\3d\3d.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "NewEditor"=.\NewEditor\NewEditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name 2dlib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name 3d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name bitmap
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name cfile
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ddgr_win32
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ddio_common
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ddio_win
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ddvid_win32
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mem
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name misc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name module
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ned_physics
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ned_virtualgcc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ned_virtualms
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name texmap
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name vecmat
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fix
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "bitmap"=.\bitmap\bitmap.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "cfile"=.\cfile\cfile.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ddgr_win32"=.\ddgr_win32\ddgr_win32.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ddio_common"=.\ddio_common\ddio_common.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ddio_win"=.\ddio_win\ddio_win.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ddvid_win32"=.\ddvid_win32\ddvid_win32.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "fix"=.\fix\fix.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mem"=.\mem\mem.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "misc"=.\misc\misc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "module"=.\module\module.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ned_physics"=.\ned_physics\ned_physics.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ned_virtualgcc"=.\ned_virtualgcc\ned_virtualgcc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ned_virtualms"=.\ned_virtualms\ned_virtualms.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "texmap"=.\texmap\texmap.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "vecmat"=.\vecmat\vecmat.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32"=.\win32\win32.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

@@ -1,0 +1,90 @@
+# Microsoft Developer Studio Generated Dependency File, included by 3d.mak
+
+.\CLIPPER.cpp : \
+	"..\lib\3d.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	".\Clipper.h"\
+	".\Globvars.h"\
+	
+
+.\DRAW.cpp : \
+	"..\lib\3d.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	".\Clipper.h"\
+	".\Globvars.h"\
+	
+
+.\GLOBVARS.cpp : \
+	"..\lib\3d.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	".\Globvars.h"\
+	
+
+.\INSTANCE.cpp : \
+	"..\lib\3d.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	".\Globvars.h"\
+	
+
+.\POINTS.cpp : \
+	"..\lib\3d.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	".\Globvars.h"\
+	
+
+.\SETUP.cpp : \
+	"..\lib\3d.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	".\Clipper.h"\
+	".\Globvars.h"\
+	

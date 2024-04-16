@@ -1,0 +1,39 @@
+# Microsoft Developer Studio Generated Dependency File, included by ddvid_win32.mak
+
+.\video_win32.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\DDAccess.h"\
+	"..\lib\ddvid.h"\
+	"..\lib\Debug.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\win\Win32App.h"\
+	".\ddvidlib.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\vidWin32FS.cpp : \
+	"..\lib\ddvid.h"\
+	"..\lib\Debug.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	".\ddvidlib.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\vidWin32Win.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\ddvid.h"\
+	"..\lib\Debug.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\win\Win32App.h"\
+	".\ddvidlib.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	

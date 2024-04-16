@@ -1,0 +1,65 @@
+# Microsoft Developer Studio Generated Dependency File, included by ddgr_win32.mak
+
+.\ddgrWin32API.cpp : \
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	".\ddgrWin32.h"\
+	".\ddgrWin32DX.h"\
+	".\ddgrWin32GDI.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\ddgrWin32DX.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\DDAccess.h"\
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\win\Win32App.h"\
+	".\ddgrWin32.h"\
+	".\ddgrWin32DX.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\ddgrWin32GDI.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\DDAccess.h"\
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\gr.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\win\fixwin32.h"\
+	"..\lib\win\Win32App.h"\
+	".\ddgrWin32.h"\
+	".\ddgrWin32GDI.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\ddgrWin32Init.cpp : \
+	"..\lib\Ddgr.h"\
+	"..\lib\Debug.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstring.h"\
+	"..\lib\pstypes.h"\
+	".\ddgrWin32.h"\
+	".\ddgrWin32DX.h"\
+	".\ddgrWin32GDI.h"\
+	"e:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	

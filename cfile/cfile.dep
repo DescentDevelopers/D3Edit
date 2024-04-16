@@ -1,0 +1,35 @@
+# Microsoft Developer Studio Generated Dependency File, included by cfile.mak
+
+.\CFILE.cpp : \
+	"..\lib\Byteswap.h"\
+	"..\lib\Cfile.h"\
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\hogfile.h"\
+	"..\lib\mem.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\Lib\psglob.h"\
+	"..\lib\pstypes.h"\
+	
+
+.\hog.cpp : \
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\hogfile.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mem.h"\
+	"..\lib\pstypes.h"\
+	
+
+.\InfFile.cpp : \
+	"..\lib\Cfile.h"\
+	"..\lib\Debug.h"\
+	"..\Lib\InfFile.h"\
+	"..\lib\mono.h"\
+	"..\Lib\psclass.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstring.h"\
+	"..\lib\pstypes.h"\
+	

@@ -1,0 +1,39 @@
+# Microsoft Developer Studio Generated Dependency File, included by texmap.mak
+
+.\texture.cpp : \
+	"..\lib\3d.h"\
+	"..\lib\bitmap.h"\
+	"..\lib\Cfile.h"\
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\grdefs.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mem.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\renderer.h"\
+	"..\lib\texture.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	".\drawquad.h"\
+	".\drawtex.h"\
+	".\flat_poly.h"\
+	".\leftedge.h"\
+	".\quadleftedge.h"\
+	".\quadrightedge.h"\
+	".\rightedg.h"\
+	".\tmap_4444.h"\
+	".\tmap_alpha16.h"\
+	".\tmap_flat16.h"\
+	".\tmap_ll16.h"\
+	".\tmap_ll16a.h"\
+	".\tmap_perflat16.h"\
+	".\tmap_pl16.h"\
+	".\tmap_pl16a.h"\
+	".\tmap_tri_flata.h"\
+	".\tmap_zbuf16.h"\
+	

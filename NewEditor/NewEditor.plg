@@ -1,0 +1,766 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 2dlib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP75.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /Od /I "..\lib" /I "..\lib\win" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/2dlib.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\2dlib\font.cpp"
+"D:\dev\d3edit\2dlib\hardsurf.cpp"
+"D:\dev\d3edit\2dlib\memsurf.cpp"
+"D:\dev\d3edit\2dlib\pen.cpp"
+"D:\dev\d3edit\2dlib\pentext.cpp"
+"D:\dev\d3edit\2dlib\screen.cpp"
+"D:\dev\d3edit\2dlib\surface.cpp"
+"D:\dev\d3edit\2dlib\viewport.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP75.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\2dlib.lib"  .\Release\font.obj .\Release\hardsurf.obj .\Release\memsurf.obj .\Release\pen.obj .\Release\pentext.obj .\Release\screen.obj .\Release\surface.obj .\Release\viewport.obj "
+<h3>Output Window</h3>
+Compiling...
+font.cpp
+D:\dev\d3edit\2dlib\font.cpp(456) : warning C4390: ';' : empty controlled statement found; is this the intent?
+hardsurf.cpp
+D:\dev\d3edit\2dlib\font.cpp(536) : warning C4700: local variable 'next_x' used without having been initialized
+D:\dev\d3edit\2dlib\font.cpp(582) : warning C4700: local variable 'next_x' used without having been initialized
+memsurf.cpp
+pen.cpp
+pentext.cpp
+D:\dev\d3edit\2dlib\pentext.cpp(249) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\2dlib\pentext.cpp(252) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\2dlib\pentext.cpp(306) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\2dlib\pentext.cpp(309) : warning C4390: ';' : empty controlled statement found; is this the intent?
+screen.cpp
+surface.cpp
+D:\dev\d3edit\2dlib\surface.cpp(123) : warning C4390: ';' : empty controlled statement found; is this the intent?
+viewport.cpp
+Creating library...
+<h3>
+--------------------Configuration: 3d - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP76.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/3d.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\3d\CLIPPER.cpp"
+"D:\dev\d3edit\3d\DRAW.cpp"
+"D:\dev\d3edit\3d\GLOBVARS.cpp"
+"D:\dev\d3edit\3d\INSTANCE.cpp"
+"D:\dev\d3edit\3d\POINTS.cpp"
+"D:\dev\d3edit\3d\SETUP.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP76.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\3d.lib"  .\Release\CLIPPER.obj .\Release\DRAW.obj .\Release\GLOBVARS.obj .\Release\INSTANCE.obj .\Release\POINTS.obj .\Release\SETUP.obj "
+<h3>Output Window</h3>
+Compiling...
+CLIPPER.cpp
+DRAW.cpp
+GLOBVARS.cpp
+INSTANCE.cpp
+POINTS.cpp
+SETUP.cpp
+Creating library...
+<h3>
+--------------------Configuration: bitmap - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP77.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /Od /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/bitmap.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\bitmap\bitmain.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP77.tmp" 
+Creating temporary file "c:\windows\TEMP\RSP78.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/bitmap.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\bitmap\bumpmap.cpp"
+"D:\dev\d3edit\bitmap\iff.cpp"
+"D:\dev\d3edit\bitmap\lightmap.cpp"
+"D:\dev\d3edit\bitmap\pcx.cpp"
+"D:\dev\d3edit\bitmap\tga.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP78.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\bitmap.lib"  .\Release\bitmain.obj .\Release\bumpmap.obj .\Release\iff.obj .\Release\lightmap.obj .\Release\pcx.obj .\Release\tga.obj "
+<h3>Output Window</h3>
+Compiling...
+bitmain.cpp
+D:\dev\d3edit\bitmap\bitmain.cpp(801) : warning C4390: ';' : empty controlled statement found; is this the intent?
+Compiling...
+bumpmap.cpp
+D:\dev\d3edit\bitmap\bumpmap.cpp(67) : warning C4390: ';' : empty controlled statement found; is this the intent?
+iff.cpp
+lightmap.cpp
+D:\dev\d3edit\bitmap\lightmap.cpp(63) : warning C4390: ';' : empty controlled statement found; is this the intent?
+pcx.cpp
+tga.cpp
+D:\dev\d3edit\bitmap\tga.cpp(466) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\bitmap\tga.cpp(584) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\bitmap\tga.cpp(623) : warning C4390: ';' : empty controlled statement found; is this the intent?
+Creating library...
+<h3>
+--------------------Configuration: cfile - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP79.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/cfile.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\cfile\CFILE.cpp"
+"D:\dev\d3edit\cfile\hog.cpp"
+"D:\dev\d3edit\cfile\InfFile.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP79.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\cfile.lib"  .\Release\CFILE.obj .\Release\hog.obj .\Release\InfFile.obj "
+<h3>Output Window</h3>
+Compiling...
+CFILE.cpp
+D:\dev\d3edit\cfile\CFILE.cpp(1187) : warning C4390: ';' : empty controlled statement found; is this the intent?
+hog.cpp
+InfFile.cpp
+Creating library...
+<h3>
+--------------------Configuration: ddgr_win32 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP7A.tmp" with contents
+[
+/nologo /MT /W3 /GX /Od /I "..\lib" /I "..\lib\win" /I "..\lib\win\directx" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/ddgr_win32.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\ddgr_win32\ddgrWin32API.cpp"
+"D:\dev\d3edit\ddgr_win32\ddgrWin32DX.cpp"
+"D:\dev\d3edit\ddgr_win32\ddgrWin32GDI.cpp"
+"D:\dev\d3edit\ddgr_win32\ddgrWin32Init.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP7A.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\ddgr_win32.lib"  .\Release\ddgrWin32API.obj .\Release\ddgrWin32DX.obj .\Release\ddgrWin32GDI.obj .\Release\ddgrWin32Init.obj "
+<h3>Output Window</h3>
+Compiling...
+ddgrWin32API.cpp
+ddgrWin32DX.cpp
+ddgrWin32GDI.cpp
+ddgrWin32Init.cpp
+Creating library...
+<h3>
+--------------------Configuration: ddio_common - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP7B.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/ddio_common.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\ddio_common\ddio.cpp"
+"D:\dev\d3edit\ddio_common\key.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP7B.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\ddio_common.lib"  .\Release\ddio.obj .\Release\key.obj "
+<h3>Output Window</h3>
+Compiling...
+ddio.cpp
+key.cpp
+Creating library...
+<h3>
+--------------------Configuration: ddio_win - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP7C.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /I "..\lib\win" /I "..\lib\win\directx" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/ddio_win.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\ddio_win\winfile.cpp"
+"D:\dev\d3edit\ddio_win\winio.cpp"
+"D:\dev\d3edit\ddio_win\winkey.cpp"
+"D:\dev\d3edit\ddio_win\winmouse.cpp"
+"D:\dev\d3edit\ddio_win\wintimer.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP7C.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\ddio_win.lib"  .\Release\winfile.obj .\Release\winio.obj .\Release\winkey.obj .\Release\winmouse.obj .\Release\wintimer.obj "
+<h3>Output Window</h3>
+Compiling...
+winfile.cpp
+D:\dev\d3edit\ddio_win\winfile.cpp(64) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\ddio_win\winfile.cpp(67) : warning C4390: ';' : empty controlled statement found; is this the intent?
+winio.cpp
+winkey.cpp
+winmouse.cpp
+wintimer.cpp
+Creating library...
+<h3>
+--------------------Configuration: ddvid_win32 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP7D.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /I "..\lib\win" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/ddvid_win32.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\ddvid_win32\video_win32.cpp"
+"D:\dev\d3edit\ddvid_win32\vidWin32FS.cpp"
+"D:\dev\d3edit\ddvid_win32\vidWin32Win.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP7D.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\ddvid_win32.lib"  .\Release\video_win32.obj .\Release\vidWin32FS.obj .\Release\vidWin32Win.obj "
+<h3>Output Window</h3>
+Compiling...
+video_win32.cpp
+vidWin32FS.cpp
+vidWin32Win.cpp
+Creating library...
+<h3>
+--------------------Configuration: mem - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP7E.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /I "..\\" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/mem.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\mem\mem.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP7E.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\mem.lib"  .\Release\mem.obj "
+<h3>Output Window</h3>
+Compiling...
+mem.cpp
+Creating library...
+<h3>
+--------------------Configuration: misc - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP7F.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/misc.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\misc\endian.cpp"
+"D:\dev\d3edit\misc\error.cpp"
+"D:\dev\d3edit\misc\psglob.cpp"
+"D:\dev\d3edit\misc\psrand.cpp"
+"D:\dev\d3edit\misc\pstring.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP7F.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\misc.lib"  .\Release\endian.obj .\Release\error.obj .\Release\psglob.obj .\Release\psrand.obj .\Release\pstring.obj "
+<h3>Output Window</h3>
+Compiling...
+endian.cpp
+error.cpp
+psglob.cpp
+psrand.cpp
+pstring.cpp
+Creating library...
+<h3>
+--------------------Configuration: module - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP80.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I ".." /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/module.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\module\module.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP80.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"..\lib\module.lib"  .\Release\module.obj "
+<h3>Output Window</h3>
+Compiling...
+module.cpp
+Creating library...
+<h3>
+--------------------Configuration: ned_physics - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP81.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\lib" /I ".." /I "..\3d" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "NED_PHYSICS" /D "NEWEDITOR" /Fp"Release/ned_physics.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\dev\d3edit\physics\FindIntersection.cpp"
+"D:\dev\d3edit\physics\newstyle_fi.cpp"
+"D:\dev\d3edit\physics\physics_common.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP81.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"Release\ned_physics.lib"  .\Release\FindIntersection.obj .\Release\newstyle_fi.obj .\Release\physics_common.obj "
+<h3>Output Window</h3>
+Compiling...
+FindIntersection.cpp
+newstyle_fi.cpp
+physics_common.cpp
+Creating library...
+<h3>
+--------------------Configuration: ned_virtualgcc - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP82.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /I "..\lib" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "NEWEDITOR" /Fp"Release/ned_virtualgcc.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\dev\d3edit\virtualGCC\virtualgcc.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP82.tmp" 
+Creating temporary file "c:\windows\TEMP\RSP83.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/virtualgcc.pdb" /machine:I386 /out:"virtualgcc.exe" 
+.\Release\virtualgcc.obj
+]
+Creating command line "xilink6.exe @c:\windows\TEMP\RSP83.tmp"
+<h3>Output Window</h3>
+Compiling...
+virtualgcc.cpp
+Linking...
+<h3>
+--------------------Configuration: ned_virtualms - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP85.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /I "..\lib" /D "NDEBUG" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /D "NEWEDITOR" /Fp"Release/ned_virtualms.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\dev\d3edit\virtualMS\virtualMS.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP85.tmp" 
+Creating temporary file "c:\windows\TEMP\RSP86.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/virtualMS.pdb" /machine:I386 /out:"virtualMS.exe" 
+.\Release\virtualMS.obj
+]
+Creating command line "xilink6.exe @c:\windows\TEMP\RSP86.tmp"
+<h3>Output Window</h3>
+Compiling...
+virtualMS.cpp
+Linking...
+<h3>
+--------------------Configuration: texmap - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP88.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /I "..\lib\win" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/texmap.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\texmap\texture.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP88.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\texmap.lib"  .\Release\texture.obj "
+<h3>Output Window</h3>
+Compiling...
+texture.cpp
+Creating library...
+<h3>
+--------------------Configuration: win32 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP89.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /I "..\lib\win" /I "..\\" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/win32.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\win32\winapp.cpp"
+"D:\dev\d3edit\win32\windata.cpp"
+"D:\dev\d3edit\win32\windebug.cpp"
+"D:\dev\d3edit\win32\winmono.cpp"
+"D:\dev\d3edit\win32\wintask.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP89.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\win32.lib"  .\Release\winapp.obj .\Release\windata.obj .\Release\windebug.obj .\Release\winmono.obj .\Release\wintask.obj "
+<h3>Output Window</h3>
+Compiling...
+winapp.cpp
+D:\dev\d3edit\win32\winapp.cpp(608) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\win32\winapp.cpp(620) : warning C4390: ';' : empty controlled statement found; is this the intent?
+windata.cpp
+windebug.cpp
+winmono.cpp
+wintask.cpp
+Creating library...
+<h3>
+--------------------Configuration: vecmat - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP8A.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/vecmat.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\vecmat\vector.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP8A.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\vecmat.lib"  .\Release\vector.obj "
+<h3>Output Window</h3>
+Compiling...
+vector.cpp
+Creating library...
+<h3>
+--------------------Configuration: fix - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP8B.tmp" with contents
+[
+/nologo /G5 /MT /W3 /GX /O2 /I "..\lib" /D "NDEBUG" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /Fp"./Release/fix.pch" /YX /Fo"./Release/" /Fd"./Release/" /FD /c 
+"D:\dev\d3edit\fix\fix.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP8B.tmp" 
+Creating command line "xilink6.exe -lib /nologo /out:"./Release\fix.lib"  .\Release\fix.obj "
+<h3>Output Window</h3>
+Compiling...
+fix.cpp
+Creating library...
+<h3>
+--------------------Configuration: NewEditor - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/NewEditor.res" /d "NDEBUG" "D:\dev\d3edit\NewEditor\NewEditor.rc"" 
+Creating temporary file "c:\windows\TEMP\RSP8C.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "." /I "..\lib" /I "..\lib\win" /I "..\lib\win\directx" /I "..\\" /I "..\editor" /D "_WINDOWS" /D "WIN32" /D "RELEASE" /D "NEWEDITOR" /Fp"Release/NewEditor.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\dev\d3edit\ambient.cpp"
+"D:\dev\d3edit\NewEditor\BendDialog.cpp"
+"D:\dev\d3edit\bnode.cpp"
+"D:\dev\d3edit\boa.cpp"
+"D:\dev\d3edit\NewEditor\CameraSlew.cpp"
+"D:\dev\d3edit\Editor\DallasFlagDlg.cpp"
+"D:\dev\d3edit\Editor\DallasGenericPromptDlg.cpp"
+"D:\dev\d3edit\Editor\DallasImportDlg.cpp"
+"D:\dev\d3edit\Editor\DallasMainDlg.cpp"
+"D:\dev\d3edit\Editor\DallasSoundDlg.cpp"
+"D:\dev\d3edit\Editor\DallasStrmAudioDlg.cpp"
+"D:\dev\d3edit\Editor\DallasTextureDlg.cpp"
+"D:\dev\d3edit\Editor\DallasUserTypesDlg.cpp"
+"D:\dev\d3edit\Editor\DallasUtilities.cpp"
+"D:\dev\d3edit\Editor\DallasVectorPromptDialog.cpp"
+"D:\dev\d3edit\NewEditor\DoorwayDialogBar.cpp"
+"D:\dev\d3edit\editor\ebnode.cpp"
+"D:\dev\d3edit\NewEditor\EditLineDialog.cpp"
+"D:\dev\d3edit\NewEditor\editor_lighting.cpp"
+"D:\dev\d3edit\NewEditor\editor_object_lighting.cpp"
+"D:\dev\d3edit\editor\edoors.cpp"
+"D:\dev\d3edit\editor\EPath.cpp"
+"D:\dev\d3edit\editor\Erooms.cpp"
+"D:\dev\d3edit\NewEditor\ExtrudeDialog.cpp"
+"D:\dev\d3edit\NewEditor\FileNewDialog.cpp"
+"D:\dev\d3edit\NewEditor\FolderDialog.cpp"
+"D:\dev\d3edit\gamepath.cpp"
+"D:\dev\d3edit\NewEditor\globals.cpp"
+"D:\dev\d3edit\NewEditor\GoalDialog.cpp"
+"D:\dev\d3edit\NewEditor\GrListBox.cpp"
+"D:\dev\d3edit\editor\Group.cpp"
+"D:\dev\d3edit\NewEditor\HogBrowser.cpp"
+"D:\dev\d3edit\editor\HRoom.cpp"
+"D:\dev\d3edit\editor\HTexture.cpp"
+"D:\dev\d3edit\NewEditor\LatheDialog.cpp"
+"D:\dev\d3edit\NewEditor\LevelFrame.cpp"
+"D:\dev\d3edit\NewEditor\LevelInfoDialog.cpp"
+"D:\dev\d3edit\NewEditor\LightingDialog.cpp"
+"D:\dev\d3edit\NewEditor\LightingProgress.cpp"
+"D:\dev\d3edit\lightmap_info.cpp"
+"D:\dev\d3edit\NewEditor\ListDialog.cpp"
+"D:\dev\d3edit\loadlevel.cpp"
+"D:\dev\d3edit\NewEditor\MainFrm.cpp"
+"D:\dev\d3edit\matcen.cpp"
+"D:\dev\d3edit\NewEditor\MatcenDialog.cpp"
+"D:\dev\d3edit\NewEditor\MissionHogConfigDlg.cpp"
+"D:\dev\d3edit\NewEditor\ned_Door.cpp"
+"D:\dev\d3edit\NewEditor\ned_DrawWorld.cpp"
+"D:\dev\d3edit\NewEditor\ned_GameTexture.cpp"
+"D:\dev\d3edit\NewEditor\ned_Geometry.cpp"
+"D:\dev\d3edit\NewEditor\ned_GrWnd.cpp"
+"D:\dev\d3edit\NewEditor\ned_HFile.cpp"
+"D:\dev\d3edit\NewEditor\ned_LevelGoal.cpp"
+"D:\dev\d3edit\NewEditor\ned_LevelWnd.cpp"
+"D:\dev\d3edit\NewEditor\ned_newstyle.cpp"
+"D:\dev\d3edit\NewEditor\ned_Object.cpp"
+"D:\dev\d3edit\NewEditor\ned_OrthoWnd.cpp"
+"D:\dev\d3edit\NewEditor\ned_PathNode.cpp"
+"D:\dev\d3edit\NewEditor\ned_PerspWnd.cpp"
+"D:\dev\d3edit\NewEditor\ned_polymodel.cpp"
+"D:\dev\d3edit\NewEditor\ned_Render.cpp"
+"D:\dev\d3edit\NewEditor\ned_Renderer.cpp"
+"D:\dev\d3edit\NewEditor\ned_RendOpenGL.cpp"
+"D:\dev\d3edit\NewEditor\ned_Sound.cpp"
+"D:\dev\d3edit\NewEditor\ned_TableRead.cpp"
+"D:\dev\d3edit\NewEditor\ned_Trigger.cpp"
+"D:\dev\d3edit\NewEditor\ned_Util.cpp"
+"D:\dev\d3edit\NewEditor\NewEditor.cpp"
+"D:\dev\d3edit\NewEditor\object_lighting.cpp"
+"D:\dev\d3edit\NewEditor\ObjectDialogBar.cpp"
+"D:\dev\d3edit\editor\ObjectListCombo.cpp"
+"D:\dev\d3edit\NewEditor\ObjectPalette.cpp"
+"D:\dev\d3edit\NewEditor\PathDialogBar.cpp"
+"D:\dev\d3edit\postrender.cpp"
+"D:\dev\d3edit\NewEditor\ProgressDialog.cpp"
+"D:\dev\d3edit\NewEditor\rad_cast.cpp"
+"D:\dev\d3edit\NewEditor\rad_init.cpp"
+"D:\dev\d3edit\NewEditor\RefFrameDialog.cpp"
+"D:\dev\d3edit\room.cpp"
+"D:\dev\d3edit\NewEditor\RoomDialogBar.cpp"
+"D:\dev\d3edit\NewEditor\RoomFrm.cpp"
+"D:\dev\d3edit\editor\RoomListCombo.cpp"
+"D:\dev\d3edit\NewEditor\RoomProperties.cpp"
+"D:\dev\d3edit\editor\RoomUVs.cpp"
+"D:\dev\d3edit\NewEditor\ScriptCompiler.cpp"
+"D:\dev\d3edit\Editor\ScriptCompilerAPI.cpp"
+"D:\dev\d3edit\editor\selectedroom.cpp"
+"D:\dev\d3edit\editor\SelManager.cpp"
+"D:\dev\d3edit\NewEditor\SettingsDialog.cpp"
+"D:\dev\d3edit\ship.cpp"
+"D:\dev\d3edit\NewEditor\SoundDialogBar.cpp"
+"D:\dev\d3edit\editor\SoundListCombo.cpp"
+"D:\dev\d3edit\special_face.cpp"
+"D:\dev\d3edit\NewEditor\SplashScreen.cpp"
+"D:\dev\d3edit\NewEditor\StdAfx.cpp"
+"D:\dev\d3edit\NewEditor\TablefileManager.cpp"
+"D:\dev\d3edit\NewEditor\TableView.cpp"
+"D:\dev\d3edit\terrain.cpp"
+"D:\dev\d3edit\NewEditor\TerrainDialogBar.cpp"
+"D:\dev\d3edit\terrainrender.cpp"
+"D:\dev\d3edit\TerrainSearch.cpp"
+"D:\dev\d3edit\NewEditor\TexAlignDialog.cpp"
+"D:\dev\d3edit\NewEditor\TextureDialogBar.cpp"
+"D:\dev\d3edit\NewEditor\TexturePalette.cpp"
+"D:\dev\d3edit\NewEditor\TipOfTheDay.cpp"
+"D:\dev\d3edit\NewEditor\TriggerDialog.cpp"
+"D:\dev\d3edit\editor\TriggerListCombo.cpp"
+"D:\dev\d3edit\Vclip.cpp"
+]
+Creating command line "xicl6.exe @c:\windows\TEMP\RSP8C.tmp" 
+Creating temporary file "c:\windows\TEMP\RSP8D.tmp" with contents
+[
+nafxcw.lib libcmt.lib wsock32.lib winmm.lib ..\lib\win\directx\ddraw.lib ..\lib\win\directx\dinput.lib ..\lib\win\directx\dxguid.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/d3edit.pdb" /machine:I386 /nodefaultlib:"nafxcw.lib libcmt.lib" /out:"Release/d3edit.exe" 
+.\Release\ambient.obj
+.\Release\BendDialog.obj
+.\Release\bnode.obj
+.\Release\boa.obj
+.\Release\CameraSlew.obj
+.\Release\DallasFlagDlg.obj
+.\Release\DallasGenericPromptDlg.obj
+.\Release\DallasImportDlg.obj
+.\Release\DallasMainDlg.obj
+.\Release\DallasSoundDlg.obj
+.\Release\DallasStrmAudioDlg.obj
+.\Release\DallasTextureDlg.obj
+.\Release\DallasUserTypesDlg.obj
+.\Release\DallasUtilities.obj
+.\Release\DallasVectorPromptDialog.obj
+.\Release\DoorwayDialogBar.obj
+.\Release\ebnode.obj
+.\Release\EditLineDialog.obj
+.\Release\editor_lighting.obj
+.\Release\editor_object_lighting.obj
+.\Release\edoors.obj
+.\Release\EPath.obj
+.\Release\Erooms.obj
+.\Release\ExtrudeDialog.obj
+.\Release\FileNewDialog.obj
+.\Release\FolderDialog.obj
+.\Release\gamepath.obj
+.\Release\globals.obj
+.\Release\GoalDialog.obj
+.\Release\GrListBox.obj
+.\Release\Group.obj
+.\Release\HogBrowser.obj
+.\Release\HRoom.obj
+.\Release\HTexture.obj
+.\Release\LatheDialog.obj
+.\Release\LevelFrame.obj
+.\Release\LevelInfoDialog.obj
+.\Release\LightingDialog.obj
+.\Release\LightingProgress.obj
+.\Release\lightmap_info.obj
+.\Release\ListDialog.obj
+.\Release\loadlevel.obj
+.\Release\MainFrm.obj
+.\Release\matcen.obj
+.\Release\MatcenDialog.obj
+.\Release\MissionHogConfigDlg.obj
+.\Release\ned_Door.obj
+.\Release\ned_DrawWorld.obj
+.\Release\ned_GameTexture.obj
+.\Release\ned_Geometry.obj
+.\Release\ned_GrWnd.obj
+.\Release\ned_HFile.obj
+.\Release\ned_LevelGoal.obj
+.\Release\ned_LevelWnd.obj
+.\Release\ned_newstyle.obj
+.\Release\ned_Object.obj
+.\Release\ned_OrthoWnd.obj
+.\Release\ned_PathNode.obj
+.\Release\ned_PerspWnd.obj
+.\Release\ned_polymodel.obj
+.\Release\ned_Render.obj
+.\Release\ned_Renderer.obj
+.\Release\ned_RendOpenGL.obj
+.\Release\ned_Sound.obj
+.\Release\ned_TableRead.obj
+.\Release\ned_Trigger.obj
+.\Release\ned_Util.obj
+.\Release\NewEditor.obj
+.\Release\object_lighting.obj
+.\Release\ObjectDialogBar.obj
+.\Release\ObjectListCombo.obj
+.\Release\ObjectPalette.obj
+.\Release\PathDialogBar.obj
+.\Release\postrender.obj
+.\Release\ProgressDialog.obj
+.\Release\rad_cast.obj
+.\Release\rad_init.obj
+.\Release\RefFrameDialog.obj
+.\Release\room.obj
+.\Release\RoomDialogBar.obj
+.\Release\RoomFrm.obj
+.\Release\RoomListCombo.obj
+.\Release\RoomProperties.obj
+.\Release\RoomUVs.obj
+.\Release\ScriptCompiler.obj
+.\Release\ScriptCompilerAPI.obj
+.\Release\selectedroom.obj
+.\Release\SelManager.obj
+.\Release\SettingsDialog.obj
+.\Release\ship.obj
+.\Release\SoundDialogBar.obj
+.\Release\SoundListCombo.obj
+.\Release\special_face.obj
+.\Release\SplashScreen.obj
+.\Release\StdAfx.obj
+.\Release\TablefileManager.obj
+.\Release\TableView.obj
+.\Release\terrain.obj
+.\Release\TerrainDialogBar.obj
+.\Release\terrainrender.obj
+.\Release\TerrainSearch.obj
+.\Release\TexAlignDialog.obj
+.\Release\TextureDialogBar.obj
+.\Release\TexturePalette.obj
+.\Release\TipOfTheDay.obj
+.\Release\TriggerDialog.obj
+.\Release\TriggerListCombo.obj
+.\Release\Vclip.obj
+.\Release\NewEditor.res
+\dev\d3edit\2dlib\Release\2dlib.lib
+\dev\d3edit\3d\Release\3d.lib
+\dev\d3edit\bitmap\Release\bitmap.lib
+\dev\d3edit\cfile\Release\cfile.lib
+\dev\d3edit\ddgr_win32\Release\ddgr_win32.lib
+\dev\d3edit\ddio_common\Release\ddio_common.lib
+\dev\d3edit\ddio_win\Release\ddio_win.lib
+\dev\d3edit\ddvid_win32\Release\ddvid_win32.lib
+\dev\d3edit\mem\Release\mem.lib
+\dev\d3edit\misc\Release\misc.lib
+\dev\d3edit\lib\module.lib
+\dev\d3edit\ned_physics\Release\ned_physics.lib
+\dev\d3edit\texmap\Release\texmap.lib
+\dev\d3edit\win32\Release\win32.lib
+\dev\d3edit\vecmat\Release\vecmat.lib
+\dev\d3edit\fix\Release\fix.lib
+]
+Creating command line "xilink6.exe @c:\windows\TEMP\RSP8D.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+ambient.cpp
+BendDialog.cpp
+bnode.cpp
+boa.cpp
+CameraSlew.cpp
+DallasFlagDlg.cpp
+DallasGenericPromptDlg.cpp
+DallasImportDlg.cpp
+DallasMainDlg.cpp
+DallasSoundDlg.cpp
+DallasStrmAudioDlg.cpp
+DallasTextureDlg.cpp
+DallasUserTypesDlg.cpp
+DallasUtilities.cpp
+DallasVectorPromptDialog.cpp
+DoorwayDialogBar.cpp
+ebnode.cpp
+EditLineDialog.cpp
+editor_lighting.cpp
+editor_object_lighting.cpp
+edoors.cpp
+EPath.cpp
+Erooms.cpp
+ExtrudeDialog.cpp
+FileNewDialog.cpp
+FolderDialog.cpp
+gamepath.cpp
+globals.cpp
+GoalDialog.cpp
+GrListBox.cpp
+Group.cpp
+HogBrowser.cpp
+HRoom.cpp
+HTexture.cpp
+LatheDialog.cpp
+LevelFrame.cpp
+LevelInfoDialog.cpp
+LightingDialog.cpp
+LightingProgress.cpp
+lightmap_info.cpp
+D:\dev\d3edit\lightmap_info.cpp(107) : warning C4390: ';' : empty controlled statement found; is this the intent?
+ListDialog.cpp
+loadlevel.cpp
+MainFrm.cpp
+matcen.cpp
+MatcenDialog.cpp
+MissionHogConfigDlg.cpp
+ned_Door.cpp
+ned_DrawWorld.cpp
+ned_GameTexture.cpp
+ned_Geometry.cpp
+ned_GrWnd.cpp
+ned_HFile.cpp
+ned_LevelGoal.cpp
+ned_LevelWnd.cpp
+ned_newstyle.cpp
+ned_Object.cpp
+ned_OrthoWnd.cpp
+ned_PathNode.cpp
+ned_PerspWnd.cpp
+ned_polymodel.cpp
+ned_Render.cpp
+ned_Renderer.cpp
+ned_RendOpenGL.cpp
+ned_Sound.cpp
+ned_TableRead.cpp
+ned_Trigger.cpp
+D:\dev\d3edit\NewEditor\ned_TableRead.cpp(672) : warning C4700: local variable 'name' used without having been initialized
+ned_Util.cpp
+NewEditor.cpp
+object_lighting.cpp
+ObjectDialogBar.cpp
+ObjectListCombo.cpp
+ObjectPalette.cpp
+PathDialogBar.cpp
+postrender.cpp
+ProgressDialog.cpp
+rad_cast.cpp
+D:\dev\d3edit\NewEditor\rad_cast.cpp(314) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\NewEditor\rad_cast.cpp(487) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\NewEditor\rad_cast.cpp(523) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\NewEditor\rad_cast.cpp(607) : warning C4390: ';' : empty controlled statement found; is this the intent?
+D:\dev\d3edit\NewEditor\rad_cast.cpp(640) : warning C4390: ';' : empty controlled statement found; is this the intent?
+rad_init.cpp
+RefFrameDialog.cpp
+room.cpp
+D:\dev\d3edit\room.cpp(445) : warning C4390: ';' : empty controlled statement found; is this the intent?
+RoomDialogBar.cpp
+RoomFrm.cpp
+RoomListCombo.cpp
+RoomProperties.cpp
+RoomUVs.cpp
+ScriptCompiler.cpp
+ScriptCompilerAPI.cpp
+selectedroom.cpp
+SelManager.cpp
+SettingsDialog.cpp
+ship.cpp
+SoundDialogBar.cpp
+SoundListCombo.cpp
+special_face.cpp
+SplashScreen.cpp
+StdAfx.cpp
+TablefileManager.cpp
+TableView.cpp
+terrain.cpp
+TerrainDialogBar.cpp
+terrainrender.cpp
+TerrainSearch.cpp
+TexAlignDialog.cpp
+TextureDialogBar.cpp
+TexturePalette.cpp
+TipOfTheDay.cpp
+TriggerDialog.cpp
+TriggerListCombo.cpp
+Vclip.cpp
+D:\dev\d3edit\Vclip.cpp(319) : warning C4390: ';' : empty controlled statement found; is this the intent?
+Linking...
+LINK : warning LNK4089: all references to "DINPUT.dll" discarded by /OPT:REF
+LINK : warning LNK4089: all references to "OLEAUT32.dll" discarded by /OPT:REF
+
+
+
+<h3>Results</h3>
+d3edit.exe - 0 error(s), 30 warning(s)
+</pre>
+</body>
+</html>

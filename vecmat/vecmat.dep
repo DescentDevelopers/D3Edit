@@ -1,0 +1,12 @@
+# Microsoft Developer Studio Generated Dependency File, included by vecmat.mak
+
+.\vector.cpp : \
+	"..\lib\Debug.h"\
+	"..\lib\fix.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\vecmat.h"\
+	"..\Lib\vecmat_external.h"\
+	"..\lib\win\fixwin32.h"\
+	

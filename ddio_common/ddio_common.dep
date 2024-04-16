@@ -1,0 +1,21 @@
+# Microsoft Developer Studio Generated Dependency File, included by ddio_common.mak
+
+.\ddio.cpp : \
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\joystick.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	
+
+.\key.cpp : \
+	"..\lib\ddio.h"\
+	"..\lib\ddio_common.h"\
+	"..\lib\Debug.h"\
+	"..\lib\Macros.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstypes.h"\
+	

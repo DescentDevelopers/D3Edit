@@ -1,0 +1,24 @@
+# Microsoft Developer Studio Generated Dependency File, included by misc.mak
+
+.\error.cpp : \
+	"..\lib\Application.h"\
+	"..\lib\Debug.h"\
+	"..\lib\mono.h"\
+	"..\lib\pserror.h"\
+	"..\lib\pstring.h"\
+	"..\lib\pstypes.h"\
+	"..\lib\win\Win32App.h"\
+	
+
+.\logfile.cpp : \
+	"..\LIB\logfile.h"\
+	"..\lib\pstring.h"\
+	
+
+.\psglob.cpp : \
+	"..\Lib\psglob.h"\
+	
+
+.\pstring.cpp : \
+	"..\lib\pstring.h"\
+	
