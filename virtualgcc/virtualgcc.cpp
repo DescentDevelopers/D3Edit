@@ -503,8 +503,9 @@ bool FindGCC(char *path) {
 }
 
 bool FindGCCPath(char *gcc_bin_path) {
-  char path_value[1024];
-  if (!GetEnvironmentVariable("PATH", path_value, 1024)) {
+  char *path_value;
+  path_value = getenv("PATH");
+  if (!path_value) {
     return false;
   }
 
