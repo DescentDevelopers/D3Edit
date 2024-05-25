@@ -58,7 +58,7 @@ unsigned int game_checksum;
 #define CL_DLLTYPE 5
 #define CL_CHECKSUM 6
 typedef struct {
-  char *string;
+  const char *string;
   unsigned short command;
 } tCommandLineOption;
 tCommandLineOption CommandLineOptions[] = {{"-F", CL_SOURCEFILE},     {"-D", CL_DEBUGINFO},   {"-O", CL_OUTPUTFILE},
@@ -67,7 +67,7 @@ tCommandLineOption CommandLineOptions[] = {{"-F", CL_SOURCEFILE},     {"-D", CL_
 
 bool FindGCCPath(char *gcc_bin_path);
 
-void output(char *format, ...) {
+void output(const char *format, ...) {
   char buffer[512];
   va_list list;
   va_start(list, format);
@@ -303,11 +303,11 @@ char WarningLevelString[256];
 char DebugLevelString[32];
 char ChecksumString[64];
 
-void main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
   output("Virtual GCC Compiler layer for Descent 3\n");
   output("Copyright 1999 Outrage Entertainment\n");
   if (!CollectArguments(argc, argv))
-    return;
+    return EXIT_FAILURE;
 
   STARTUPINFO si = {0};
   // Make child process use this app's standard files.
@@ -337,7 +337,7 @@ void main(int argc, char *argv[]) {
   }
 
   if (missing_variables) {
-    return;
+    return EXIT_FAILURE;
   }
 
   if (Level_DLL_build) {
@@ -403,6 +403,8 @@ void main(int argc, char *argv[]) {
   output("Done.");
 
   SetCurrentDirectory(old_path);
+
+  return EXIT_SUCCESS;
 }
 
 bool Step1(STARTUPINFO *si) {
